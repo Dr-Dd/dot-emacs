@@ -1,5 +1,8 @@
 ;; Init file for things already present in emacs
 
+;; Move custom-set variables to separate file
+(setq custom-file (concat user-emacs-directory "custom.el"))
+
 ;; remove unwanted buffers
 ;; Removes *scratch* from buffer after the mode has been set.
 (defun remove-scratch-buffer ()
@@ -41,18 +44,8 @@
 ;; set default font
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
-(defun refresh-mode-line-font ()
-  (interactive)
-  (let ((faces '(mode-line
-                 mode-line-buffer-id
-                 mode-line-emphasis
-                 mode-line-highlight
-                 mode-line-inactive)))
-    (mapc
-     (lambda (face) (set-face-attribute face nil :font "xos4 Terminus-14:bold"))
-     faces)))
-;; fallback unicode font
 (set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono-20")
+;; fallback unicode font
 ;; == end of default font ==
 
 ;; enable hl line
@@ -70,7 +63,7 @@
   ;; highlight light color
   (set-face-attribute 'region nil :background "#4A90D9" :foreground "#FFFFFF")
   ;; refresh screen
-  (refresh-mode-line-font)
+  ;;(refresh-mode-line-font)
   (redraw-display)
   )
 ;; == end of light theme function ==
@@ -84,7 +77,7 @@
   ;; highlight light color
   (set-face-attribute 'region nil :background "#FFFFEF" :foreground "#383838")
   ;; refresh display
-  (refresh-mode-line-font)
+  ;;(refresh-mode-line-font)
   (redraw-display)
   )
 ;; == end of dark theme function ==
@@ -142,7 +135,6 @@
 ;; remember cursor position when saving
 (save-place-mode 1)
 ;; == end of no-tabs ==
-
 ;; backup files handling
 (setq backup-directory-alist `(("." . "~/.saves")))
 (setq backup-by-copying t)
@@ -166,10 +158,6 @@
 (add-hook 'window-setup-hook 'delete-other-windows)
 ;; == end of unwanted buffers ==
 
-;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 (global-set-key (kbd "<mouse-6>") 'scroll-right)
 (global-set-key (kbd "<mouse-7>") 'scroll-left)

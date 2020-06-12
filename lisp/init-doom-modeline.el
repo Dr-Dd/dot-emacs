@@ -17,4 +17,8 @@
   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
 ;; == end of doom modeline ==
 
+(custom-set-faces
+ '(mode-line ((t (:family "xos4 Terminus" :height 0.7 :box nil))))
+ '(mode-line-inactive ((t (:family "xos4 Terminus" :height 0.7)))))
+
 (provide 'init-doom-modeline)
