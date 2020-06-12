@@ -79,7 +79,7 @@ returns nil."
         ;; 7° Entry
         ("l" "Libri da leggere" entry
          (file "~/Sync/org-files/books.org")
-         "* TOREAD %?\n")
+         "* TOBUY %?\n")
         ;; 9° Entry
         ("i" "Progetti informatici personali (TODO)" entry
          (file "~/Sync/org-files/compsci.org")

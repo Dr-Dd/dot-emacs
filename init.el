@@ -1,3 +1,5 @@
+(message "Loading drdee's init.el...")
+
 ;; MELPA
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -44,3 +46,18 @@ There are two things you can do about this warning:
 (require 'init-ace-window)
 (require 'init-highlight-indent)
 (require 'init-drd-mail)
+(require 'init-diminish)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(diminish zenburn-theme yasnippet-snippets use-package tuareg org-superstar markdown-mode magit highlight-indentation flycheck-haskell evil-surround esup emojify doom-modeline dashboard company-anaconda benchmark-init all-the-icons-dired ace-window)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
