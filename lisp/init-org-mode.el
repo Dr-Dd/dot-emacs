@@ -104,12 +104,20 @@ returns nil."
 ;; set org-mode to memorize done time
 (setq org-log-done 'time)
 (setq org-tags-column 0)
-;; use-package for org's appearance
+
+;; org bullets
 (use-package org-superstar
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1))))
-;; == end of org-mode ==
+
+;; active Babel languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t)
+   (shell . t)
+   (emacs-lisp . nil)))
+
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (provide 'init-org-mode)
