@@ -22,6 +22,11 @@
   :config
   (global-evil-surround-mode 1)
   :after (evil))
+(use-package evil-commentary
+  :ensure t
+  :after (evil)
+  :config
+  (evil-commentary-mode))
 ;; == end of evil mode ==
 
 

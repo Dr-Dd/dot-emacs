@@ -1,3 +1,7 @@
+
+;; Enable debugging
+;;(setq debug-on-error t)
+
 ;; MELPA
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -49,6 +53,7 @@ There are two things you can do about this warning:
 ;; Misc
 (require 'init-diminish)
 (require 'init-smooth-scrolling)
+(require 'init-drd-help)
 
 ;; Software Development
 (require 'init-yasnippet)
