@@ -1,9 +1,8 @@
-
 ;; doom modeline (+ all-the-icons dependency)
 (use-package all-the-icons
   :ensure t
   :config
-  (unless (file-exists-p "~/.local/share/fonts/all-the-icons.ttf")
+  (unless (file-exists-p (concat my/all-the-icons-folder "all-the-icons.ttf"))
     (all-the-icons-install-fonts)))
 (use-package doom-modeline
   :ensure t

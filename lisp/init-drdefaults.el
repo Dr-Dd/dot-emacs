@@ -161,10 +161,10 @@
 
 (global-set-key (kbd "<mouse-6>") 'scroll-right)
 (global-set-key (kbd "<mouse-7>") 'scroll-left)
-(global-set-key (kbd "s-h") 'shrink-window-horizontally)
-(global-set-key (kbd "s-j") 'shrink-window)
-(global-set-key (kbd "s-k") 'enlarge-window)
-(global-set-key (kbd "s-l") 'enlarge-window-horizontally)
-(global-set-key (kbd "s-t") 'switch-theme)
+(global-set-key (kbd "M-s-h") 'shrink-window-horizontally)
+(global-set-key (kbd "M-s-j") 'shrink-window)
+(global-set-key (kbd "M-s-k") 'enlarge-window)
+(global-set-key (kbd "M-s-l") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-s-t") 'switch-theme)
 
 (provide 'init-drdefaults)

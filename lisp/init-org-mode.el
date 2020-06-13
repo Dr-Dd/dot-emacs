@@ -1,5 +1,4 @@
-
-(defun org-get-entry-time (pom &optional inherit)
+(defun my/org-get-entry-time (pom &optional inherit)
   "Get the time as a time tuple, if there is none
 returns nil."
   (let
@@ -33,14 +32,13 @@ returns nil."
             (progn (highlight-regexp "\<[A-z]* [0-9]*\>" 'org-date)
                    (highlight-regexp "Urgenze\\|Eventi" 'org-warning))))
 ;; org-mode agenda files
-(setq org-agenda-files '("~/Sync/org-files")) ;; org-agenda-prefix-format customization
 (setq org-agenda-window-setup 'current-window)
 (setq org-agenda-prefix-format '(
                                  ;; to override default values, comment out the line and edit it
                                  (agenda . " %i %-12:c%?-12t% s") ;; default
                                  (todo . " %i %-12:c") ;; default
                                  ;;(tags . " %i %-12:c") ;; default
-                                 (tags . " %-9(let ((timestamp (org-get-entry-time (point)))) (if timestamp (format-time-string \"<%b %d>\" timestamp) \"\"))" )
+                                 (tags . " %-9(let ((timestamp (my/org-get-entry-time (point)))) (if timestamp (format-time-string \"<%b %d>\" timestamp) \"\"))" )
                                  (search . " %i %-12:c") ;; default
                                  ))
 (setq org-agenda-custom-commands '(("d" "Weekly agenda about urgencies"
@@ -51,54 +49,54 @@ returns nil."
                                            ((org-agenda-sorting-strategy '(timestamp-up))
                                             (org-agenda-overriding-header "Eventi futuri")))
                                      (agenda "" ((org-agenda-start-on-weekday nil))))
-                                    ((org-agenda-compact-blocks t))
-                                    )))
+                                    ((org-agenda-compact-blocks t)))))
+
 ;; org-capture templates
 (setq org-capture-templates
       '(
         ;; 1° Entry
         ("r" "Routine di varia natura (TODO + repeating SCHEDULE/DEADLINE/Timestamp)" entry
-         (file+headline "~/Sync/org-files/scheduled.org" "Routine")
+         (file+headline (concat my/user-org-files-directory "scheduled.org") "Routine")
          "* TODO %? :@routine:\n %^{Timestamp, SCHEDULE or DEADLINE?||SCHEDULE:|DEADLINE:} %^t\n")
         ;; 2° Entry
         ("e" "Eventi di varia importanza (Unset/[#A/B/C] + Timestamp)" entry
-         (file+headline "~/Sync/org-files/scheduled.org" "Calendar")
+         (file+headline (concat my/user-org-files-directory "scheduled.org") "Calendar")
          "* FUTURE %^{_ or [#A/B/C]?||[#A]|[#B]|[#C]} %? :@event:\n %^t\n")
         ;; 3° Entry
         ("p" "Progetti da iniziare a ragionare" entry
-         (file "~/Sync/org-files/projects.org")
+         (file (concat my/user-org-files-directory "projects.org"))
          "* TODO %? %^{@urgent or @utility?|:@urgent:|:@utility:}\n")
         ;; 5° Entry
         ("s" "Lista della spesa per cibo mancante" entry
-         (file "~/Sync/org-files/lista-spesa.org")
+         (file (concat my/user-org-files-directory "lista-spesa.org"))
          "* TOBUY %?\n")
         ;; 6° Entry
         ("f" "Film da vedere" entry
-         (file "~/Sync/org-files/movies.org")
+         (file (concat my/user-org-files-directory "movies.org"))
          "* TOWATCH %?\n")
         ;; 7° Entry
         ("l" "Libri da leggere" entry
-         (file "~/Sync/org-files/books.org")
+         (file (concat my/user-org-files-directory "books.org"))
          "* TOBUY %?\n")
         ;; 9° Entry
         ("i" "Progetti informatici personali (TODO)" entry
-         (file "~/Sync/org-files/compsci.org")
+         (file (concat my/user-org-files-directory "compsci.org"))
          "* TODO %?\n")
         ;; 10° Entry
         ("m" "Album Musicali da ascoltare" entry
-         (file+headline "~/Sync/org-files/music.org" "Albums")
+         (file+headline (concat my/user-org-files-directory "music.org") "Albums")
          "* TOBUY %? :@album:\n")
         ;; 11° Entry
         ("M" "Bei pezzi da ricordare" entry
-         (file+headline "~/Sync/org-files/music.org" "Mix")
+         (file+headline (concat my/user-org-files-directory "music.org") "Mix")
          "* %? :@mix:\n")
         ;; 13° Entry
         ("h" "Passatempo di varia natura" entry
-         (file "~/Sync/org-files/hobbies.org")
+         (file (concat my/user-org-files-directory "hobbies.org"))
          "* TODO %? :_editme:\n")
         ;; 14° Entry
         ("c" "File da riordinare/riorganizzare" entry
-         (file "~/Sync/org-files/to-capture.org")
+         (file (concat my/user-org-files-directory "to-capture.org"))
          "* TOCAPTURE %?\n")
         ))
 ;; set org-mode to memorize done time
@@ -117,6 +115,9 @@ returns nil."
  '((C . t)
    (shell . t)
    (emacs-lisp . nil)))
+
+(setq org-src-tab-acts-natively t)
+(setq org-src-fontify-natively t)
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
