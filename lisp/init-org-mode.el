@@ -8,6 +8,12 @@ returns nil."
     (when time
       (org-time-string-to-time time))))
 
+;; Here we could also use quasiquoting with a backtick, like this
+;;                    `(,my/user-org-files-directory)
+;;                    ^ ^~~~The "," means "eval before pushing onto the list"
+;;                    ^~~~The "`" means "enable ',' matching"
+(setq org-agenda-files (list my/user-org-files-directory))
+
 ;; org-mode
 ;; Knuth shuffle algorithm to use for randomizing the "x" agenda (see below)
 ;; -------------------------------------------------------------------------
@@ -53,50 +59,52 @@ returns nil."
 
 ;; org-capture templates
 (setq org-capture-templates
-      '(
+      `(
+        ;; Notice the backtick to enable quasiquoting for evaluating "concat" with "," before
+        ;; setting it in the list
         ;; 1° Entry
         ("r" "Routine di varia natura (TODO + repeating SCHEDULE/DEADLINE/Timestamp)" entry
-         (file+headline (concat my/user-org-files-directory "scheduled.org") "Routine")
+         (file+headline ,(concat my/user-org-files-directory "scheduled.org") "Routine")
          "* TODO %? :@routine:\n %^{Timestamp, SCHEDULE or DEADLINE?||SCHEDULE:|DEADLINE:} %^t\n")
         ;; 2° Entry
         ("e" "Eventi di varia importanza (Unset/[#A/B/C] + Timestamp)" entry
-         (file+headline (concat my/user-org-files-directory "scheduled.org") "Calendar")
+         (file+headline ,(concat my/user-org-files-directory "scheduled.org") "Calendar")
          "* FUTURE %^{_ or [#A/B/C]?||[#A]|[#B]|[#C]} %? :@event:\n %^t\n")
         ;; 3° Entry
         ("p" "Progetti da iniziare a ragionare" entry
-         (file (concat my/user-org-files-directory "projects.org"))
+         (file ,(concat my/user-org-files-directory "projects.org"))
          "* TODO %? %^{@urgent or @utility?|:@urgent:|:@utility:}\n")
         ;; 5° Entry
         ("s" "Lista della spesa per cibo mancante" entry
-         (file (concat my/user-org-files-directory "lista-spesa.org"))
+         (file ,(concat my/user-org-files-directory "lista-spesa.org"))
          "* TOBUY %?\n")
         ;; 6° Entry
         ("f" "Film da vedere" entry
-         (file (concat my/user-org-files-directory "movies.org"))
+         (file ,(concat my/user-org-files-directory "movies.org"))
          "* TOWATCH %?\n")
         ;; 7° Entry
         ("l" "Libri da leggere" entry
-         (file (concat my/user-org-files-directory "books.org"))
+         (file ,(concat my/user-org-files-directory "books.org"))
          "* TOBUY %?\n")
         ;; 9° Entry
         ("i" "Progetti informatici personali (TODO)" entry
-         (file (concat my/user-org-files-directory "compsci.org"))
+         (file ,(concat my/user-org-files-directory "compsci.org"))
          "* TODO %?\n")
         ;; 10° Entry
         ("m" "Album Musicali da ascoltare" entry
-         (file+headline (concat my/user-org-files-directory "music.org") "Albums")
+         (file+headline ,(concat my/user-org-files-directory "music.org") "Albums")
          "* TOBUY %? :@album:\n")
         ;; 11° Entry
         ("M" "Bei pezzi da ricordare" entry
-         (file+headline (concat my/user-org-files-directory "music.org") "Mix")
+         (file+headline ,(concat my/user-org-files-directory "music.org") "Mix")
          "* %? :@mix:\n")
         ;; 13° Entry
         ("h" "Passatempo di varia natura" entry
-         (file (concat my/user-org-files-directory "hobbies.org"))
+         (file ,(concat my/user-org-files-directory "hobbies.org"))
          "* TODO %? :_editme:\n")
         ;; 14° Entry
         ("c" "File da riordinare/riorganizzare" entry
-         (file (concat my/user-org-files-directory "to-capture.org"))
+         (file ,(concat my/user-org-files-directory "to-capture.org"))
          "* TOCAPTURE %?\n")
         ))
 ;; set org-mode to memorize done time
