@@ -136,7 +136,10 @@
 (save-place-mode 1)
 ;; == end of no-tabs ==
 ;; backup files handling
-(setq backup-directory-alist `(("." . "~/.saves")))
+(setq backup-directory-alist
+      `((".*" . ,my/backup-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,my/backup-directory t)))
 (setq backup-by-copying t)
 (setq delete-old-versions t
       kept-new-versions 6

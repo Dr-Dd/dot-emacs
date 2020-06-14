@@ -52,6 +52,9 @@
   :config
   (which-key-mode))
 
+(custom-set-faces
+ '(lsp-ui-sideline-code-action ((t (:foreground "goldenrod1")))))
+
 ;; Debugging
 ;; (setq lsp-print-performance t)
 
