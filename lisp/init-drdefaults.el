@@ -1,5 +1,9 @@
 ;; Init file for things already present in emacs
 
+;; Performance optimization
+(setq gc-cons-threshold 100000000
+      read-process-output-max (* 1024 1024))
+
 ;; Move custom-set variables to separate file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 
@@ -112,10 +116,11 @@
 (savehist-mode 1)
 ;; == end of command history ==
 
+;; Note, incompatible with helm
 ;; ido mode
-(setq ido-separator "\n")
-(setq ido-everywhere t)
-(ido-mode 1)
+;;(setq ido-separator "\n")
+;;(setq ido-everywhere t)
+;;(ido-mode 1)
 ;; == end of ido mode ==
 
 ;; Emacs 26.2 line-numbers

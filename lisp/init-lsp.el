@@ -3,34 +3,40 @@
 
 (use-package lsp-mode
   :ensure t
-  :hook ((prog-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
+  :hook
+  ((prog-mode . lsp)
+   (lsp-mode . lsp-enable-which-key-integration)
+   (lsp-managed-mode . lsp-diagnostics-modeline-mode))
   :commands (lsp lsp-deferred)
   :config
-  (setq lsp-prefer-capf t
-        gc-cons-threshold 100000000
-        read-process-output-max (* 1024 1024))
+  (setq lsp-prefer-capf t)
   (with-eval-after-load 'lsp-mode
     ;; :project/:workspace/:file
-    (setq lsp-diagnostics-modeline-scope :project)
-    (add-hook 'lsp-managed-mode-hook 'lsp-diagnostics-modeline-mode))
-  ;; Keybindings
-  (define-key lsp-mode-map (kbd "C-c d") 'lsp-describe-thing-at-point)
-  (define-key lsp-mode-map (kbd "C-c j") 'lsp-find-definition))
+    (setq lsp-diagnostics-modeline-scope :project)))
+  :bind
+  (:map lsp-mode-map
+        ("C-c d" . lsp-describe-thing-at-point)
+        ("C-c j" . lsp-find-definition)))
 
 ;; optionally
 (use-package lsp-ui :ensure t :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-enable nil)
-  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+  :bind
+  (:map lsp-ui-mode-map
+        ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+        ([remap xref-find-references] . lsp-ui-peek-find-references)))
+
 ;;if you are helm user
-(use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
+(use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol
+  :bind
+  (:map lsp-mode-map
+        ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))
+
 (use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list
   :config (lsp-treemacs-sync-mode 1)
   :bind
   (:map lsp-mode-map
-        ;;("s-l g e" . nil)
         ("C-c e t" . lsp-treemacs-errors-list)))
 
 ;; optionally if you want to use debugger
