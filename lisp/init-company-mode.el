@@ -6,7 +6,13 @@
   (setq company-minimum-prefix-length 1
       company-idle-delay 0.0) ;; default is 0.2
   ;; keybindings
-  (global-set-key (kbd "C-<SPC>" ) 'company-complete))
+  :bind
+  (:map global-map
+        ("C-<SPC>" . company-complete))
+  (:map company-active-map
+        ("<tab>" . company-select-next-or-abort)
+        ("<backtab>" . company-select-previous-or-abort)))
+
 (use-package company-c-headers
   :ensure t
   :after (company)

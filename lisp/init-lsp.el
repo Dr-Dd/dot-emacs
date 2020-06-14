@@ -19,23 +19,32 @@
   (define-key lsp-mode-map (kbd "C-c j") 'lsp-find-definition))
 
 ;; optionally
- (use-package lsp-ui :ensure t :commands lsp-ui-mode
-   :config
-   (setq lsp-ui-doc-enable nil))
- if you are helm user
+(use-package lsp-ui :ensure t :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-enable nil)
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references))
+;;if you are helm user
 (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol)
 (use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list
-  :config (lsp-treemacs-sync-mode 1))
+  :config (lsp-treemacs-sync-mode 1)
+  :bind
+  (:map lsp-mode-map
+        ;;("s-l g e" . nil)
+        ("C-c e t" . lsp-treemacs-errors-list)))
 
 ;; optionally if you want to use debugger
 (use-package dap-mode :ensure t)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+(use-package dap-java)
 
 ;; C-lang language server (ensure that ccls is installed in your system)
 (use-package ccls
   :ensure t
   :hook ((c-mode c++-mode objc-mode cuda-mode) .
          (lambda () (require 'ccls) (lsp))))
+
+(use-package lsp-java :ensure t )
 
 ;; optional if you want which-key integration
 (use-package which-key
