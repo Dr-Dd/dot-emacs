@@ -1,47 +1,55 @@
 
-
-(put 'lsp-treemacs-errors-list :advertised-binding [?\C-c ?e ?t])
+;;(put 'lsp-treemacs-errors-list :advertised-binding [?\C-c ?e ?t])
 (defun my/help-window nil
+  "Print all your most important keybindings in a help buffer"
+  (interactive)
+  ;;(describe-function 'my/help-window)
+  (with-help-window
+      "*drd-help*"
+    (princ (substitute-command-keys
   "These are your keybindings:
 
+- Refactoring (lsp-mode/*)\\<lsp-mode-map>
+`\\[lsp-execute-code-action]'\tSearch code action to execute
+`\\[lsp-find-references]'\tFind all file references inside the file
+
 - Error checking: (flycheck/lsp-treemacs)\\<flycheck-mode-map>
-`\\[flycheck-next-error]' Next Error
-`\\[flycheck-previous-error]' Previous Error
-`\\[flycheck-list-errors]' Local Error List
-\\<lsp-mode-map>`\\[lsp-treemacs-errors-list]' Project Errors List
+`\\[flycheck-next-error]'\tNext Error
+`\\[flycheck-previous-error]'\tPrevious Error
+`\\[flycheck-list-errors]'\tLocal Error List
+\\<lsp-mode-map>`\\[lsp-treemacs-errors-list]'\tProject Errors List
 
 - Snippet expansion: (yasnippet)\\<yas-minor-mode-map>
-`\\[yas-expand]' Expand Snippet
-`\\[yas-insert-snippet]' Search for Snippet
+`\\[yas-expand]'\tExpand Snippet
+`\\[yas-insert-snippet]'\t\tSearch for Snippet
 
 - Docs: (lsp-mode)\\<lsp-mode-map>
-`\\[lsp-find-definition]' Follow link to definition
-`\\[lsp-describe-thing-at-point]' Show documentation at point
+`\\[lsp-find-definition]'\tFollow link to definition
+`\\[lsp-describe-thing-at-point]'\tShow documentation at point
 Also, company-lsp, company-quickhelp and company-capf provide
 tooltip description of possible completions
 
 - Auto-completions: (company-mode)\\<company-mode-map>
-`\\[company-complete]'     Show Completion Candidates
-\\<company-active-map>`\\[company-select-next-or-abort]'     Cycle completions forward
-`\\[company-select-previous-or-abort]' Cycle completions backwards
-`\\[company-abort]'       Abort active completion
+`\\[company-complete]'\t\tShow Completion Candidates
+\\<company-active-map>`\\[company-select-next-or-abort]'\t\tCycle completions forward
+`\\[company-select-previous-or-abort]'\tCycle completions backwards
+`\\[company-abort]'\t\tAbort active completion
 
 - Git: (magit)\\<magit-mode-map>
-`\\[magit-status]' Magit Status
+`\\[magit-status]'\tMagit Status
 
 - Projects navigation: (treemacs)
-`\\[treemacs]' Toggle Projects Tree
-`\\[treemacs-select-window]'   Focus File-Tree
+`\\[treemacs]'\tToggle Projects Tree
+`\\[treemacs-select-window]'\tFocus File-Tree
 
 - Projects management: (projectile)\\<projectile-mode-map>
-`\\[projectile-switch-project]' Open/Switch Project
-`\\[projectile-find-file]' Find file in project
-`\\[projectile-replace]' Replace string in Project
+`\\[projectile-switch-project]'\tOpen/Switch Project
+`\\[projectile-find-file]'\tFind file in project
+`\\[projectile-replace]'\tReplace string in Project
 Notice how this is NOT used by lsp-mode if not for finding
 a project root, the projects are actually handled by lsp
 workspaces"
-  (interactive)
-  (describe-function 'my/help-window))
+))))
 
 
 ;;

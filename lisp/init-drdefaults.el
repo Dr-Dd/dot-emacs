@@ -1,8 +1,9 @@
 ;; Init file for things already present in emacs
 
-;; Performance optimization
-(setq gc-cons-threshold 100000000
-      read-process-output-max (* 1024 1024))
+
+;; Start maximized
+(add-to-list 'default-frame-alist
+             '(fullscreen . maximized))
 
 ;; Move custom-set variables to separate file
 (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -48,6 +49,17 @@
 ;; set default font
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
+
+(defun my/set-font-to-variable nil
+  (interactive)
+  (setq buffer-face-mode-face
+        '(:family "DejaVu Sans" :height 180))
+  (buffer-face-mode))
+
+;; set default help major mode font
+(add-hook 'help-mode-hook 'my/set-font-to-variable)
+
+
 (set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono-20")
 ;; fallback unicode font
 ;; == end of default font ==

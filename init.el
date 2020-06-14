@@ -1,3 +1,6 @@
+;; Performance optimization
+(setq gc-cons-threshold 100000000
+      read-process-output-max (* 1024 1024))
 
 ;; Enable debugging
 ;;(setq debug-on-error t)
@@ -52,7 +55,7 @@ There are two things you can do about this warning:
 
 ;; Misc
 (require 'init-diminish)
-(require 'init-smooth-scrolling)
+;;(require 'init-smooth-scrolling)
 (require 'init-drd-help)
 
 ;; Software Development

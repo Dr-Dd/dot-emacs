@@ -9,13 +9,20 @@
   (evil-set-initial-state 'tuareg-interactive-mode 'emacs)
   (evil-set-initial-state 'inferior-python-mode 'emacs)
   (evil-set-initial-state 'erc-mode 'emacs)
+  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs)
   (evil-mode 1)
-  ;; keybindings
-  (define-key evil-replace-state-map (kbd "C-c") 'evil-normal-state)
+  ;; Evil Vim-like C-c
   (define-key evil-insert-state-map (kbd "C-c") 'evil-normal-state)
   (define-key evil-visual-state-map (kbd "C-c") 'evil-normal-state)
-  (define-key evil-command-window-mode-map (kbd "C-c") 'evil-normal-state)
-  )
+  (define-key evil-replace-state-map (kbd "C-c") 'evil-normal-state))
+
+;; The CORRECT WAY to redefine keymaps before they are
+;; created (here the problem was that you cannot access)
+;; xref-buffer-mode-map before an xref buffer is created
+(add-hook 'xref--xref-buffer-mode-hook
+          (lambda () (progn (define-key xref--xref-buffer-mode-map (kbd "j") 'next-line)
+                            (define-key xref--xref-buffer-mode-map (kbd "k") 'previous-line))))
+
 ;; evil-surround
 (use-package evil-surround
   :ensure t

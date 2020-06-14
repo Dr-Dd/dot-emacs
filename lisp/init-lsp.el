@@ -12,16 +12,22 @@
   (setq lsp-prefer-capf t)
   (with-eval-after-load 'lsp-mode
     ;; :project/:workspace/:file
-    (setq lsp-diagnostics-modeline-scope :project)))
+    (setq lsp-diagnostics-modeline-scope :project))
   :bind
   (:map lsp-mode-map
         ("C-c d" . lsp-describe-thing-at-point)
-        ("C-c j" . lsp-find-definition)))
+        ("C-c j" . lsp-find-definition)
+        ("C-c r" . lsp-find-references)
+        ("M-<return>" . lsp-execute-code-action)))
 
 ;; optionally
-(use-package lsp-ui :ensure t :commands lsp-ui-mode
+(use-package lsp-ui :ensure t
+  :commands lsp-ui-mode
   :config
-  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-enable nil
+        lsp-ui-sideline-enable nil)
+  :custom-face
+  (lsp-ui-sideline-code-action ((t (:foreground "goldenrod1"))))
   :bind
   (:map lsp-ui-mode-map
         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
@@ -57,9 +63,6 @@
   :ensure t
   :config
   (which-key-mode))
-
-(custom-set-faces
- '(lsp-ui-sideline-code-action ((t (:foreground "goldenrod1")))))
 
 ;; Debugging
 ;; (setq lsp-print-performance t)
