@@ -22,10 +22,11 @@
 
 ;; optionally
 (use-package lsp-ui :ensure t
-  :commands lsp-ui-mode
-  :config
+  :init
   (setq lsp-ui-doc-enable nil
         lsp-ui-sideline-enable nil)
+  :after (lsp)
+  :commands lsp-ui-mode
   :custom-face
   (lsp-ui-sideline-code-action ((t (:foreground "goldenrod1"))))
   :bind
@@ -35,20 +36,16 @@
 
 ;;if you are helm user
 (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol
+  :after (helm)
   :bind
   (:map lsp-mode-map
         ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))
 
-(use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list
-  :config (lsp-treemacs-sync-mode 1)
-  :bind
-  (:map lsp-mode-map
-        ("C-c e t" . lsp-treemacs-errors-list)))
-
 ;; optionally if you want to use debugger
 (use-package dap-mode :ensure t)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-(use-package dap-java)
+(use-package dap-java
+  :after (dap-mode))
 
 ;; C-lang language server (ensure that ccls is installed in your system)
 (use-package ccls
@@ -62,7 +59,8 @@
 (use-package which-key
   :ensure t
   :config
-  (which-key-mode))
+  (which-key-mode)
+  (diminish 'which-key-mode))
 
 ;; Debugging
 ;; (setq lsp-print-performance t)

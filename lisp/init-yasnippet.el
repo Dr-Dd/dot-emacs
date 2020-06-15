@@ -12,8 +12,8 @@
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)
   (define-key yas-minor-mode-map (kbd "M-p") 'yas-expand)
-  (define-key yas-minor-mode-map (kbd "M-i") 'yas-insert-snippet))
-;; == end of yasnippet ==
+  (define-key yas-minor-mode-map (kbd "M-i") 'yas-insert-snippet)
+  (diminish 'yas-minor-mode))
 
 
 (provide 'init-yasnippet)

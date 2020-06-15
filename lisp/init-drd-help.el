@@ -51,16 +51,4 @@ a project root, the projects are actually handled by lsp
 workspaces"
 ))))
 
-
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-;;
-
 (provide 'init-drd-help)

@@ -5,6 +5,5 @@
   :config
   (setq magit-refresh-status-buffer nil)
   (global-set-key (kbd "C-c g") 'magit-status))
-;; == end of Magit ==
 
 (provide 'init-magit)

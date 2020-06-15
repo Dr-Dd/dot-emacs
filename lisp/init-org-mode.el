@@ -22,8 +22,9 @@ returns nil."
 ;;      j ← random integer such that 0 ≤ j ≤ i
 ;;      exchange a[j] and a[i]
 ;; org-modules
-(require 'org-habit)
-(setq org-habit-graph-column 68)
+(use-package org-habit
+  :config
+  (setq org-habit-graph-column 68))
 ;; custom workflow keywords
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE")

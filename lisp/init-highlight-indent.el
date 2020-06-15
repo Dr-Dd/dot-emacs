@@ -5,7 +5,7 @@
   :config
   (set-face-background 'highlight-indentation-face "#CCCCCC")
   (set-face-background 'highlight-indentation-current-column-face "#999999")
-  (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode))
-;; == end of highlight indent ==
+  (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+  (diminish 'highlight-indentation-current-column-mode))
 
 (provide 'init-highlight-indent)

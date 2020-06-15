@@ -14,6 +14,7 @@
         :map emacs-lisp-mode-map
         ([remap completion-at-point] . helm-lisp-completion-at-point))
   :config
-  (helm-mode 1))
+  (helm-mode 1)
+  (diminish 'helm-mode))
 
 (provide 'init-helm)

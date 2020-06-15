@@ -1,6 +1,11 @@
 (use-package diminish
   :ensure t
   :config
-  (eval-after-load "filladapt" '(diminish 'filladapt-mode)))
+  ;; Only for default minor modes, melpa minor modes are to be
+  ;; diminished in their use-package declaration
+  (diminish 'auto-revert-mode)
+  (diminish 'undo-tree-mode)
+  (diminish 'eldoc-mode)
+  (diminish 'overwrite-mode))
 
 (provide 'init-diminish)

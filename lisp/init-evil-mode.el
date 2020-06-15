@@ -1,8 +1,8 @@
 
-;; EVIL MODE!
 (use-package evil
   :ensure t
   :config
+  (diminish 'overwrite-mode)
   (evil-set-initial-state 'dashboard-mode 'emacs)
   (evil-set-initial-state 'haskell-interactive-mode 'emacs)
   (evil-set-initial-state 'shell-mode 'emacs)
@@ -33,8 +33,7 @@
   :ensure t
   :after (evil)
   :config
-  (evil-commentary-mode))
-;; == end of evil mode ==
-
+  (evil-commentary-mode)
+  (diminish 'evil-commentary-mode))
 
 (provide 'init-evil-mode)

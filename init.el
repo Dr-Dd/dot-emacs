@@ -33,20 +33,25 @@ There are two things you can do about this warning:
 (eval-when-compile
   (require 'use-package))
 
-;; IN CASE OF A PACKAGE NOT INSTALLING, TRY TO RUN <M-x>`package-refresh-contents`<RET> BEFORE DOING ANYTHING STUPID
+;; IN CASE OF A PACKAGE NOT INSTALLING, TRY TO RUN
+;; <M-x>`package-refresh-contents`<RET> BEFORE DOING ANYTHING
+;; STUPID
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
-;; Useful variables
+;; Libs to be loaded first
 (require 'init-my-vars-and-funcs)
-;; Misc
 (require 'init-drdefaults)
-(require 'init-benchmark-init)
+(require 'init-diminish)
+;;(require 'init-benchmark-init)
+
+;; Other libs
 (require 'init-erc)
 (require 'init-org-mode)
 (require 'init-evil-mode)
 (require 'init-company-mode)
+(require 'init-all-the-icons)
+;;(require 'init-simple-modeline)
 (require 'init-doom-modeline)
-(require 'init-drdashboard)
 (require 'init-ace-window)
 (require 'init-highlight-indent)
 
@@ -54,7 +59,6 @@ There are two things you can do about this warning:
 (require 'init-drd-mail)
 
 ;; Misc
-(require 'init-diminish)
 ;;(require 'init-smooth-scrolling)
 (require 'init-drd-help)
 
@@ -66,3 +70,5 @@ There are two things you can do about this warning:
 (require 'init-treemacs)
 (require 'init-projectile)
 (require 'init-lsp)
+(require 'init-drdashboard)
+(require 'init-gui)

@@ -69,25 +69,32 @@
         ("C-x t M-t" . treemacs-find-tag)))
 
 (use-package treemacs-evil
-  :after treemacs evil
+  :after (treemacs evil)
   :ensure t)
 
 (use-package treemacs-projectile
-  :after treemacs projectile
+  :after (treemacs projectile)
   :ensure t)
 
 (use-package treemacs-icons-dired
-  :after treemacs dired
+  :after (treemacs dired)
   :ensure t
   :config (treemacs-icons-dired-mode))
 
 (use-package treemacs-magit
-  :after treemacs magit
+  :after (treemacs magit)
   :ensure t)
 
 (use-package treemacs-persp
-  :after treemacs persp-mode
+  :after (treemacs persp-mode)
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list
+  :after (lsp)
+  :config (lsp-treemacs-sync-mode 1)
+  :bind
+  (:map lsp-mode-map
+        ("C-c e t" . lsp-treemacs-errors-list)))
 
 (provide 'init-treemacs)
