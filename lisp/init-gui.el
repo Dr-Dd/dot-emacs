@@ -1,3 +1,5 @@
+;; To fully separate emacs' responsibilities from
+;; X11's
 (setq inhibit-x-resources t)
 
 ;; install custom theme (if missing)

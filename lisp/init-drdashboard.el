@@ -37,12 +37,12 @@
             (,(all-the-icons-octicon "book" :height 0.8 :v-adjust 0.0)
               "agenda"
               "Open your agenda"
-              (lambda (&rest _) (find-file (concat my/user-org-files-directory "to-capture.org"))))
+              (lambda (&rest _) (org-agenda 0 "d")))
              ;; line2 - 2nd entry
-             (,(all-the-icons-octicon "cloud-download" :height 0.8 :v-adjust 0.0)
-              "mega"
-              "Dired to your Mega Cloud"
-              (lambda (&rest _) (dired my/cloud-storage-directory)))
+             (,(all-the-icons-octicon "mail" :height 0.8 :v-adjust 0.0)
+              "notmuch"
+              "Read your inbox"
+              (lambda (&rest _) (notmuch)))
              ;; line2 - 3rd entry
              (,(all-the-icons-octicon "home" :height 0.8 :v-adjust 0.0)
               "home"

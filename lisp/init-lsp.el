@@ -22,9 +22,6 @@
 
 ;; optionally
 (use-package lsp-ui :ensure t
-  :init
-  (setq lsp-ui-doc-enable nil
-        lsp-ui-sideline-enable nil)
   :after (lsp)
   :commands lsp-ui-mode
   :custom-face
@@ -33,6 +30,10 @@
   (:map lsp-ui-mode-map
         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
         ([remap xref-find-references] . lsp-ui-peek-find-references)))
+
+(with-eval-after-load 'lsp-ui
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-sideline-enable nil))
 
 ;;if you are helm user
 (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol
