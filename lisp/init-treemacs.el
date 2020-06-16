@@ -58,7 +58,8 @@
       (`(t . t)
        (treemacs-git-mode 'deferred))
       (`(t . _)
-       (treemacs-git-mode 'simple))))
+       (treemacs-git-mode 'simple)))
+    (define-key treemacs-mode-map (kbd "<mouse-1>") 'treemacs-RET-action))
   :bind
   (:map global-map
         ("M-0"       . treemacs-select-window)
