@@ -86,6 +86,7 @@
 (global-set-key (kbd "M-s-t") 'switch-theme)
 (global-set-key (kbd "C-c j") 'xref-find-definitions)
 (global-set-key (kbd "C-c r") 'xref-find-references)
+(global-set-key (kbd "C-c k") 'xref-pop-marker-stack)
 
 ;; Don't prompt for refrerences
 (use-package xref
