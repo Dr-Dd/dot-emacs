@@ -1,5 +1,5 @@
 
-;;(put 'lsp-treemacs-errors-list :advertised-binding [?\C-c ?e ?t])
+(put 'lsp-treemacs-errors-list :advertised-binding [?\C-c ?e ?t])
 (defun my/help-window nil
   "Print all your most important keybindings in a help buffer"
   (interactive)

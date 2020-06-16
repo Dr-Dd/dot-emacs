@@ -50,11 +50,11 @@ There are two things you can do about this warning:
 (require 'init-evil-mode)
 (require 'init-company-mode)
 (require 'init-all-the-icons)
-;;(require 'init-simple-modeline)
+;; TODO: Fallback for when doom modeline breaks
+;;(require 'init-spaceline)
 (require 'init-doom-modeline)
 (require 'init-ace-window)
 (require 'init-highlight-indent)
-
 ;; Mail
 (require 'init-drd-mail)
 

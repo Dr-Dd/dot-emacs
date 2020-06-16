@@ -15,9 +15,9 @@
     (setq lsp-diagnostics-modeline-scope :project))
   :bind
   (:map lsp-mode-map
+        ;; ("C-c j" . lsp-find-definition)
+        ;; ("C-c r" . lsp-find-references)
         ("C-c d" . lsp-describe-thing-at-point)
-        ("C-c j" . lsp-find-definition)
-        ("C-c r" . lsp-find-references)
         ("M-<return>" . lsp-execute-code-action)))
 
 ;; optionally

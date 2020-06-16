@@ -17,33 +17,34 @@
     (setq dashboard-items '((recents  . 9)))
     (setq dashboard-set-file-icons t)
     (setq dashboard-set-navigator t)
+    (setq dashboard-set-init-info nil)
     (setq dashboard-navigator-buttons
-          `(;; line1 - 1st entry
+          `(;; 1° entry
             ((,(all-the-icons-fileicon "emacs" :height 0.8 :v-adjust 0.0)
               "emacs-workspace"
               "Dired to your Emacs Workspace"
               (lambda (&rest _) (dired my/emacs-workspace-directory)))
-             ;; line1 - 2nd entry
+             ;; 2° entry
              (,(all-the-icons-alltheicon "git" :height 0.8 :v-adjust 0.0)
               "git-repos"
               "Dired to your Git Repos"
               (lambda (&rest _) (dired my/git-repos-directory)))
-             ;; line1 - 3rd entry
+             ;; 3°entry
              (,(all-the-icons-octicon "file-symlink-file" :height 0.8 :v-adjust 0.0)
               "init.el"
               "Open init.el config file"
               (lambda (&rest _) (find-file (concat user-emacs-directory "init.el"))))
-            ;; line2 - 1st entry
-            (,(all-the-icons-octicon "book" :height 0.8 :v-adjust 0.0)
+             ;; 4° entry
+             (,(all-the-icons-octicon "book" :height 0.8 :v-adjust 0.0)
               "agenda"
               "Open your agenda"
               (lambda (&rest _) (org-agenda 0 "d")))
-             ;; line2 - 2nd entry
+             ;; 5° entry
              (,(all-the-icons-octicon "mail" :height 0.8 :v-adjust 0.0)
               "notmuch"
               "Read your inbox"
               (lambda (&rest _) (notmuch)))
-             ;; line2 - 3rd entry
+             ;; 6° entry
              (,(all-the-icons-octicon "home" :height 0.8 :v-adjust 0.0)
               "home"
               "Dired to your Home"

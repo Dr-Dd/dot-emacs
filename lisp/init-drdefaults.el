@@ -84,6 +84,12 @@
 (global-set-key (kbd "M-s-k") 'enlarge-window)
 (global-set-key (kbd "M-s-l") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-s-t") 'switch-theme)
+(global-set-key (kbd "C-c j") 'xref-find-definitions)
+(global-set-key (kbd "C-c r") 'xref-find-references)
+
+;; Don't prompt for refrerences
+(use-package xref
+  :config (add-to-list 'xref-prompt-for-identifier 'xref-find-references t))
 
 (custom-set-faces
    '(mode-line ((t (:family "xos4 Terminus" :height 0.9 :box nil :weight bold))))
