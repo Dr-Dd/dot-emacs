@@ -1,3 +1,4 @@
+(defalias 'erc 'erc-tls)
 
 ;; erc setup
 (setq erc-server "irc.freenode.net")

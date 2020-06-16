@@ -45,7 +45,7 @@ There are two things you can do about this warning:
 ;;(require 'init-benchmark-init)
 
 ;; Other libs
-(require 'init-erc)
+;;(require 'init-erc) ; Clunky, unwieldy, kind of sucks compared to hexchat
 (require 'init-org-mode)
 (require 'init-evil-mode)
 (require 'init-company-mode)
