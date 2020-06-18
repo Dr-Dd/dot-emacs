@@ -9,6 +9,9 @@
    (lsp-managed-mode . lsp-diagnostics-modeline-mode))
   :commands (lsp lsp-deferred)
   :config
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-peek-enable nil)
   (setq lsp-prefer-capf t)
   (with-eval-after-load 'lsp-mode
     ;; :project/:workspace/:file
@@ -21,23 +24,27 @@
         ("M-RET" . lsp-execute-code-action)))
 
 ;; optionally
-(use-package lsp-ui :ensure t
-  :after (lsp)
-  :commands lsp-ui-mode
-  :custom-face
-  (lsp-ui-sideline-code-action ((t (:foreground "goldenrod1"))))
-  :bind
-  (:map lsp-ui-mode-map
-        ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-        ([remap xref-find-references] . lsp-ui-peek-find-references)))
+;; (use-package lsp-ui :ensure t
+;;   :after (lsp-mode)
+;;   :commands lsp-ui-mode
+;;   :custom-face
+;;   (lsp-ui-sideline-code-action ((t (:foreground "goldenrod1"))))
+;;   :bind
+;;   (:map lsp-ui-mode-map
+;;         ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+;;         ([remap xref-find-references] . lsp-ui-peek-find-references))
+;;   :config
+;;   (setq lsp-ui-doc-enable nil)
+;;   (setq lsp-ui-sideline-enable nil)
+;;   (setq lsp-ui-peek-enable nil))
 
-(with-eval-after-load 'lsp-ui
-  (setq lsp-ui-doc-enable nil)
-  (setq lsp-ui-sideline-enable nil))
+;; (with-eval-after-load 'lsp-ui
+;;   (setq lsp-ui-doc-enable nil)
+;;   (setq lsp-ui-sideline-enable nil))
 
 ;;if you are helm user
 (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol
-  :after (helm)
+  :after (helm lsp-mode)
   :bind
   (:map lsp-mode-map
         ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))

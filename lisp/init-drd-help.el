@@ -9,9 +9,9 @@
     (princ (substitute-command-keys
   "These are your keybindings:
 
-- Refactoring (lsp-mode/*)\\<lsp-mode-map>
+- Refactoring (lsp-mode/xref)\\<lsp-mode-map>
 `\\[lsp-execute-code-action]'\tSearch code action to execute
-`\\[lsp-find-references]'\tFind all file references inside the file
+`\\[xref-find-references]'\tFind all file references inside the file
 
 - Error checking: (flycheck/lsp-treemacs)\\<flycheck-mode-map>
 `\\[flycheck-next-error]'\tNext Error
@@ -23,9 +23,9 @@
 `\\[yas-expand]'\tExpand Snippet
 `\\[yas-insert-snippet]'\t\tSearch for Snippet
 
-- Docs: (lsp-mode)\\<lsp-mode-map>
-`\\[lsp-find-definition]'\tFollow link to definition
-`\\[lsp-describe-thing-at-point]'\tShow documentation at point
+- Docs: (lsp-mode/xref)
+`\\[xref-find-definitions]'\tFollow link to definition
+\\<lsp-mode-map>`\\[lsp-describe-thing-at-point]'\tShow documentation at point
 Also, company-lsp, company-quickhelp and company-capf provide
 tooltip description of possible completions
 
@@ -38,9 +38,13 @@ tooltip description of possible completions
 - Git: (magit)\\<magit-mode-map>
 `\\[magit-status]'\tMagit Status
 
-- Projects navigation: (treemacs)
+- Projects navigation: (treemacs/origami)
 `\\[treemacs]'\tToggle Projects Tree
 `\\[treemacs-select-window]'\tFocus File-Tree
+\\<origami-mode-map>`\\[origami-toggle-node]'\tToggle fold
+`\\[origami-toggle-all-nodes]'\tToggle ALL folds
+`\\[origami-next-fold]'\t\tGo to next fold
+`\\[origami-previous-fold]'\t\tGo to previous fold
 
 - Projects management: (projectile)\\<projectile-mode-map>
 `\\[projectile-switch-project]'\tOpen/Switch Project
