@@ -63,6 +63,7 @@ There are two things you can do about this warning:
 (require 'init-drd-help)
 
 ;; Software Development
+(require 'init-origami)
 (require 'init-yasnippet)
 (require 'init-magit)
 (require 'init-flycheck)

@@ -8,6 +8,12 @@ returns nil."
     (when time
       (org-time-string-to-time time))))
 
+(use-package org
+  :config
+  (setq org-format-latex-options
+        (plist-put org-format-latex-options :scale 2.0))
+  (define-key org-mode-map (kbd "C-c l") 'org-latex-preview))
+
 ;; Here we could also use quasiquoting with a backtick, like this
 ;;                    `(,my/user-org-files-directory)
 ;;                    ^ ^~~~The "," means "eval before pushing onto the list"

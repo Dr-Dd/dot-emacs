@@ -11,7 +11,7 @@
   (:map global-map
         ("C-<SPC>" . company-complete))
   (:map company-active-map
-        ("<tab>" . company-select-next-or-abort)
+        ("TAB" . company-select-next-or-abort)
         ("<backtab>" . company-select-previous-or-abort)))
 
 (use-package company-c-headers

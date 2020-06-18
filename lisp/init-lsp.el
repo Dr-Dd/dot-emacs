@@ -18,7 +18,7 @@
         ;; ("C-c j" . lsp-find-definition)
         ;; ("C-c r" . lsp-find-references)
         ("C-c d" . lsp-describe-thing-at-point)
-        ("M-<return>" . lsp-execute-code-action)))
+        ("M-RET" . lsp-execute-code-action)))
 
 ;; optionally
 (use-package lsp-ui :ensure t
