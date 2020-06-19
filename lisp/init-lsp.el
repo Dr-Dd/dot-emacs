@@ -72,6 +72,15 @@
   (which-key-mode)
   (diminish 'which-key-mode))
 
+
+(use-package lsp-treemacs :ensure t :commands lsp-treemacs-errors-list
+  :after (lsp-mode)
+  :config
+  (lsp-treemacs-sync-mode 1)
+  :init
+  (define-key lsp-mode-map (kbd "s-l g e") nil)
+  (define-key lsp-mode-map (kbd "C-c e t") 'lsp-treemacs-errors-list))
+
 ;; Debugging
 ;; (setq lsp-print-performance t)
 

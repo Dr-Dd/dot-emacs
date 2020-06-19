@@ -8,8 +8,16 @@ returns nil."
     (when time
       (org-time-string-to-time time))))
 
+;; The "unspecified" property tells a face to use the father value
 (use-package org
   :config
+  (custom-set-faces
+   '(org-level-1 ((t (:inherit default :foreground "#cb4b16" :height unspecified))))
+   '(org-level-2 ((t (:inherit default :foreground "#859900" :height unspecified))))
+   '(org-level-3 ((t (:inherit default :foreground "#268bd2" :height unspecified))))
+   '(org-level-4 ((t (:inherit default :foreground "#b58900" :height unspecified))))
+   ;;'(variable-pitch ((t (:family "DejaVu Sans" :height 160)))))
+   )
   (setq org-format-latex-options
         (plist-put org-format-latex-options :scale 2.0))
   (define-key org-mode-map (kbd "C-c l") 'org-latex-preview))

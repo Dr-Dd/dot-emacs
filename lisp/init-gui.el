@@ -34,7 +34,9 @@
 ;; fallback font
 ;;(set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono-20")
 
-(use-package solarized-theme :ensure t)
+(use-package solarized-theme :ensure t
+  :init
+  (setq solarized-use-variable-pitch nil))
 
 ;; == light theme function ==
 (defun light-theme ()

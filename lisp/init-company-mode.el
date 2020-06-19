@@ -9,10 +9,14 @@
   ;; keybindings
   :bind
   (:map global-map
-        ("C-<SPC>" . company-complete))
-  (:map company-active-map
-        ("TAB" . company-select-next-or-abort)
-        ("<backtab>" . company-select-previous-or-abort)))
+        ("C-<SPC>" . company-complete)))
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "<tab>") #'company-select-next)
+  (define-key company-active-map (kbd "<backtab>") #'company-select-previous) )
+
 
 (use-package company-c-headers
   :ensure t
