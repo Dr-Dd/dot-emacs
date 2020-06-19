@@ -22,29 +22,31 @@
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
 
-(defun my/set-font-to-variable nil
-  (interactive)
-  (setq buffer-face-mode-face
-        '(:family "DejaVu Sans" :height 180))
-  (buffer-face-mode))
+;; (defun my/set-font-to-variable nil
+;;   (interactive)
+;;   (setq buffer-face-mode-face
+;;         '(:family "Inconsolata-20"))
+;;   (buffer-face-mode))
 
 ;; set default help major mode font
-(add-hook 'help-mode-hook 'my/set-font-to-variable)
+;;(add-hook 'help-mode-hook 'my/set-font-to-variable)
 
 ;; fallback font
-(set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono-20")
+;;(set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono-20")
+
+(use-package solarized-theme :ensure t)
 
 ;; == light theme function ==
 (defun light-theme ()
   (interactive)
   ;; load new theme
   (disable-theme 'zenburn)
-  (load-theme 'adwaita t)
+  (load-theme 'solarized-light t)
   ;; selected line light color
-  (set-face-background 'hl-line "#ccdae9")
-  (set-face-foreground 'highlight nil)
+  ;;(set-face-background 'hl-line "#ccdae9")
+  ;;(set-face-foreground 'highlight nil)
   ;; highlight light color
-  (set-face-attribute 'region nil :background "#4A90D9" :foreground "#FFFFFF")
+  ;;(set-face-attribute 'region nil :background "#4A90D9" :foreground "#FFFFFF")
   ;; refresh screen
   ;;(refresh-mode-line-font)
   (redraw-display)
@@ -55,10 +57,10 @@
 (defun dark-theme ()
   (interactive)
   ;; load dark theme
-  (disable-theme 'adwaita)
+  (disable-theme 'solarized-light)
   (load-theme 'zenburn t)
   ;; highlight light color
-  (set-face-attribute 'region nil :background "#FFFFEF" :foreground "#383838")
+  ;;(set-face-attribute 'region nil :background "#FFFFEF" :foreground "#383838")
   ;; refresh display
   ;;(refresh-mode-line-font)
   (redraw-display)

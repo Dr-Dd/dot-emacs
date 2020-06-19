@@ -20,6 +20,7 @@
   (:map lsp-mode-map
         ;; ("C-c j" . lsp-find-definition)
         ;; ("C-c r" . lsp-find-references)
+        ("C-c n" . lsp-rename)
         ("C-c d" . lsp-describe-thing-at-point)
         ("M-RET" . lsp-execute-code-action)))
 
@@ -62,6 +63,7 @@
          (lambda () (require 'ccls) (lsp))))
 
 (use-package lsp-java :ensure t )
+;;(use-package lsp-java-boot)
 
 ;; optional if you want which-key integration
 (use-package which-key
