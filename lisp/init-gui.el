@@ -22,28 +22,12 @@
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
 
-;; (defun my/set-font-to-variable nil
-;;   (interactive)
-;;   (setq buffer-face-mode-face
-;;         '(:family "Inconsolata-20"))
-;;   (buffer-face-mode))
-
-;; set default help major mode font
-;;(add-hook 'help-mode-hook 'my/set-font-to-variable)
-
-;; fallback font
-;;(set-fontset-font "fontset-default" 'unicode "DejaVu Sans Mono-20")
-
-(use-package solarized-theme :ensure t
-  :init
-  (setq solarized-use-variable-pitch nil))
-
 ;; == light theme function ==
-(defun light-theme ()
+(defun my/light-theme ()
   (interactive)
   ;; load new theme
-  (disable-theme 'zenburn)
-  (load-theme 'solarized-light t)
+  (disable-theme 'doom-one)
+  (load-theme 'doom-solarized-light t)
   ;; selected line light color
   ;;(set-face-background 'hl-line "#ccdae9")
   ;;(set-face-foreground 'highlight nil)
@@ -55,31 +39,32 @@
   )
 ;; == end of light theme function ==
 
-;; == dark theme function ==
-(defun dark-theme ()
-  (interactive)
-  ;; load dark theme
-  (disable-theme 'solarized-light)
-  (load-theme 'zenburn t)
-  ;; highlight light color
-  ;;(set-face-attribute 'region nil :background "#FFFFEF" :foreground "#383838")
-  ;; refresh display
-  ;;(refresh-mode-line-font)
-  (redraw-display)
-  )
-;; == end of dark theme function ==
+(defvar my/light-theme 'doom-solarized-light)
+(defvar my/dark-theme 'doom-vibrant)
+(defvar my/current-theme my/light-theme)
 
-;; switches from one theme to the other
-(defun switch-theme ()
-  (interactive)
-  (if (equal (face-attribute 'default :background) "#EDEDED") (dark-theme)
-    (light-theme)))
+(defadvice load-theme (before theme-dont-propagate activate)
+  "Disable theme before loading new one."
+  (mapcar #'disable-theme custom-enabled-themes))
 
-;; set theme as dark if hh >= 19
+(defun my/switch-theme (theme)
+  (if (eq theme 'default)
+      (disable-theme my/current-theme)
+    (progn
+      (load-theme theme t)))
+  (setq my/current-theme theme))
+
+(defun my/toggle-theme ()
+  (interactive)
+  (cond ((eq my/current-theme my/light-theme) (my/switch-theme my/dark-theme))
+        ((eq my/current-theme my/dark-theme) (my/switch-theme my/light-theme))))
+(global-set-key (kbd "M-t") 'my/toggle-theme)
+
+;; Try to default to a sane default theme
 (if (or (>= (string-to-number (shell-command-to-string "date +%H")) 19)
         (< (string-to-number (shell-command-to-string "date +%H")) 7))
-    (dark-theme)
-  (light-theme))
+    (my/switch-theme my/dark-theme)
+  (my/switch-theme my/light-theme))
 
 ;; set default empty line fringe
 (setq-default indicate-empty-lines t)

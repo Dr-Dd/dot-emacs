@@ -21,7 +21,7 @@
 
 - Snippet expansion: (yasnippet)\\<yas-minor-mode-map>
 `\\[yas-expand]'\tExpand Snippet
-`\\[yas-insert-snippet]'\t\tSearch for Snippet
+`\\[yas-insert-snippet]'\tSearch for Snippet
 
 - Docs: (lsp-mode/xref)
 `\\[xref-find-definitions]'\tFollow link to definition
@@ -31,17 +31,17 @@ tooltip description of possible completions
 
 - Auto-completions: (company-mode)\\<company-mode-map>
 `\\[company-complete]'\t\tShow Completion Candidates
-\\<company-active-map>`\\[company-select-next-or-abort]'\t\tCycle completions forward
-`\\[company-select-previous-or-abort]'\tCycle completions backwards
+\\<company-active-map>`\\[company-select-next]'\t\tCycle completions forward
+`\\[company-select-previous]'\tCycle completions backwards
 `\\[company-abort]'\t\tAbort active completion
 
 - Git: (magit)\\<magit-mode-map>
 `\\[magit-status]'\tMagit Status
 
 - Projects navigation: (treemacs/origami)
-`\\[treemacs]'\tToggle Projects Tree
-`\\[treemacs-select-window]'\tFocus File-Tree
-\\<origami-mode-map>`\\[origami-toggle-node]'\tToggle fold
+`\\[treemacs]'\t\tToggle Projects Tree
+`\\[treemacs-select-window]'\t\tFocus File-Tree
+\\<origami-mode-map>`\\[origami-toggle-node]'\t\tToggle fold
 `\\[origami-toggle-all-nodes]'\tToggle ALL folds
 `\\[origami-next-fold]'\t\tGo to next fold
 `\\[origami-previous-fold]'\t\tGo to previous fold
@@ -52,7 +52,10 @@ tooltip description of possible completions
 `\\[projectile-replace]'\tReplace string in Project
 Notice how this is NOT used by lsp-mode if not for finding
 a project root, the projects are actually handled by lsp
-workspaces"
+workspaces
+
+- Misc
+`\\[my/toggle-theme]'\tToggle light/dark theme"
 ))))
 
 (provide 'init-drd-help)

@@ -9,6 +9,7 @@
         ([remap dabbrev-expand] . helm-dabbrev)
         ([remap execute-extended-command] . helm-M-x)
         ([remap apropos-command] . helm-apropos)
+        ([remap switch-to-buffer] . helm-mini)
         :map lisp-interaction-mode-map
         ([remap completion-at-point] . helm-lisp-completion-at-point)
         :map emacs-lisp-mode-map
