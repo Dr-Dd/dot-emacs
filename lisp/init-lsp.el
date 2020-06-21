@@ -1,3 +1,19 @@
+
+;; =================================================
+;; = LSP-MODE SERVERS INSTALLATION INSTRUCTIONS    =
+;; =================================================
+;; = + bash                                        =
+;; =   > `npm i -g bash-language-server'           =
+;; = + python                                      =
+;; =   > `pip install python-language-server[all]' =
+;; = + ruby                                        =
+;; =   > `gem install solargraph'                  =
+;; = + java                                        =
+;; =   > `(use-package lsp-java :ensure t)'        =
+;; = + c/c++                                       =
+;; =   > `sudo pacman -S ccls'                     =
+;; =================================================
+
 ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
 (setq lsp-keymap-prefix "s-l")
 
