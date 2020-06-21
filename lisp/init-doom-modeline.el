@@ -13,7 +13,4 @@
 ;; Enable the modeline
 (doom-modeline-mode 1)
 
-;; TODO: Remove when this gets added in the next commit
-(add-hook 'server-after-make-frame-hook #'doom-modeline-refresh-font-width-cache)
-
 (provide 'init-doom-modeline)
