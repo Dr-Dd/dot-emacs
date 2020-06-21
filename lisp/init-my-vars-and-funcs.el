@@ -18,15 +18,12 @@
  ;;        my/backup-directory ""))
 )
 
-(defun my/do-if-specified-night-time (evening-start evening-end evening-action morning-action)
-  (if (or (>= (string-to-number (shell-command-to-string "date +%H")) evening-start)
-          (< (string-to-number (shell-command-to-string "date +%H")) evening-end))
-      (evening-action)
-    (morning-action)))
-
-  ;; (if (or (>= (string-to-number (shell-command-to-string "date +%H")) evening-time)
-  ;;         (< (string-to-number (shell-command-to-string "date +%H")) morning-time))
-  ;;     (evening-action)
-  ;;   (morning-action)))
+;; HACK
+(defun my/doom-modeline-refresh ()
+  (interactive)
+  (progn
+    (doom-modeline-refresh-font-width-cache)
+    (message "The doom-modeline--font-width-cache has been reset")))
+(global-set-key (kbd "C-c m") 'my/doom-modeline-refresh)
 
 (provide 'init-my-vars-and-funcs)

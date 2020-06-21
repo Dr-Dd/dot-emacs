@@ -48,7 +48,7 @@
 
     ;; The default width and height of the icons is 22 pixels. If you are
     ;; using a Hi-DPI display, uncomment this to double the icon size.
-    ;;(treemacs-resize-icons 44)
+    (treemacs-resize-icons 16)
 
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
@@ -60,6 +60,27 @@
       (`(t . _)
        (treemacs-git-mode 'simple)))
     (define-key treemacs-mode-map (kbd "<mouse-1>") 'treemacs-RET-action))
+
+  (set-face-attribute 'treemacs-directory-face nil :height 140)
+  (set-face-attribute 'treemacs-directory-collapsed-face nil :height 140)
+  (set-face-attribute 'treemacs-file-face nil :height 140)
+  (set-face-attribute 'treemacs-root-face nil :height 140)
+  (set-face-attribute 'treemacs-root-unreadable-face nil :height 140)
+  (set-face-attribute 'treemacs-root-remote-face nil :height 140)
+  (set-face-attribute 'treemacs-root-remote-unreadable-face nil :height 140)
+  (set-face-attribute 'treemacs-root-remote-disconnected-face nil :height 140)
+  (set-face-attribute 'treemacs-tags-face nil :height 140)
+  (set-face-attribute 'treemacs-help-title-face nil :height 140)
+  (set-face-attribute 'treemacs-help-column-face nil :height 140)
+  (set-face-attribute 'treemacs-git-added-face nil :height 140)
+  (set-face-attribute 'treemacs-git-conflict-face nil :height 140)
+  (set-face-attribute 'treemacs-git-ignored-face nil :height 140)
+  (set-face-attribute 'treemacs-git-modified-face nil :height 140)
+  (set-face-attribute 'treemacs-git-renamed-face nil :height 140)
+  (set-face-attribute 'treemacs-git-unmodified-face nil :height 140)
+  (set-face-attribute 'treemacs-git-untracked-face nil :height 140)
+  (set-face-attribute 'treemacs-term-node-face nil :height 140)
+
   :bind
   (:map global-map
         ("M-0"       . treemacs-select-window)
@@ -90,5 +111,6 @@
   :after (treemacs persp-mode)
   :ensure t
   :config (treemacs-set-scope-type 'Perspectives))
+
 
 (provide 'init-treemacs)

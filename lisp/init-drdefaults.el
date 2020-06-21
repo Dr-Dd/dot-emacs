@@ -38,12 +38,6 @@
 ;; preserve command history between sessions
 (savehist-mode 1)
 
-;; Note, incompatible with helm
-;; ido mode
-;;(setq ido-separator "\n")
-;;(setq ido-everywhere t)
-;;(ido-mode 1)
-
 ;; replace tabs with spaces
 (setq-default indent-tabs-mode nil)
 ;; require new-lines
@@ -92,8 +86,11 @@
 (use-package xref
   :config (add-to-list 'xref-prompt-for-identifier 'xref-find-references t))
 
-(custom-set-faces
-   '(mode-line ((t (:family "xos4 Terminus" :height 0.9 :box nil :weight bold))))
-   '(mode-line-inactive ((t (:family "xos4 Terminus" :height 0.9 :box nil :weight bold)))))
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+                           '((vertical-scroll-bars . nil)
+                             (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
+(add-hook 'after-make-frame-functions 'force-mode-line-update)
 
 (provide 'init-drdefaults)

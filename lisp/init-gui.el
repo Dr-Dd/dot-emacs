@@ -11,33 +11,10 @@
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
 (tool-bar-mode -1)
-(defun my/disable-scroll-bars (frame)
-  (modify-frame-parameters frame
-                           '((vertical-scroll-bars . nil)
-                             (horizontal-scroll-bars . nil))))
-(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
-(add-hook 'after-make-frame-functions 'force-mode-line-update)
 
 ;; set default font
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
-
-;; == light theme function ==
-(defun my/light-theme ()
-  (interactive)
-  ;; load new theme
-  (disable-theme 'doom-one)
-  (load-theme 'doom-solarized-light t)
-  ;; selected line light color
-  ;;(set-face-background 'hl-line "#ccdae9")
-  ;;(set-face-foreground 'highlight nil)
-  ;; highlight light color
-  ;;(set-face-attribute 'region nil :background "#4A90D9" :foreground "#FFFFFF")
-  ;; refresh screen
-  ;;(refresh-mode-line-font)
-  (redraw-display)
-  )
-;; == end of light theme function ==
 
 (defvar my/light-theme 'doom-solarized-light)
 (defvar my/dark-theme 'doom-vibrant)
@@ -61,7 +38,7 @@
 (global-set-key (kbd "M-t") 'my/toggle-theme)
 
 ;; Try to default to a sane default theme
-(if (or (>= (string-to-number (shell-command-to-string "date +%H")) 19)
+(if (or (>= (string-to-number (shell-command-to-string "date +%H")) 21)
         (< (string-to-number (shell-command-to-string "date +%H")) 7))
     (my/switch-theme my/dark-theme)
   (my/switch-theme my/light-theme))
@@ -94,12 +71,7 @@
 (diminish 'eldoc-mode)
 (diminish 'overwrite-mode)
 
-;; HACK
-(defun my/doom-modeline-refresh ()
-  (interactive)
-  (progn
-    (doom-modeline-refresh-font-width-cache)
-    (message "The doom-modeline--font-width-cache has been reset")))
-(global-set-key (kbd "C-c m") 'my/doom-modeline-refresh)
+(add-hook 'server-after-make-frame-hook (lambda () (select-frame-set-input-focus (selected-frame))))
+
 
 (provide 'init-gui)

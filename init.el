@@ -49,8 +49,6 @@ There are two things you can do about this warning:
 (require 'init-evil-mode)
 (require 'init-company-mode)
 (require 'init-all-the-icons)
-;; TODO: Fallback for when doom modeline breaks
-;;(require 'init-spaceline)
 (require 'init-doom-modeline)
 (require 'init-ace-window)
 (require 'init-highlight-indent)
