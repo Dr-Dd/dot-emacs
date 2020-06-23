@@ -22,7 +22,7 @@
 
 (defadvice load-theme (before theme-dont-propagate activate)
   "Disable theme before loading new one."
-  (mapcar #'disable-theme custom-enabled-themes))
+  (mapc #'disable-theme custom-enabled-themes))
 
 (defun my/switch-theme (theme)
   (if (eq theme 'default)

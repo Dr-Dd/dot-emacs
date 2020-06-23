@@ -81,6 +81,7 @@
 (global-set-key (kbd "C-c j") 'xref-find-definitions)
 (global-set-key (kbd "C-c r") 'xref-find-references)
 (global-set-key (kbd "C-c k") 'xref-pop-marker-stack)
+(global-set-key (kbd "C-c s") 'xref-find-apropos)
 
 ;; Don't prompt for refrerences
 (use-package xref
@@ -92,5 +93,7 @@
                              (horizontal-scroll-bars . nil))))
 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 (add-hook 'after-make-frame-functions 'force-mode-line-update)
+
+(setq x-gtk-use-system-tooltips nil)
 
 (provide 'init-drdefaults)

@@ -32,7 +32,8 @@
   :after (company)
   :config
   (company-quickhelp-mode)
-  (setq company-quickhelp-delay 0.2))
-
+  (setq company-quickhelp-delay 0.2)
+  (setq company-quickhelp-use-propertized-text t)
+  (set-face-attribute 'company-quickhelp-face nil :height 160))
 
 (provide 'init-company-mode)

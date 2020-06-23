@@ -1,9 +1,14 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Just my init file
+;;; Code:
+
 ;; Performance optimization
 (setq gc-cons-threshold 100000000
       read-process-output-max (* 1024 1024))
 
 ;; Enable debugging
-;;(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 ;; MELPA
 (require 'package)
@@ -42,6 +47,7 @@ There are two things you can do about this warning:
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
 (require 'init-diminish)
+;; To test the startup time if something goes wrong
 ;;(require 'init-benchmark-init)
 
 ;; Other libs
@@ -71,3 +77,5 @@ There are two things you can do about this warning:
 (require 'init-drdashboard)
 (require 'init-doom-themes)
 (require 'init-gui)
+
+;;; init.el ends here
