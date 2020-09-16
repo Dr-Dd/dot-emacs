@@ -15,6 +15,8 @@
 ;; set default font
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
+(set-fontset-font "fontset-default" nil (font-spec :size 20 :name "DejaVu Sans Mono"))
+(set-fontset-font "fontset-default" nil (font-spec :size 20 :name "Noto Color Emoji"))
 
 (defvar my/light-theme 'doom-solarized-light)
 (defvar my/dark-theme 'doom-vibrant)

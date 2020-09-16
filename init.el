@@ -8,7 +8,7 @@
       read-process-output-max (* 1024 1024))
 
 ;; Enable debugging
-;; (setq debug-on-error t)
+;;(setq debug-on-error t)
 
 ;; MELPA
 (require 'package)
@@ -76,6 +76,8 @@ There are two things you can do about this warning:
 (require 'init-lsp)
 (require 'init-drdashboard)
 (require 'init-doom-themes)
+(require 'init-fonts)
 (require 'init-gui)
 
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)

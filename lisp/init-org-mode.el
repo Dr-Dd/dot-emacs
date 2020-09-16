@@ -51,7 +51,7 @@ returns nil."
 (add-hook 'org-agenda-finalize-hook
           (lambda ()
             (progn (highlight-regexp "\<[A-z]* [0-9]*\>" 'org-date)
-                   (highlight-regexp "Urgenze\\|Eventi" 'org-warning))))
+                   (highlight-regexp "Urgenze\\|Eventi\\|Compleanni" 'org-warning))))
 ;; org-mode agenda files
 (setq org-agenda-window-setup 'current-window)
 (setq org-agenda-prefix-format '(
@@ -69,7 +69,11 @@ returns nil."
                                      (tags "@event"
                                            ((org-agenda-sorting-strategy '(timestamp-up))
                                             (org-agenda-overriding-header "Eventi futuri")))
-                                     (agenda "" ((org-agenda-start-on-weekday nil))))
+                                     (agenda "" ((org-agenda-start-on-weekday nil)))
+                                     (tags "@birthday"
+                                           ((org-agenda-sorting-strategy '(timestamp-up))
+                                            (org-agenda-overriding-header "Compleanni futuri")
+                                            (org-agenda-max-entries 6))))
                                     ((org-agenda-compact-blocks t)))))
 
 ;; org-capture templates
@@ -121,6 +125,14 @@ returns nil."
         ("c" "File da riordinare/riorganizzare" entry
          (file ,(concat my/user-org-files-directory "to-capture.org"))
          "* TOCAPTURE %?\n")
+        ;; 15° Entry
+        ("b" "Aggiungi la data di compleanno di qualcuno che ti è caro" entry
+         (file+headline ,(concat my/user-org-files-directory "scheduled.org") "Birthdays")
+         "* TOWISH Compleanno %? :@birthday:\n %^t\n")
+        ;; 16° Entry
+        ("q" "Un nuovo progetto per la tua Bucket List" entry
+         (file ,(concat my/user-org-files-directory "bucket.org"))
+         "* TODO %?\n")
         ))
 ;; set org-mode to memorize done time
 (setq org-log-done 'time)
@@ -142,6 +154,12 @@ returns nil."
 (setq org-src-tab-acts-natively t)
 (setq org-src-fontify-natively t)
 
+(use-package htmlize :ensure t)
+
 (global-set-key (kbd "C-c c") 'org-capture)
+
+;; Break at column #60
+(add-hook 'org-mode-hook '(lambda () (setq fill-column 60)))
+(add-hook 'org-mode-hook 'turn-on-auto-fill)
 
 (provide 'init-org-mode)
