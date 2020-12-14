@@ -26,4 +26,6 @@
     (message "The doom-modeline--font-width-cache has been reset")))
 (global-set-key (kbd "C-c m") 'my/doom-modeline-refresh)
 
+
+
 (provide 'init-my-vars-and-funcs)

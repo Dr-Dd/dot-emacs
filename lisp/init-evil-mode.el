@@ -36,4 +36,7 @@
   (evil-commentary-mode)
   (diminish 'evil-commentary-mode))
 
+(setq evil-ex-search-case 'insensitive)
+(setq evil-undo-system 'undo-tree)
+
 (provide 'init-evil-mode)

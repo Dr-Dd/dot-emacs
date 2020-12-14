@@ -153,6 +153,10 @@ returns nil."
 
 (setq org-src-tab-acts-natively t)
 (setq org-src-fontify-natively t)
+(setq org-enforce-todo-dependencies t)
+(setq org-agenda-dim-blocked-tasks 'invisible)
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-deadline-warning-days 7)
 
 (use-package htmlize :ensure t)
 
@@ -161,5 +165,9 @@ returns nil."
 ;; Break at column #60
 (add-hook 'org-mode-hook '(lambda () (setq fill-column 60)))
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook 'flyspell-mode)
+
+(use-package org-edna :ensure t)
+(org-edna-mode)
 
 (provide 'init-org-mode)

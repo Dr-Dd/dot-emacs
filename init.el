@@ -80,4 +80,3 @@ There are two things you can do about this warning:
 (require 'init-gui)
 
 ;;; init.el ends here
-(put 'downcase-region 'disabled nil)
