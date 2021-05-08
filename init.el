@@ -42,6 +42,7 @@ There are two things you can do about this warning:
 ;; <M-x>`package-refresh-contents`<RET> BEFORE DOING ANYTHING
 ;; STUPID
 
+;; Add to emacs path custom libs
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 ;; Libs to be loaded first
 (require 'init-my-vars-and-funcs)

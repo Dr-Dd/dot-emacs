@@ -6,7 +6,6 @@
         my/all-the-icons-folder "~/.local/share/fonts/"
         my/emacs-workspace-directory "~/emacs-workspace/"
         my/git-repos-directory "~/.git-repos/"
-        my/cloud-storage-directory "~/MEGA/"
         my/backup-directory "~/.saves/"))
  ;; Windows 10
  ;; ((string=  system-type "windows-nt")

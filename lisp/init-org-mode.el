@@ -66,15 +66,17 @@ returns nil."
                                     ((tags "@urgent"
                                            ((org-agenda-sorting-strategy '(timestamp-up))
                                             (org-agenda-overriding-header "Urgenze da portare a termine")))
-                                     (tags "@event"
+                                     (tags "+@event+TIMESTAMP<=\"<+6m>\""
                                            ((org-agenda-sorting-strategy '(timestamp-up))
                                             (org-agenda-overriding-header "Eventi futuri")))
-                                     (agenda "" ((org-agenda-start-on-weekday nil)))
+                                     (agenda "" ((org-agenda-start-on-weekday nil)
+                                                 (org-agenda-show-all-dates nil)))
                                      (tags "@birthday"
                                            ((org-agenda-sorting-strategy '(timestamp-up))
                                             (org-agenda-overriding-header "Compleanni futuri")
                                             (org-agenda-max-entries 6))))
-                                    ((org-agenda-compact-blocks t)))))
+                                    ((org-agenda-compact-blocks t))
+                                    )))
 
 ;; org-capture templates
 (setq org-capture-templates
@@ -84,7 +86,7 @@ returns nil."
         ;; 1° Entry
         ("r" "Routine di varia natura (TODO + repeating SCHEDULE/DEADLINE/Timestamp)" entry
          (file+headline ,(concat my/user-org-files-directory "scheduled.org") "Routine")
-         "* TODO %? :@routine:\n %^{Timestamp, SCHEDULE or DEADLINE?||SCHEDULE:|DEADLINE:} %^t\n")
+         "* TODO %? :@routine:\n %^{Timestamp, SCHEDULED or DEADLINE?||SCHEDULED:|DEADLINE:} %^t\n")
         ;; 2° Entry
         ("e" "Eventi di varia importanza (Unset/[#A/B/C] + Timestamp)" entry
          (file+headline ,(concat my/user-org-files-directory "scheduled.org") "Calendar")
@@ -156,6 +158,8 @@ returns nil."
 (setq org-enforce-todo-dependencies t)
 (setq org-agenda-dim-blocked-tasks 'invisible)
 (setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-show-future-repeats 'next)
+(setq org-habit-show-habits-only-for-today nil)
 (setq org-deadline-warning-days 7)
 
 (use-package htmlize :ensure t)
@@ -169,5 +173,17 @@ returns nil."
 
 (use-package org-edna :ensure t)
 (org-edna-mode)
+
+(use-package org-ref
+  :ensure t
+  :config
+  ;;(setq org-ref-bibliography-notes ""
+        ;;org-ref-default-bibliography ""
+  ;;org-ref-pdf-directory "")
+  )
+
+;; Preserve org-src block indentation
+(setq org-src-preserve-indentation nil
+      org-edit-src-content-indentation 0)
 
 (provide 'init-org-mode)

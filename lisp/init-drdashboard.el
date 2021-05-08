@@ -14,8 +14,7 @@
     (setq dashboard-set-footer nil)
     (setq dashboard-banner-logo-title (shell-command-to-string "fortune -as -n 110 | tr -s '\n' ' ' | tr -s '\t' ' '"))
     (setq dashboard-startup-banner 'official)
-    (setq dashboard-items '((agenda . 5)
-                            (recents  . 9)))
+    (setq dashboard-items '((recents  . 9))) ;; Removed "(agenda . 5)" from list since opens to many files
     (setq dashboard-set-file-icons t)
     (setq dashboard-set-navigator t)
     (setq dashboard-set-init-info nil)

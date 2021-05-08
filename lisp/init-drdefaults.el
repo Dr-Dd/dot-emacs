@@ -1,5 +1,5 @@
-;; Init file for things already present in emacs
 
+;; Init file for things already present in emacs
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
 (setq inhibit-splash-screen t)
@@ -9,6 +9,7 @@
 
 ;; Move custom-set variables to separate file
 (setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file)
 
 ;; remove unwanted buffers
 ;; Removes *scratch* from buffer after the mode has been set.
@@ -35,7 +36,7 @@
 ;; enable hl line
 (global-hl-line-mode 1)
 
-(global-undo-tree-mode 1)
+(global-undo-tree-mode)
 
 ;; preserve command history between sessions
 (savehist-mode 1)
@@ -97,5 +98,7 @@
 (add-hook 'after-make-frame-functions 'force-mode-line-update)
 
 (setq x-gtk-use-system-tooltips nil)
+
+(setq history-delete-duplicates t)
 
 (provide 'init-drdefaults)
