@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+;;; all-the-icons package being a dependency for multiple other packages
+;;; Code:
 
 (use-package all-the-icons
   :ensure t
@@ -5,9 +9,5 @@
   (unless (file-exists-p (concat my/all-the-icons-folder "all-the-icons.ttf"))
     (all-the-icons-install-fonts)))
 
-;; (use-package all-the-icons-dired
-;;   :ensure t
-;;   :config
-;;   (add-hook 'dired-mode-hook 'all-the-icons-dired-mode))
-
 (provide 'init-all-the-icons)
+;;; init-all-the-icons.el ends here

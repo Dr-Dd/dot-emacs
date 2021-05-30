@@ -1,3 +1,17 @@
+;;; package --- Summary
+;;; Commentary:
+;;; User defined variables and functions
+;;; Code:
+
+;; Variable definitions, resolves warnings about
+;; "assignment to free variables"
+(defvar my/user-home)
+(defvar my/user-org-files-directory)
+(defvar my/all-the-icons-folder)
+(defvar my/emacs-workspace-directory)
+(defvar my/git-repos-directory)
+(defvar my/backup-directory )
+
 (cond
  ;; GNU/Linux (someone liked to interject for a moment)
  ((string=  system-type "gnu/linux")
@@ -17,14 +31,5 @@
  ;;        my/backup-directory ""))
 )
 
-;; HACK
-(defun my/doom-modeline-refresh ()
-  (interactive)
-  (progn
-    (doom-modeline-refresh-font-width-cache)
-    (message "The doom-modeline--font-width-cache has been reset")))
-(global-set-key (kbd "C-c m") 'my/doom-modeline-refresh)
-
-
-
 (provide 'init-my-vars-and-funcs)
+;;; init-my-vars-and-funcs.el ends here

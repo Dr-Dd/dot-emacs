@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+;;; All settings related to fonts/faces
+;;; Code:
+
 ;; set default font
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-20"))
@@ -475,3 +480,5 @@
 ;; (set-fontset-font t nil (font-spec :size 20 :name "DejaVu Sans Mono"))
 
 (provide 'init-fonts)
+
+;;; init-fonts.el ends here

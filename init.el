@@ -47,6 +47,7 @@ There are two things you can do about this warning:
 ;; Libs to be loaded first
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
+(require 'init-flycheck)
 (require 'init-diminish)
 ;; To test the startup time if something goes wrong
 ;;(require 'init-benchmark-init)
@@ -64,16 +65,14 @@ There are two things you can do about this warning:
 
 ;; Misc
 ;;(require 'init-smooth-scrolling)
-(require 'init-drd-help)
+;;(require 'init-drd-help)
 
 ;; Software Development
-(require 'init-origami)
+;;(require 'init-origami)
 (require 'init-yasnippet)
-(require 'init-magit)
-(require 'init-flycheck)
 (require 'init-helm)
-(require 'init-treemacs)
-(require 'init-projectile)
+;;(require 'init-treemacs)
+;;(require 'init-projectile)
 (require 'init-lsp)
 (require 'init-drdashboard)
 (require 'init-doom-themes)

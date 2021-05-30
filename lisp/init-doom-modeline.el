@@ -1,4 +1,9 @@
-;; doom modeline (+ all-the-icons dependency)
+;;; package --- Summary
+;;; Commentary:
+;;; Doom modeline for nicer looking modeline gui, non-essential
+;;; Code:
+
+;; all-the-icons dependency
 (use-package doom-modeline
   :ensure t)
 
@@ -6,11 +11,6 @@
 (custom-set-faces
    '(mode-line ((t (:family "xos4 Terminus" :height 0.7 :box nil :weight bold))))
    '(mode-line-inactive ((t (:family "xos4 Terminus" :height 0.7 :box nil :weight bold)))))
-;; Align this with `M-: (doom-modeline--font-height)'
-(setq doom-modeline-height 21)
-;; For displaying icons with `emacsclient -c'
-(setq doom-modeline-icon t)
-;; Enable the modeline
-(doom-modeline-mode 1)
 
 (provide 'init-doom-modeline)
+;;; init-doom-modeline.el ends here

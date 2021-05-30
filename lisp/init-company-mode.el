@@ -1,10 +1,13 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Company mode for _in buffer_ completion (not minibuffer like helm)
+;;; Code:
+
 ;; company-mode autocompletion
 (use-package company
   :ensure t
   :init
   (add-hook 'after-init-hook  'global-company-mode)
-  (setq company-minimum-prefix-length 1
-      company-idle-delay 0.0) ;; default is 0.2
   (diminish 'company-mode)
   ;; keybindings
   :bind
@@ -32,16 +35,16 @@
 
 ;; obsolete, superseded by company-box and company-posframe
 ;; but still the best option out of the bunch
-(use-package company-quickhelp :ensure t
-  :after (company)
-  :config
-  (company-quickhelp-mode)
-  (setq company-quickhelp-max-lines 13)
-  (setq company-quickhelp-delay 0.2)
-  ;;(setq company-quickhelp-use-propertized-text t)
-  ;; Parameter for developing purposes
-  ;; (set-face-attribute 'company-quickhelp-face nil :height 160)
-  )
+;;(use-package company-quickhelp :ensure t
+  ;;:after (company)
+  ;;:config
+  ;;(company-quickhelp-mode)
+  ;;(setq company-quickhelp-max-lines 13)
+  ;;(setq company-quickhelp-delay 0.2)
+  ;;;;(setq company-quickhelp-use-propertized-text t)
+  ;;;; Parameter for developing purposes
+  ;;;; (set-face-attribute 'company-quickhelp-face nil :height 160)
+  ;;)
 
 ;; (use-package company-box
 ;;   :ensure t
@@ -57,4 +60,12 @@
 ;;   (setq company-pos)
 ;;   (company-posframe-mode 1))
 
+(use-package helm-company
+  :ensure t
+  :config
+  (define-key company-mode-map (kbd "C-:") 'helm-company)
+  (define-key company-active-map (kbd "C-:") 'helm-company))
+
 (provide 'init-company-mode)
+
+;;; init-company-mode.el ends here

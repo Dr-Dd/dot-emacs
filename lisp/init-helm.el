@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Helm for _minibuffer_ completion (not in-buffer like)
+;;; company-mode
+;;; Code:
 
 (use-package helm :ensure t
   :preface (require 'helm-config)
@@ -15,7 +20,7 @@
         :map emacs-lisp-mode-map
         ([remap completion-at-point] . helm-lisp-completion-at-point))
   :config
-  (helm-mode 1)
   (diminish 'helm-mode))
 
 (provide 'init-helm)
+;;; init-helm.el ends here

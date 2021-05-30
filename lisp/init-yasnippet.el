@@ -1,19 +1,24 @@
-;; snippets expansion via yasnippet
+;;; package --- Summary
+;;; Commentary:
+;;; snippets expansion via yasnippet
+;;; Code:
+
+;;
 (use-package yasnippet
   :ensure t)
 (use-package yasnippet-snippets
   :ensure t
   :after (yasnippet)
   :config
-  (yas-global-mode 1)
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
-  ;; keybindings
-  (define-key yas-minor-mode-map (kbd "<tab>") nil)
-  (define-key yas-minor-mode-map (kbd "TAB") nil)
-  (define-key yas-minor-mode-map (kbd "M-p") 'yas-expand)
-  (define-key yas-minor-mode-map (kbd "M-i") 'yas-insert-snippet)
-  (diminish 'yas-minor-mode))
+  (diminish 'yas-minor-mode)
+  :bind
+  (([tab] . nil)
+   ([TAB] . nil)
+   ("M-p" . yas-expand)
+   ("M-i" . yas-insert-snippet)))
 
 
 (provide 'init-yasnippet)
+;;; init-yasnippet.el ends here

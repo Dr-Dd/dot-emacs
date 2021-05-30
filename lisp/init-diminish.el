@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Diminish installation for default packages, needs refactoring
+;;; Code:
+
 (use-package diminish
   :ensure t
   :config
@@ -9,3 +14,4 @@
   (diminish 'overwrite-mode))
 
 (provide 'init-diminish)
+;;; init-diminish.el ends here

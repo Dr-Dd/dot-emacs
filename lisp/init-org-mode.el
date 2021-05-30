@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+;;; All settings related to org-mode
+;;; Code:
+
 (defun my/org-get-entry-time (pom &optional inherit)
   "Get the time as a time tuple, if there is none
 returns nil."
@@ -187,3 +192,5 @@ returns nil."
       org-edit-src-content-indentation 0)
 
 (provide 'init-org-mode)
+
+;;; init-org-mode.el ends here
