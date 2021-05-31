@@ -3,10 +3,6 @@
 ;;; All settings related to fonts/faces
 ;;; Code:
 
-;; set default font
-(add-to-list 'default-frame-alist
-             '(font . "Inconsolata-20"))
-
 ;; Unicode emoji code ranges
 (set-fontset-font t '(#x231a . #x231b) (font-spec :size 20 :name "Noto Color Emoji"))
 (set-fontset-font t '(#x23e9 . #x23ec) (font-spec :size 20 :name "Noto Color Emoji"))
@@ -480,5 +476,4 @@
 ;; (set-fontset-font t nil (font-spec :size 20 :name "DejaVu Sans Mono"))
 
 (provide 'init-fonts)
-
 ;;; init-fonts.el ends here

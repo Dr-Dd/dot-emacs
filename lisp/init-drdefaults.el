@@ -15,9 +15,6 @@
       (kill-buffer "*scratch*")))
 (add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
 
-;; delete trailing whitespace on save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook
           #'(lambda ()

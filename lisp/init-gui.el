@@ -15,9 +15,6 @@
   (package-refresh-contents)
   (package-install 'zenburn-theme))
 
-;; set default font
-(add-to-list 'default-frame-alist
-             '(font . "Inconsolata-20"))
 (set-fontset-font "fontset-default" nil (font-spec :size 20 :name "DejaVu Sans Mono"))
 (set-fontset-font "fontset-default" nil (font-spec :size 20 :name "Noto Color Emoji"))
 
@@ -33,8 +30,7 @@
   "Switch to selected THEME with some housekeeping."
   (if (eq theme 'default)
       (disable-theme my/current-theme)
-    (progn
-      (load-theme theme t)))
+    (progn (load-theme theme t)))
   (setq my/current-theme theme))
 
 (defun my/toggle-theme ()
@@ -59,20 +55,10 @@
   (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
 (set-fringe-bitmap-face 'tilde 'font-lock-function-name-face)
 
-;; enable only for programming major modes
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-
-;; Start maximized
-(add-to-list 'default-frame-alist
-             '(fullscreen . maximized))
-
 (diminish 'auto-revert-mode)
 (diminish 'undo-tree-mode)
 (diminish 'eldoc-mode)
 (diminish 'overwrite-mode)
-
-(add-hook 'server-after-make-frame-hook (lambda () (select-frame-set-input-focus (selected-frame))))
-
 
 (provide 'init-gui)
 ;;; init-gui.el ends here

@@ -4,11 +4,10 @@
 ;;; Code:
 
 ;; Performance optimization
-(setq gc-cons-threshold 100000000
-      read-process-output-max (* 1024 1024))
+(setq read-process-output-max (* 1024 1024))
 
 ;; Enable debugging
-;;(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 ;; MELPA
 (require 'package)

@@ -22,26 +22,17 @@
 ;; =   > `sudo pacman -S ccls'                     =
 ;; =================================================
 
-;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-(setq lsp-keymap-prefix "s-l")
-
 (use-package lsp-mode
   :ensure t
-  :hook
-  ((prog-mode . lsp)
-   (lsp-mode . lsp-enable-which-key-integration)
-   (lsp-managed-mode . lsp-diagnostics-modeline-mode))
   :commands (lsp lsp-deferred)
   :config
   (setq lsp-ui-doc-enable nil)
   (setq lsp-ui-sideline-enable nil)
   (setq lsp-ui-peek-enable nil)
-  (setq lsp-prefer-capf t)
   (with-eval-after-load 'lsp-mode
     ;; :project/:workspace/:file
-    (setq lsp-diagnostics-modeline-scope :project))
-  :bind
-  (:map lsp-mode-map
+    (setq lsp-modeline-diagnostics-scope :project))
+  :bind (:map lsp-mode-map
         ;; ("C-c j" . lsp-find-definition)
         ;; ("C-c r" . lsp-find-references)
         ("C-c n" . lsp-rename)
@@ -70,8 +61,7 @@
 ;;if you are helm user
 (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol
   :after (helm lsp-mode)
-  :bind
-  (:map lsp-mode-map
+  :bind (:map lsp-mode-map
         ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))
 
 ;; optionally if you want to use debugger
@@ -93,7 +83,6 @@
 (use-package which-key
   :ensure t
   :config
-  (which-key-mode)
   (diminish 'which-key-mode))
 
 ;; Debugging

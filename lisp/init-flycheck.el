@@ -6,7 +6,8 @@
 ;; syntax checking with flycheck
 (use-package flycheck
   :ensure t
-  :bind (("C-c e n" . flycheck-next-error)
+  :bind (:map flycheck-mode-map
+         ("C-c e n" . flycheck-next-error)
          ("C-c e b" . flycheck-previous-error)
          ("C-c e l" . flycheck-list-errors)))
 

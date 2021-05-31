@@ -11,8 +11,9 @@
   :config
   (dashboard-setup-startup-hook))
 
-(with-eval-after-load 'dashboard
-  (setq dashboard-banner-logo-title (shell-command-to-string "fortune -as -n 110 | tr -s '\n' ' ' | tr -s '\t' ' '")))
+;;(require 'fortune)
+;; (with-eval-after-load 'dashboard
+;;   (setq dashboard-banner-logo-title (shell-command-to-string "fortune -as -n 110 | tr -s '\n' ' ' | tr -s '\t' ' '")))
 
 (provide 'init-drdashboard)
 ;;; init-drdashboard.el ends here
