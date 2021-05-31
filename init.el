@@ -3,10 +3,8 @@
 ;;; Just my init file
 ;;; Code:
 
-;; Performance optimization
 (setq read-process-output-max (* 1024 1024))
 
-;; Enable debugging
 ;; (setq debug-on-error t)
 
 ;; MELPA
@@ -41,17 +39,14 @@ There are two things you can do about this warning:
 ;; <M-x>`package-refresh-contents`<RET> BEFORE DOING ANYTHING
 ;; STUPID
 
-;; Add to emacs path custom libs
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
-;; Libs to be loaded first
+
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
+(require 'init-ggtags)
 (require 'init-flycheck)
 (require 'init-diminish)
-;; To test the startup time if something goes wrong
-;;(require 'init-benchmark-init)
-
-;; Other libs
+;; (require 'init-benchmark-init)
 (require 'init-org-mode)
 (require 'init-evil-mode)
 (require 'init-company-mode)
@@ -59,19 +54,10 @@ There are two things you can do about this warning:
 (require 'init-doom-modeline)
 (require 'init-ace-window)
 (require 'init-highlight-indent)
-;; Mail
 (require 'init-drd-mail)
-
-;; Misc
-;;(require 'init-smooth-scrolling)
-;;(require 'init-drd-help)
-
-;; Software Development
-;;(require 'init-origami)
 (require 'init-yasnippet)
 (require 'init-helm)
-;;(require 'init-treemacs)
-;;(require 'init-projectile)
+(require 'init-projectile)
 (require 'init-lsp)
 (require 'init-drdashboard)
 (require 'init-doom-themes)

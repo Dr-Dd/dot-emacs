@@ -266,6 +266,7 @@
    '(org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
  '(prog-mode-hook
    '(display-line-numbers-mode lsp yas-minor-mode highlight-indentation-current-column-mode))
+ '(projectile-mode t nil (projectile))
  '(require-final-newline t)
  '(save-place-mode t)
  '(savehist-mode t)
