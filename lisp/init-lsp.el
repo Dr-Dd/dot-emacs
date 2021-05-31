@@ -73,8 +73,7 @@
 ;; C-lang language server (ensure that ccls is installed in your system)
 (use-package ccls
   :ensure t
-  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-         (lambda () (require 'ccls) (lsp))))
+  :hook ((cuda-mode . (lambda () (require 'ccls) (lsp)))))
 
 (use-package lsp-java :ensure t )
 ;;(use-package lsp-java-boot)

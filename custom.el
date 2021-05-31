@@ -26,6 +26,8 @@
  '(backup-directory-alist '((".*" . "~/.saves/")))
  '(before-save-hook '(delete-trailing-whitespace))
  '(blink-cursor-mode t)
+ '(c++-mode-hook '((lambda nil (require 'ccls) (lsp))))
+ '(c-mode-hook '((lambda nil (require 'ccls) (lsp))))
  '(column-number-mode t)
  '(company-backends
    '(company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
@@ -33,7 +35,8 @@
                        company-oddmuse company-dabbrev))
  '(custom-file "~/.emacs.d/custom.el")
  '(dashboard-banner-logo-title
-   (shell-command-to-string "fortune -as -n 110 | tr -s '\n' ' ' | tr -s '\t' ' '"))
+   (shell-command-to-string "fortune -as -n 110 | tr -s '
+' ' ' | tr -s '	' ' '"))
  '(dashboard-buffer-last-width 80)
  '(dashboard-footer "Who the hell uses VIM anyway? Go Evil!")
  '(dashboard-init-info t)
@@ -149,6 +152,14 @@
  '(menu-bar-mode nil)
  '(message-kill-buffer-on-exit t)
  '(message-sendmail-envelope-from 'header)
+ '(notmuch-saved-searches
+   '((:name "inbox" :query "tag:inbox" :key "i" :sort-order newest-first)
+     (:name "unread" :query "tag:unread" :key "u")
+     (:name "flagged" :query "tag:flagged" :key "f")
+     (:name "sent" :query "tag:sent" :key "t")
+     (:name "drafts" :query "tag:draft" :key "d")
+     (:name "all mail" :query "*" :key "a")))
+ '(objc-mode-hook '((lambda nil (require 'ccls) (lsp))))
  '(org-agenda-custom-commands
    '(("d" "Weekly agenda about urgencies"
       ((tags "@urgent"
@@ -162,7 +173,7 @@
        (agenda ""
                ((org-agenda-start-on-weekday nil)
                 (org-agenda-show-all-dates nil)))
-       (tags "@birthday"
+       (tags "@birthday+TIMESTAMP>=\"<today>\""
              ((org-agenda-sorting-strategy
                '(timestamp-up))
               (org-agenda-overriding-header "Compleanni futuri")
@@ -243,22 +254,7 @@
  '(org-habit-graph-column 68)
  '(org-habit-show-habits-only-for-today nil)
  '(org-log-done 'time)
- '(org-mode-hook
-   '(#[0 "\301\211\207"
-         [imenu-create-index-function org-imenu-get-tree]
-         2]
-     org-ref-org-menu turn-on-auto-fill
-     (lambda nil
-       (setq fill-column 60))
-     (lambda nil
-       (org-superstar-mode 1))
-     #[0 "\300\301\302\303\304$\207"
-         [add-hook change-major-mode-hook org-show-all append local]
-         5]
-     #[0 "\300\301\302\303\304$\207"
-         [add-hook change-major-mode-hook org-babel-show-result-all append local]
-         5]
-     org-babel-result-hide-spec org-babel-hide-all-hashes org-ref-setup-label-finders))
+ '(org-mode-hook '((lambda nil (org-superstar-mode 1)) turn-on-auto-fill))
  '(org-tags-column 0)
  '(org-todo-keyword-faces
    '(("CANCELED" . "black")
