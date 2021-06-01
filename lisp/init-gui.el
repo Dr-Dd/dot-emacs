@@ -43,11 +43,17 @@
 ;; Try to default to a sane default theme
 (defun my/set-suitable-theme ()
   "Set the starting theme to the most suitable for the current time of day."
-  (if (or (>= (string-to-number (shell-command-to-string "date +%H")) 21)
+  (if (or (>= (string-to-number (shell-command-to-string "date +%H")) 19)
           (< (string-to-number (shell-command-to-string "date +%H")) 7))
       (my/switch-theme my/dark-theme)
     (my/switch-theme my/light-theme)))
 (my/set-suitable-theme)
+
+(defun my/auto-switch-theme ()
+  "Automatically change Emacs' theme at the right time of day."
+  (progn (run-at-time "19:00" nil #'my/toggle-theme)
+         (run-at-time "7:00" nil #'my/toggle-theme)))
+(my/auto-switch-theme)
 
 ;; set default empty line fringe
 (progn
