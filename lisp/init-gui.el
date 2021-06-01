@@ -18,8 +18,8 @@
 (set-fontset-font "fontset-default" nil (font-spec :size 20 :name "DejaVu Sans Mono"))
 (set-fontset-font "fontset-default" nil (font-spec :size 20 :name "Noto Color Emoji"))
 
-(defvar my/light-theme 'doom-solarized-light)
-(defvar my/dark-theme 'doom-vibrant)
+(defvar my/light-theme 'doom-one-light)
+(defvar my/dark-theme 'doom-one)
 (defvar my/current-theme my/light-theme)
 
 (defadvice load-theme (before theme-dont-propagate activate)

@@ -8,8 +8,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight-indentation-current-column-face ((t (:background "#999999"))))
- '(highlight-indentation-face ((t (:inherit hl-line :background "#CCCCCC"))))
+ ;; '(highlight-indentation-current-column-face ((t (:background "#999999"))))
+ ;; '(highlight-indentation-face ((t (:inherit hl-line :background "#CCCCCC"))))
  '(mode-line ((t (:family "xos4 Terminus" :height 0.7 :box nil :weight bold))))
  '(mode-line-inactive ((t (:family "xos4 Terminus" :height 0.7 :box nil :weight bold))))
  '(org-level-1 ((t (:inherit default :foreground "#cb4b16" :height unspecified))))

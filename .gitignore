@@ -9,3 +9,8 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# GNU Global tags
+GTAGS
+GRTAGS
+GPATH
