@@ -51,14 +51,12 @@
 
 (defun my/auto-switch-theme ()
   "Automatically change Emacs' theme at the right time of day."
-  (progn (run-at-time "19:00" nil #'my/toggle-theme)
-         (run-at-time "7:00" nil #'my/toggle-theme)))
+  (run-at-time "19:00" nil #'my/toggle-theme))
 (my/auto-switch-theme)
 
 ;; set default empty line fringe
-(progn
-  (define-fringe-bitmap 'tilde [0 0 0 113 219 142 0 0] nil nil 'center)
-  (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
+(progn (define-fringe-bitmap 'tilde [0 0 0 113 219 142 0 0] nil nil 'center)
+       (setcdr (assq 'empty-line fringe-indicator-alist) 'tilde))
 (set-fringe-bitmap-face 'tilde 'font-lock-function-name-face)
 
 (diminish 'auto-revert-mode)

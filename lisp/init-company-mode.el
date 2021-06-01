@@ -11,8 +11,6 @@
   :bind (("C-<SPC>" . company-complete)
         :map company-active-map
         ("C-h" . company-show-doc-buffer)
-        ("M-n" . nil)
-        ("M-p" . nil)
         ([tab] . company-select-next)
         ([backtab] . company-select-previous)))
 

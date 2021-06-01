@@ -3,7 +3,6 @@
 ;;; snippets expansion via yasnippet
 ;;; Code:
 
-;;
 (use-package yasnippet
   :ensure t)
 (use-package yasnippet-snippets
@@ -12,10 +11,10 @@
   :config
   (yas-reload-all)
   (diminish 'yas-minor-mode)
-  :bind
-  (([tab] . nil)
-   ("M-p" . yas-expand)
-   ("M-i" . yas-insert-snippet)))
+  :bind (:map yas-minor-mode-map
+         ([tab] . nil)
+         ("M-p" . yas-expand)
+         ("M-i" . yas-insert-snippet)))
 
 (provide 'init-yasnippet)
 ;;; init-yasnippet.el ends here

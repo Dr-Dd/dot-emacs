@@ -2,9 +2,9 @@
   :ensure t
   :config
   (diminish 'projectile-mode)
-  :bind-keymap
-  ("C-c p" . projectile-command-map))
-
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  :bind-keymap ("C-c p" . projectile-command-map)
+  :bind (:map projectile-mode-map))
+(use-package helm-projectile :ensure t
+  :config (helm-projectile-on))
 
 (provide 'init-projectile)

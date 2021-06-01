@@ -13,9 +13,6 @@ returns nil."
     (when time
       (org-time-string-to-time time))))
 
-(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-c l") 'org-latex-preview))
-
 (require 'org-habit)
 
 ;; org bullets

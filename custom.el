@@ -33,6 +33,9 @@
    '(company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
                        (company-dabbrev-code company-gtags company-etags company-keywords)
                        company-oddmuse company-dabbrev))
+ '(company-frontends
+   '(company-pseudo-tooltip-unless-just-one-frontend company-echo-metadata-frontend company-preview-if-just-one-frontend))
+ '(company-idle-delay nil)
  '(custom-file "~/.emacs.d/custom.el")
  '(dashboard-banner-logo-title
    (shell-command-to-string "fortune -as -n 110 | tr -s '
@@ -263,7 +266,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
+   '(helm-projectile org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
  '(prog-mode-hook
    '(display-line-numbers-mode lsp yas-minor-mode highlight-indentation-current-column-mode))
  '(projectile-mode t nil (projectile))
@@ -276,7 +279,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
