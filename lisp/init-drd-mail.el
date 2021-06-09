@@ -4,12 +4,15 @@
 ;;; and imported into the notmuch db
 ;;; Code:
 
-(use-package notmuch
+;; https://sourceforge.net/projects/isync/files/latest/download
+
+(use-package notmuch :ensure t
   :config
   ;; Image display
   (when (fboundp 'imagemagick-register-types)
-    (imagemagick-register-types))
-  )
+    (imagemagick-register-types)))
+
+;; (use-package wanderlust :ensure t)
 
 (provide 'init-drd-mail)
 ;;; init-drd-mail.el ends here

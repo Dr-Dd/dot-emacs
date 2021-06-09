@@ -36,22 +36,34 @@
 (defun my/toggle-theme ()
   "Switch between set light/dark THEME in init-gui.el."
   (interactive)
-  (cond ((eq my/current-theme my/light-theme) (my/switch-theme my/dark-theme))
-        ((eq my/current-theme my/dark-theme) (my/switch-theme my/light-theme))))
+  (cond ((eq my/current-theme my/light-theme)
+         (my/switch-theme my/dark-theme))
+        ((eq my/current-theme my/dark-theme)
+         (my/switch-theme my/light-theme))))
 (global-set-key (kbd "M-t") 'my/toggle-theme)
 
 ;; Try to default to a sane default theme
 (defun my/set-suitable-theme ()
   "Set the starting theme to the most suitable for the current time of day."
-  (if (or (>= (string-to-number (shell-command-to-string "date +%H")) 19)
-          (< (string-to-number (shell-command-to-string "date +%H")) 7))
+  (if (or (>= (nth 2 (decode-time)) 19)
+          (< (nth 2 (decode-time)) 7))
       (my/switch-theme my/dark-theme)
     (my/switch-theme my/light-theme)))
+;; call at startup...
 (my/set-suitable-theme)
 
 (defun my/auto-switch-theme ()
-  "Automatically change Emacs' theme at the right time of day."
-  (run-at-time "19:00" nil #'my/toggle-theme))
+  "Automatically change Emacs' theme at the right time of day.
+Needs \"midnight-mode\" to be effective all days, all year round.
+Currently hard coded to 0700, 1900"
+  (cond ((< (nth 2 (decode-time)) 7)
+         (progn (run-at-time "7:00" nil #'my/toggle-theme)
+                (run-at-time "19:00" nil #'my/toggle-theme)))
+        ((>= (nth 2 (decode-time)) 7)
+         (run-at-time "19:00" nil #'my/toggle-theme))))
+(midnight-mode t)
+(add-hook 'midnight-mode-hook 'my/auto-switch-theme)
+;; call at startup
 (my/auto-switch-theme)
 
 ;; set default empty line fringe

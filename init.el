@@ -62,6 +62,9 @@ There are two things you can do about this warning:
 (require 'init-drdashboard)
 (require 'init-doom-themes)
 (require 'init-fonts)
+(require 'init-beacon)
 (require 'init-gui)
+;; (require 'init-exwm)
+
 
 ;;; init.el ends here

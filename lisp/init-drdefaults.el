@@ -8,19 +8,12 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
-;; remove unwanted buffers
-(defun remove-scratch-buffer ()
-  "Remove *scratch* from buffer after the mode has been set."
-  (if (get-buffer "*scratch*")
-      (kill-buffer "*scratch*")))
-(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
-
-;; Removes *Completions* from buffer after you've opened a file.
-(add-hook 'minibuffer-exit-hook
-          #'(lambda ()
-              (let ((buffer "*Completions*"))
-                (and (get-buffer buffer)
-                     (kill-buffer buffer)))))
+;; ;; Removes *Completions* from buffer after you've opened a file.
+;; (add-hook 'minibuffer-exit-hook
+;;           #'(lambda ()
+;;               (let ((buffer "*Completions*"))
+;;                 (and (get-buffer buffer)
+;;                      (kill-buffer buffer)))))
 
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
