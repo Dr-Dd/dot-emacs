@@ -53,8 +53,10 @@ There are two things you can do about this warning:
 (require 'init-all-the-icons)
 (require 'init-doom-modeline)
 (require 'init-ace-window)
+;; (require 'init-winum) ;; conflict with dashboard
 (require 'init-highlight-indent)
 (require 'init-drd-mail)
+(require 'init-drd-newsfeed)
 (require 'init-yasnippet)
 (require 'init-helm)
 (require 'init-projectile)

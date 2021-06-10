@@ -20,8 +20,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms '((".*" "~/.saves/" t)))
+ '(aw-display-mode-overlay nil)
  '(backup-by-copying t)
  '(backup-directory-alist '((".*" . "~/.saves/")))
+ '(beacon-color "chartreuse")
  '(beacon-mode t)
  '(before-save-hook '(delete-trailing-whitespace))
  '(blink-cursor-mode t)
@@ -44,75 +46,69 @@
  '(dashboard-init-info t)
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
-   '(((#("" 0 1
-         (face
-          (:family "file-icons" :height 0.96)
-          font-lock-face
-          (:family "file-icons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+   '(((#("🗂" 0 1
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "emacs-workspace" "Dired to your Emacs Workspace"
        (lambda
          (&rest _)
          (dired my/emacs-workspace-directory)))
-      (#("" 0 1
-         (face
-          (:family "all-the-icons" :height 0.96)
-          font-lock-face
-          (:family "all-the-icons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
-       "git-repos" "Dired to your Git Repos"
-       (lambda
-         (&rest _)
-         (dired my/git-repos-directory)))
-      (#("" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+      (#("" 0 1
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "file-icons" :height 0.96 :foreground "#6146A1")
+                         face
+                         (:family "file-icons" :height 0.96 :foreground "#6146A1")))
        "init.el" "Open init.el config file"
        (lambda
          (&rest _)
          (find-file
           (concat user-emacs-directory "init.el"))))
-      (#("" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+      (#("📔" 0 1
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "agenda" "Open your agenda"
        (lambda
          (&rest _)
          (org-agenda 0 "d")))
-      (#("" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+      (#("📫" 0 1
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "notmuch" "Read your inbox"
        (lambda
          (&rest _)
          (notmuch)))
-      (#("" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+      (#("📡" 0 1
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "all-the-icons" :height 0.96)
+                         face
+                         (:family "all-the-icons" :height 0.96)))
+       "elfeed" "Read the news"
+       (lambda
+         (&rest _)
+         (elfeed)))
+      (#("🏠" 0 1
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "home" "Dired to your Home"
        (lambda
          (&rest _)
@@ -129,9 +125,28 @@
  '(doom-modeline-mode t)
  '(electric-indent-mode t)
  '(electric-pair-mode t)
+ '(elfeed-feeds
+   '(("https://lwn.net/headlines/rss" tech)
+     ("https://hnrss.org/frontpages" tech)
+     ("https://www.phoronix.com/rss.php" tech)
+     ("https://www.reddit.com/r/linux/rising/.rss" tech reddit)
+     ("https://www.reddit.com/r/emacs/rising/.rss" tech reddit)
+     ("http://localhost:13500/BBCBreaking/rss" news nitter)
+     ("http://localhost:13500/guardian/rss" news nitter)
+     ("http://localhost:13500/AJENews/rss" news nitter)
+     ("http://localhost:13500/washingtonpost/rss" news nitter)
+     ("http://localhost:13500/nytimes/rss" news nitter)
+     ("http://localhost:13500/Reuters/rss" news nitter)
+     ("http://localhost:13500/fattoquotidiano/rss" italy nitter)
+     ("http://localhost:13500/sole24ore/rss" italy nitter)
+     ("http://localhost:13500/Agenzia_Ansa/rss" italy nitter)
+     ("http://localhost:13500/Agenzia_Italia/rss" italy nitter)
+     ("http://localhost:13500/Corriere/rss" italy nitter)
+     ("http://superbestfriendcast.libsyn.com/rss" podcast)))
+ '(elfeed-search-title-max-width 130)
  '(evil-commentary-mode t)
  '(evil-emacs-state-modes
-   '(help-mode xref--xref-buffer-mode erc-mode inferior-python-mode tuareg-interactive-mode shell-mode haskell-interactive-mode dashboard-mode 5x5-mode archive-mode bbdb-mode biblio-selection-mode blackbox-mode bookmark-bmenu-mode bookmark-edit-annotation-mode browse-kill-ring-mode bs-mode bubbles-mode bzr-annotate-mode calc-mode cfw:calendar-mode completion-list-mode Custom-mode custom-theme-choose-mode debugger-mode delicious-search-mode desktop-menu-blist-mode desktop-menu-mode doc-view-mode dun-mode dvc-bookmarks-mode dvc-diff-mode dvc-info-buffer-mode dvc-log-buffer-mode dvc-revlist-mode dvc-revlog-mode dvc-status-mode dvc-tips-mode ediff-mode ediff-meta-mode efs-mode Electric-buffer-menu-mode emms-browser-mode emms-mark-mode emms-metaplaylist-mode emms-playlist-mode ess-help-mode etags-select-mode fj-mode gc-issues-mode gdb-breakpoints-mode gdb-disassembly-mode gdb-frames-mode gdb-locals-mode gdb-memory-mode gdb-registers-mode gdb-threads-mode gist-list-mode git-rebase-mode gnus-article-mode gnus-browse-mode gnus-group-mode gnus-server-mode gnus-summary-mode gomoku-mode google-maps-static-mode ibuffer-mode jde-javadoc-checker-report-mode magit-cherry-mode magit-diff-mode magit-log-mode magit-log-select-mode magit-popup-mode magit-popup-sequence-mode magit-process-mode magit-reflog-mode magit-refs-mode magit-revision-mode magit-stash-mode magit-stashes-mode magit-status-mode mh-folder-mode monky-mode mpuz-mode mu4e-main-mode mu4e-headers-mode mu4e-view-mode notmuch-hello-mode notmuch-search-mode notmuch-show-mode notmuch-tree-mode occur-mode org-agenda-mode package-menu-mode pdf-outline-buffer-mode pdf-view-mode proced-mode rcirc-mode rebase-mode recentf-dialog-mode reftex-select-bib-mode reftex-select-label-mode reftex-toc-mode sldb-mode slime-inspector-mode slime-thread-control-mode slime-xref-mode snake-mode solitaire-mode sr-buttons-mode sr-mode sr-tree-mode sr-virtual-mode tar-mode tetris-mode tla-annotate-mode tla-archive-list-mode tla-bconfig-mode tla-bookmarks-mode tla-branch-list-mode tla-browse-mode tla-category-list-mode tla-changelog-mode tla-follow-symlinks-mode tla-inventory-file-mode tla-inventory-mode tla-lint-mode tla-logs-mode tla-revision-list-mode tla-revlog-mode tla-tree-lint-mode tla-version-list-mode twittering-mode urlview-mode vc-annotate-mode vc-dir-mode vc-git-log-view-mode vc-hg-log-view-mode vc-svn-log-view-mode vm-mode vm-summary-mode w3m-mode wab-compilation-mode xgit-annotate-mode xgit-changelog-mode xgit-diff-mode xgit-revlog-mode xhg-annotate-mode xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode xhg-status-extra-mode inferior-emacs-lisp-mode timer-list-mode flycheck-error-list-mode special-mode))
+   '(help-mode xref--xref-buffer-mode erc-mode inferior-python-mode tuareg-interactive-mode shell-mode haskell-interactive-mode dashboard-mode 5x5-mode archive-mode bbdb-mode biblio-selection-mode blackbox-mode bookmark-bmenu-mode bookmark-edit-annotation-mode browse-kill-ring-mode bs-mode bubbles-mode bzr-annotate-mode calc-mode cfw:calendar-mode completion-list-mode Custom-mode custom-theme-choose-mode debugger-mode delicious-search-mode desktop-menu-blist-mode desktop-menu-mode doc-view-mode dun-mode dvc-bookmarks-mode dvc-diff-mode dvc-info-buffer-mode dvc-log-buffer-mode dvc-revlist-mode dvc-revlog-mode dvc-status-mode dvc-tips-mode ediff-mode ediff-meta-mode efs-mode Electric-buffer-menu-mode emms-browser-mode emms-mark-mode emms-metaplaylist-mode emms-playlist-mode ess-help-mode etags-select-mode fj-mode gc-issues-mode gdb-breakpoints-mode gdb-disassembly-mode gdb-frames-mode gdb-locals-mode gdb-memory-mode gdb-registers-mode gdb-threads-mode gist-list-mode git-rebase-mode gnus-article-mode gnus-browse-mode gnus-group-mode gnus-server-mode gnus-summary-mode gomoku-mode google-maps-static-mode ibuffer-mode jde-javadoc-checker-report-mode magit-cherry-mode magit-diff-mode magit-log-mode magit-log-select-mode magit-popup-mode magit-popup-sequence-mode magit-process-mode magit-reflog-mode magit-refs-mode magit-revision-mode magit-stash-mode magit-stashes-mode magit-status-mode mh-folder-mode monky-mode mpuz-mode mu4e-main-mode mu4e-headers-mode mu4e-view-mode notmuch-hello-mode notmuch-search-mode notmuch-show-mode notmuch-tree-mode occur-mode org-agenda-mode package-menu-mode pdf-outline-buffer-mode pdf-view-mode proced-mode rcirc-mode rebase-mode recentf-dialog-mode reftex-select-bib-mode reftex-select-label-mode reftex-toc-mode sldb-mode slime-inspector-mode slime-thread-control-mode slime-xref-mode snake-mode solitaire-mode sr-buttons-mode sr-mode sr-tree-mode sr-virtual-mode tar-mode tetris-mode tla-annotate-mode tla-archive-list-mode tla-bconfig-mode tla-bookmarks-mode tla-branch-list-mode tla-browse-mode tla-category-list-mode tla-changelog-mode tla-follow-symlinks-mode tla-inventory-file-mode tla-inventory-mode tla-lint-mode tla-logs-mode tla-revision-list-mode tla-revlog-mode tla-tree-lint-mode tla-version-list-mode twittering-mode urlview-mode vc-annotate-mode vc-dir-mode vc-git-log-view-mode vc-hg-log-view-mode vc-svn-log-view-mode vm-mode vm-summary-mode w3m-mode wab-compilation-mode xgit-annotate-mode xgit-changelog-mode xgit-diff-mode xgit-revlog-mode xhg-annotate-mode xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode xhg-status-extra-mode inferior-emacs-lisp-mode timer-list-mode flycheck-error-list-mode special-mode elfeed-search-mode elfeed-show-mode))
  '(evil-ex-search-case 'insensitive)
  '(evil-mode t)
  '(evil-undo-system 'undo-tree)
@@ -160,6 +175,7 @@
  '(menu-bar-mode nil)
  '(message-kill-buffer-on-exit t)
  '(message-sendmail-envelope-from 'header)
+ '(midnight-mode t)
  '(notmuch-saved-searches
    '((:name "inbox" :query "tag:inbox" :key "i" :sort-order newest-first)
      (:name "unread" :query "tag:unread" :key "u")
@@ -271,7 +287,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(beacon chess wanderlust bic helm-projectile org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
+   '(elfeed beacon chess wanderlust bic helm-projectile org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
  '(prog-mode-hook
    '(display-line-numbers-mode yas-minor-mode highlight-indentation-current-column-mode))
  '(projectile-mode t nil (projectile))
@@ -292,10 +308,7 @@
  '(tool-bar-mode nil)
  '(vc-follow-symlinks t)
  '(version-control t)
- '(warning-suppress-types
-   '((lsp-mode)
-     (comp)
-     (:warning)))
+ '(warning-suppress-types '((lsp-mode) (comp) (:warning)))
  '(which-key-mode t)
  '(x-gtk-use-system-tooltips nil)
  '(xref-prompt-for-identifier

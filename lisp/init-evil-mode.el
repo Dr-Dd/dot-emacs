@@ -18,6 +18,5 @@
   :config
   (diminish 'evil-commentary-mode))
 
-
 (provide 'init-evil-mode)
 ;;; init-evil-mode.el ends here
