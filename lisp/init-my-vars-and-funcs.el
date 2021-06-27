@@ -11,6 +11,7 @@
 (defvar my/emacs-workspace-directory)
 (defvar my/git-repos-directory)
 (defvar my/backup-directory )
+(defvar my/path-separator )
 
 (cond
  ;; GNU/Linux (someone liked to interject for a moment)
@@ -20,7 +21,8 @@
         my/all-the-icons-folder "~/.local/share/fonts/"
         my/emacs-workspace-directory "~/emacs-workspace/"
         my/git-repos-directory "~/.git-repos/"
-        my/backup-directory "~/.saves/"))
+        my/backup-directory "~/.saves/"
+        my/path-separator "/"))
  ;; Windows 10
  ;; ((string=  system-type "windows-nt")
  ;;  (setq my/user-home ""

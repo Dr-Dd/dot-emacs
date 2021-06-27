@@ -7,21 +7,6 @@
 ;;; some way or another.
 ;;; Code:
 
-;; =================================================
-;; = LSP-MODE SERVERS INSTALLATION INSTRUCTIONS    =
-;; =================================================
-;; = + bash                                        =
-;; =   > `npm i -g bash-language-server'           =
-;; = + python                                      =
-;; =   > `pip install python-language-server[all]' =
-;; = + ruby                                        =
-;; =   > `gem install solargraph'                  =
-;; = + java                                        =
-;; =   > `(use-package lsp-java :ensure t)'        =
-;; = + c/c++                                       =
-;; =   > `sudo pacman -S ccls'                     =
-;; =================================================
-
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
@@ -71,9 +56,9 @@
   :after (dap-mode))
 
 ;; C-lang language server (ensure that ccls is installed in your system)
-(use-package ccls
-  :ensure t
-  :hook ((cuda-mode . (lambda () (require 'ccls) (lsp)))))
+;; (use-package ccls
+;;   :ensure t
+;;   :hook ((cuda-mode . (lambda () (require 'ccls) (lsp)))))
 
 (use-package lsp-java :ensure t )
 ;;(use-package lsp-java-boot)
@@ -86,6 +71,11 @@
 
 ;; Debugging
 ;; (setq lsp-print-performance t)
+
+(add-hook 'c-mode-hook 'lsp)
+(add-hook 'c++-mode-hook 'lsp)
+(with-eval-after-load 'lsp-mode
+  (require 'dap-cpptools))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

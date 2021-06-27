@@ -27,8 +27,6 @@
  '(beacon-mode t)
  '(before-save-hook '(delete-trailing-whitespace))
  '(blink-cursor-mode t)
- '(c++-mode-hook '((lambda nil (require 'ccls) (lsp))))
- '(c-mode-hook '((lambda nil (require 'ccls) (lsp))))
  '(column-number-mode t)
  '(company-backends
    '(company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
@@ -37,7 +35,6 @@
  '(company-frontends
    '(company-pseudo-tooltip-unless-just-one-frontend company-echo-metadata-frontend company-preview-if-just-one-frontend))
  '(company-idle-delay nil)
- '(custom-file "~/.emacs.d/custom.el")
  '(dashboard-banner-logo-title
    (shell-command-to-string "fortune -as -n 110 | tr -s '
 ' ' ' | tr -s '	' ' '"))
@@ -47,68 +44,74 @@
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
    '(((#("🗂" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "emacs-workspace" "Dired to your Emacs Workspace"
        (lambda
          (&rest _)
          (dired my/emacs-workspace-directory)))
       (#("" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "file-icons" :height 0.96 :foreground "#6146A1")
-                         face
-                         (:family "file-icons" :height 0.96 :foreground "#6146A1")))
+         (face
+          (:family "file-icons" :height 0.96 :foreground "#6146A1")
+          font-lock-face
+          (:family "file-icons" :height 0.96 :foreground "#6146A1")
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "init.el" "Open init.el config file"
        (lambda
          (&rest _)
          (find-file
           (concat user-emacs-directory "init.el"))))
       (#("📔" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "agenda" "Open your agenda"
        (lambda
          (&rest _)
          (org-agenda 0 "d")))
       (#("📫" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "notmuch" "Read your inbox"
        (lambda
          (&rest _)
          (notmuch)))
       (#("📡" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "all-the-icons" :height 0.96)
-                         face
-                         (:family "all-the-icons" :height 0.96)))
+         (face
+          (:family "all-the-icons" :height 0.96)
+          font-lock-face
+          (:family "all-the-icons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "elfeed" "Read the news"
        (lambda
          (&rest _)
          (elfeed)))
       (#("🏠" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "home" "Dired to your Home"
        (lambda
          (&rest _)
@@ -127,7 +130,7 @@
  '(electric-pair-mode t)
  '(elfeed-feeds
    '(("https://lwn.net/headlines/rss" tech)
-     ("https://hnrss.org/frontpages" tech)
+     ("https://hnrss.org/frontpage" tech)
      ("https://www.phoronix.com/rss.php" tech)
      ("https://www.reddit.com/r/linux/rising/.rss" tech reddit)
      ("https://www.reddit.com/r/emacs/rising/.rss" tech reddit)
@@ -142,7 +145,37 @@
      ("http://localhost:13500/Agenzia_Ansa/rss" italy nitter)
      ("http://localhost:13500/Agenzia_Italia/rss" italy nitter)
      ("http://localhost:13500/Corriere/rss" italy nitter)
-     ("http://superbestfriendcast.libsyn.com/rss" podcast)))
+     ("http://superbestfriendcast.libsyn.com/rss" podcast)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCKTehwyGCKF-b2wo0RKwrcg" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UC0M0rxSz3IF0CsSour1iWmw" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UC21uZkfXpT8rPY-gPgMiCwA" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UC2Qw1dzXDBAZPwS7zm37g8g" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCYZtp0YIxYOipX15v_h_jnA" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCsD9nSAjE6uq1EPYlCORS9w" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCL6JmiMXKoXS6bpP1D3bk8g" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCNSMdQtn1SuFzCZjfK2C7dQ" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCyhnYIvIKK_--PiJXCMKxQQ" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UClcE-kVhqyiHCcjYwcpfj9w" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UClOGLGPOqlAiLmOvXW5lKbw" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCiP_FwGyJQ_6P8k5ON5mncQ" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCb_sF2m3-2azOqeNEdMwQPw" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCSdma21fnJzgmPodhC9SJ3g" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UC4eYXhJI4-7wSWc8UNRwD4A" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCo1pShh6dtg-T_ZZkgi_JDQ" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCWqr2tH3dPshNhPjV5h1xRw" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCtGoikgbxP4F3rgI9PldI9g" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCt7fwAhXDy3oNFTAzF2o8Pw" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCllm3HivMERwu2x2Sjz5EIg" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCsvn_Po0SmunchJYOWpOxMg" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCzORJV8l3FWY4cFO8ot-F2w" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCIPsK5xspHC3-ZFNPTx2X_w" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCdJdEguB1F1CiYe7OEi3SBg" youtube)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCWqr2tH3dPshNhPjV5h1xRw" youtube)))
  '(elfeed-search-title-max-width 130)
  '(evil-commentary-mode t)
  '(evil-emacs-state-modes
@@ -183,7 +216,6 @@
      (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
      (:name "all mail" :query "*" :key "a")))
- '(objc-mode-hook '((lambda nil (require 'ccls) (lsp))))
  '(org-agenda-custom-commands
    '(("d" "Weekly agenda about urgencies"
       ((tags "@urgent"
@@ -287,10 +319,12 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(elfeed beacon chess wanderlust bic helm-projectile org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
+   '(initsplit elfeed beacon chess wanderlust bic helm-projectile org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
  '(prog-mode-hook
    '(display-line-numbers-mode yas-minor-mode highlight-indentation-current-column-mode))
  '(projectile-mode t nil (projectile))
+ '(recentf-exclude
+   '("/home/drd/.emacs.d/.cache/treemacs-persist-at-last-error" "/home/drd/.emacs.d/.cache/treemacs-persist" "/usr/share/emacs" "/home/drd/.elfeed"))
  '(require-final-newline t)
  '(save-place-mode t)
  '(savehist-mode t)

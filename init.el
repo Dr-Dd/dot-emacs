@@ -3,9 +3,10 @@
 ;;; Just my init file
 ;;; Code:
 
+
 (setq read-process-output-max (* 1024 1024))
 
-;; (setq debug-on-error t)
+(setq debug-on-error t)
 
 ;; MELPA
 (require 'package)
@@ -35,6 +36,10 @@ There are two things you can do about this warning:
 (eval-when-compile
   (require 'use-package))
 
+;; At the beginning as to benchmark the whole loading process
+;; BORKED, SEE https://github.com/dholm/benchmark-init-el/issues/15
+;; (require 'init-benchmark-init)
+
 ;; IN CASE OF A PACKAGE NOT INSTALLING, TRY TO RUN
 ;; <M-x>`package-refresh-contents`<RET> BEFORE DOING ANYTHING
 ;; STUPID
@@ -43,17 +48,16 @@ There are two things you can do about this warning:
 
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
+;; (require 'init-initsplit) ;; doesn't work, good job dabrahams
 (require 'init-ggtags)
 (require 'init-flycheck)
 (require 'init-diminish)
-;; (require 'init-benchmark-init)
 (require 'init-org-mode)
 (require 'init-evil-mode)
 (require 'init-company-mode)
 (require 'init-all-the-icons)
 (require 'init-doom-modeline)
 (require 'init-ace-window)
-;; (require 'init-winum) ;; conflict with dashboard
 (require 'init-highlight-indent)
 (require 'init-drd-mail)
 (require 'init-drd-newsfeed)
@@ -66,7 +70,5 @@ There are two things you can do about this warning:
 (require 'init-fonts)
 (require 'init-beacon)
 (require 'init-gui)
-;; (require 'init-exwm)
-
 
 ;;; init.el ends here

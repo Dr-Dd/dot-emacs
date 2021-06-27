@@ -25,11 +25,21 @@ returns nil."
    (shell . t)
    (emacs-lisp . nil)))
 
+
 (use-package htmlize :ensure t)
 
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (use-package org-edna :ensure t)
+
+(require 'ox-latex)
+(require 'ox-beamer)
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
