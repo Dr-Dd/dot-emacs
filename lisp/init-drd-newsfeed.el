@@ -100,14 +100,33 @@
 ;;       (elfeed-search-update-entry entry))
 ;;     (elfeed-show-refresh)))
 
+(defun my/create-elfeed-tags-table ()
+  "Create hash-table from elfeed feeds, organized by tag (title in xml form)."
+  (let* ((tag-feeds-hash (make-hash-table :test 'equal)))
+    (dolist (e elfeed-feeds)
+      (let* ((url (car e))
+             (tag (car (cdr e))))
+        (if (not (listp (gethash tag tag-feeds-hash)))
+          (puthash tag (list url) tag-feeds-hash)
+          (push url (gethash tag tag-feeds-hash)))))
+    tag-feeds-hash))
+
 (defun my/write-elfeed-to-opml (filename)
-  "Copy elfeed's feeds in FILENAME."
+  "Copy elfeed's feeds in FILENAME using OPML format specs.
+Exclude feeds tied to local services."
   (with-temp-file filename
-    (insert "<opml version=\"2.0\"><body><outline text=\"Subscriptions\" title=\"Subscriptions\">")
-    (dolist (elem (mapcar 'car elfeed-feeds))
-      (insert (concat "<outline xmlUrl=\"" elem "\"/>")))
-    (insert "</outline></body></opml>")))
-;; This is what you need to parse your xml subscriptions file
+    (insert "<opml version=\"2.0\"><body>")
+    (let* ((table (my/create-elfeed-tags-table)))
+      (dolist (k (hash-table-keys table))
+        (insert (concat "<outline title=\"" (symbol-name k) "\">"))
+        (let* ((l (gethash k table)))
+          (dolist (e l)
+            (when (not (numberp (string-match-p "^\\(http[[:lower:]]?://localhost:[[:digit:]]*\\)" e)))
+              (insert (concat "<outline xmlUrl=\"" e "\"/>")))))
+        (insert "</outline>")))
+    (insert "</body></opml>")))
+
+;; This is what you need to parse your xml subscriptions file, hopefully you won't need it
 ;; (mapcar 'cdr (mapcar 'car (mapcar 'car (mapcar 'cdr (nthcdr 2 (car (nthcdr 2 (car (cdr (cdr (libxml-parse-xml-region 1 (buffer-size)))))))))))))
 
 (add-hook 'kill-emacs-hook #'(my/write-elfeed-to-opml (concat my/user-home "Sync" my/path-separator "opml-feed.xml")))

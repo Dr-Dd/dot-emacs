@@ -6,7 +6,7 @@
 
 (setq read-process-output-max (* 1024 1024))
 
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 ;; MELPA
 (require 'package)
