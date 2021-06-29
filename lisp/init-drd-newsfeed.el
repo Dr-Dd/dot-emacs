@@ -4,101 +4,57 @@
 
 (use-package elfeed :ensure t)
 
-(define-key elfeed-show-mode-map (kbd "SPC") 'elfeed-show-next)
-(define-key elfeed-show-mode-map (kbd "S-SPC") 'elfeed-show-prev)
+(defun my/quality-to-ytdl--format (quality)
+  "Helper fuction for my/elfeed-search-yt-to-mpv.
+Returns the correct ytdl-format string associated with QUALITY."
+  (let* ( (qua-fmt '(("144p" . "bestvideo[height<=144]+bestaudio/best[height<=144]")
+                     ("240p" . "bestvideo[height<=240]+bestaudio/best[height<=240]")
+                     ("360p" . "bestvideo[height<=360]+bestaudio/best[height<=360]")
+                     ("480p" . "bestvideo[height<=480]+bestaudio/best[height<=480]")
+                     ("720p" . "bestvideo[height<=720]+bestaudio/best[height<=720]")
+                     ("1080p". "bestvideo[height<=1080]+bestaudio/best[height<=1080]")
+                     ("1440p". "bestvideo[height<=1440]+bestaudio/best[height<=1440]")
+                     ("2160p". "bestvideo[height<=2160]+bestaudio/best[height<=2160]"))))
+    (cdr (assoc quality qua-fmt))))
 
-(add-hook 'elfeed-new-entry-hook
-          (elfeed-make-tagger :feed-url "youtube\\.com"
-                              :add 'unwatched
-                              :remove 'unread))
+(defun my/ytdl-get-quality-list (video-link)
+  "Parse youtube-dl available quality settings for VIDEO-LINK.
+Returns a list of the available quality settings.
 
-(push '(star diary-anniversary) elfeed-search-face-alist)
-(defalias 'elfeed-search-toggle-star
-  (elfeed-expose #'elfeed-search-toggle-all 'star))
-(defalias 'elfeed-show-toggle-star
-  (elfeed-expose #'elfeed-show-tag 'star))
-(eval-after-load 'elfeed-search
-  '(define-key elfeed-search-mode-map (kbd "m") 'elfeed-search-toggle-star))
-(eval-after-load 'elfeed-show
-  '(define-key elfeed-show-mode-map (kbd "m") 'elfeed-show-toggle-star))
+NOTE: efficient, not pretty."
+  (let* ((output (shell-command-to-string (concat "/usr/bin/youtube-dl --list-formats " video-link)))
+         (quals '("144p" "240p" "360p" "480p" "720p" "1080p" "1440p" "2160p"))
+         (rl '()))
+    (with-temp-buffer
+      (insert output)
+      (goto-char (point-min))
+      (dolist (q quals)
+        (re-search-forward q nil t)
+        (when (stringp (match-string 0 nil))
+          (push (match-string 0) rl))))
+    rl))
 
+(defun my/yt-to--mpv (quality video-link)
+  "Helper fuction for my/elfeed-search-yt-to-mpv.
+QUALITY is a string of the type \"ytdl-format=<ytdl-format>\".
+VIDEO-LINK is the link of the video to watch."
+  (start-process "mpv-yt" nil "mpv" quality video-link)
+  (message "[MPV] Loading youtube video to mpv..."))
 
-(push '(interesting font-lock-string-face) elfeed-search-face-alist)
-(defalias 'elfeed-search-toggle-interesting
-  (elfeed-expose #'elfeed-search-toggle-all 'interesting))
-(defalias 'elfeed-show-toggle-interesting
-  (elfeed-expose #'elfeed-show-tag 'interesting))
-(eval-after-load 'elfeed-search
-  '(define-key elfeed-search-mode-map (kbd "j") 'elfeed-search-toggle-interesting))
-(eval-after-load 'elfeed-show
-  '(define-key elfeed-show-mode-map (kbd "j") 'elfeed-show-toggle-interesting))
-
-
-(push '(unwatched default) elfeed-search-face-alist)
-(defun my/yt-to--mpv (video-link)
-  (start-process "mpv-yt" nil "mpv" "--ytdl-format=22" video-link)
-  (message "Loading youtube video to mpv..."))
 (defun my/elfeed-search-yt-to-mpv ()
-    (interactive)
-    (let ((entry (elfeed-search-selected :single)))
-      (my/yt-to--mpv (elfeed-entry-link entry))))
-(defalias 'elfeed-search-toggle-unwatched
-  (elfeed-expose #'elfeed-search-toggle-all 'unwatched))
-(defalias 'elfeed-show-toggle-unwatched
-  (elfeed-expose #'elfeed-show-tag 'unwatched))
-(eval-after-load 'elfeed-search
-  '(define-key elfeed-search-mode-map (kbd "v")
-     (lambda ()
-       (interactive)
-       (save-excursion (my/elfeed-search-yt-to-mpv))
-       (elfeed-search-toggle-unwatched))))
-(eval-after-load 'elfeed-show
-  '(define-key elfeed-show-mode-map (kbd "v")
-     (lambda ()
-       (interactive)
-       (save-excursion (elfeed-show-toggle-unwatched))
-       (my/elfeed-search-yt-to-mpv))))
-(eval-after-load 'elfeed-search
-  '(define-key elfeed-search-mode-map (kbd "V")
-       'elfeed-search-toggle-unwatched))
+  "Send selected elfeed-search link to mpv/youtube-dl.
+Prompt the user for preferred video quality in advance.
 
-;; ;; REWORK TO TOGGLE IN SHOW BUFFERS TOO
-;; (defun elfeed-search-toggle-all (tag)
-;;   "Toggle TAG on all selected entries."
-;;   (interactive (list (intern (read-from-minibuffer "Tag: "))))
-;;   (let ((entries (elfeed-search-selected)) entries-tag entries-untag)
-;;     (cl-loop for entry in entries
-;;              when (elfeed-tagged-p tag entry)
-;;              do (push entry entries-untag)
-;;              else do (push entry entries-tag))
-;;     (elfeed-tag entries-tag tag)
-;;     (elfeed-untag entries-untag tag)
-;;     (mapc #'elfeed-search-update-entry entries)
-;;     (unless (or elfeed-search-remain-on-entry (use-region-p))
-;;       (forward-line))))
-;;
-;; ;; THIS COULD BE BETTER SUITED
-;; (defun elfeed-show-tag (&rest tags)
-;;   "Add TAGS to the displayed entry."
-;;   (interactive (list (intern (read-from-minibuffer "Tag: "))))
-;;   (let ((entry elfeed-show-entry))
-;;     (apply #'elfeed-tag entry tags)
-;;     (with-current-buffer (elfeed-search-buffer)
-;;       (elfeed-search-update-entry entry))
-;;     (elfeed-show-refresh)))
-;;
-;; ;; THIS TOO
-;; (defun elfeed-show-untag (&rest tags)
-;;   "Remove TAGS from the displayed entry."
-;;   (interactive (let* ((tags (elfeed-entry-tags elfeed-show-entry))
-;;                       (names (mapcar #'symbol-name tags))
-;;                       (select (completing-read "Untag: " names nil :match)))
-;;                  (list (intern select))))
-;;   (let ((entry elfeed-show-entry))
-;;     (apply #'elfeed-untag entry tags)
-;;     (with-current-buffer (elfeed-search-buffer)
-;;       (elfeed-search-update-entry entry))
-;;     (elfeed-show-refresh)))
+NOTE: audio is fixed to best."
+  (interactive)
+  (let ((entry (elfeed-search-selected :single)))
+    (message "[MPV] Fetching available resolutions...")
+    (my/yt-to--mpv (concat "--ytdl-format=" (my/quality-to-ytdl--format
+                                             (completing-read "Select video quality: "
+                                                              (my/ytdl-get-quality-list (elfeed-entry-link entry))
+                                                              nil t "")))
+                   (elfeed-entry-link entry))))
+
 
 (defun my/create-elfeed-tags-table ()
   "Create hash-table from elfeed feeds, organized by tag (title in xml form)."
@@ -107,7 +63,7 @@
       (let* ((url (car e))
              (tag (car (cdr e))))
         (if (not (listp (gethash tag tag-feeds-hash)))
-          (puthash tag (list url) tag-feeds-hash)
+            (puthash tag (list url) tag-feeds-hash)
           (push url (gethash tag tag-feeds-hash)))))
     tag-feeds-hash))
 
@@ -115,7 +71,7 @@
   "Copy elfeed's feeds in FILENAME using OPML format specs.
 Exclude feeds tied to local services."
   (with-temp-file filename
-    (insert "<opml version=\"2.0\"><body>")
+    (insert "<?xml version=\"1.0\" encoding=\"utf-8\"?><opml version=\"2.0\"><body>")
     (let* ((table (my/create-elfeed-tags-table)))
       (dolist (k (hash-table-keys table))
         (insert (concat "<outline title=\"" (symbol-name k) "\">"))
@@ -126,8 +82,64 @@ Exclude feeds tied to local services."
         (insert "</outline>")))
     (insert "</body></opml>")))
 
-;; This is what you need to parse your xml subscriptions file, hopefully you won't need it
-;; (mapcar 'cdr (mapcar 'car (mapcar 'car (mapcar 'cdr (nthcdr 2 (car (nthcdr 2 (car (cdr (cdr (libxml-parse-xml-region 1 (buffer-size)))))))))))))
+;; Add custom tag|color tuples
+(push '(star diary-anniversary) elfeed-search-face-alist)
+(push '(interesting font-lock-string-face) elfeed-search-face-alist)
+(push '(unwatched default) elfeed-search-face-alist)
+
+;; Mark all new youtube videos with alternative unread tag 'unwatched'
+(add-hook 'elfeed-new-entry-hook
+          (elfeed-make-tagger :feed-url "youtube\\.com"
+                              :add 'unwatched
+                              :remove 'unread))
+
+(defalias 'my/elfeed-search-toggle-star
+  (elfeed-expose #'elfeed-search-toggle-all 'star))
+(defalias 'my/elfeed-show-tag-star
+  (elfeed-expose #'elfeed-show-tag 'star))
+(defalias 'my/elfeed-search-toggle-interesting
+  (elfeed-expose #'elfeed-search-toggle-all 'interesting))
+(defalias 'my/elfeed-show-tag-interesting
+  (elfeed-expose #'elfeed-show-tag 'interesting))
+(defalias 'my/elfeed-search-toggle-unwatched
+  (elfeed-expose #'elfeed-search-toggle-all 'unwatched))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-show-mode-map (kbd "SPC")
+    'elfeed-show-next))
+
+(with-eval-after-load 'elfeed-show
+  (define-key elfeed-show-mode-map (kbd "S-SPC")
+    'elfeed-show-prev))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-search-mode-map (kbd "m")
+    'my/elfeed-search-toggle-star
+    ))
+
+(with-eval-after-load 'elfeed-show
+  (define-key elfeed-show-mode-map (kbd "m")
+    'my/elfeed-show-tag-star
+    ))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-search-mode-map (kbd "j")
+    'my/elfeed-search-toggle-interesting
+    ))
+
+(with-eval-after-load 'elfeed-show
+  (define-key elfeed-show-mode-map (kbd "j")
+    'my/elfeed-show-tag-interesting
+    ))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-search-mode-map (kbd "v")
+    'my/elfeed-search-toggle-unwatched
+    ))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-search-mode-map (kbd "V")
+    'my/elfeed-search-yt-to-mpv))
 
 (add-hook 'kill-emacs-hook #'(my/write-elfeed-to-opml (concat my/user-home "Sync" my/path-separator "opml-feed.xml")))
 
