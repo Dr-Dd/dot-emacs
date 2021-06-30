@@ -21,7 +21,7 @@ Returns the correct ytdl-format string associated with QUALITY."
   "Parse youtube-dl available quality settings for VIDEO-LINK.
 Returns a list of the available quality settings.
 
-NOTE: efficient, not pretty."
+NOTE: very efficient, not really elegant."
   (let* ((output (shell-command-to-string (concat "/usr/bin/youtube-dl --list-formats " video-link)))
          (quals '("144p" "240p" "360p" "480p" "720p" "1080p" "1440p" "2160p"))
          (rl '()))
@@ -44,16 +44,18 @@ VIDEO-LINK is the link of the video to watch."
 (defun my/elfeed-search-yt-to-mpv ()
   "Send selected elfeed-search link to mpv/youtube-dl.
 Prompt the user for preferred video quality in advance.
-
 NOTE: audio is fixed to best."
   (interactive)
   (let ((entry (elfeed-search-selected :single)))
     (message "[MPV] Fetching available resolutions...")
-    (my/yt-to--mpv (concat "--ytdl-format=" (my/quality-to-ytdl--format
-                                             (completing-read "Select video quality: "
-                                                              (my/ytdl-get-quality-list (elfeed-entry-link entry))
-                                                              nil t "")))
-                   (elfeed-entry-link entry))))
+    (my/yt-to--mpv
+     (concat "--ytdl-format="
+             (my/quality-to-ytdl--format
+              (completing-read
+               "Select video quality: "
+               (my/ytdl-get-quality-list (elfeed-entry-link entry))
+               nil t "")))
+     (elfeed-entry-link entry))))
 
 
 (defun my/create-elfeed-tags-table ()
@@ -81,6 +83,15 @@ Exclude feeds tied to local services."
               (insert (concat "<outline xmlUrl=\"" e "\"/>")))))
         (insert "</outline>")))
     (insert "</body></opml>")))
+
+(defun my/elfeed-opml-sync (filename)
+  "Interactive function to enable custom opml FILENAME sync."
+  (interactive "fOutput file:")
+  (my/write-elfeed-to-opml filename))
+
+(defalias 'my/elfeed-syn-syncthing
+  (my/elfeed-opml-sync (concat my/user-home "Sync" my/path-separator "opml-feed.xml"))
+  "Quickly sync elfeed to syncthing folder opml-feeds.")
 
 ;; Add custom tag|color tuples
 (push '(star diary-anniversary) elfeed-search-face-alist)
@@ -114,34 +125,29 @@ Exclude feeds tied to local services."
 
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "m")
-    'my/elfeed-search-toggle-star
-    ))
+    'my/elfeed-search-toggle-star))
 
 (with-eval-after-load 'elfeed-show
   (define-key elfeed-show-mode-map (kbd "m")
-    'my/elfeed-show-tag-star
-    ))
+    'my/elfeed-show-tag-star))
 
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "j")
-    'my/elfeed-search-toggle-interesting
-    ))
+    'my/elfeed-search-toggle-interesting))
 
 (with-eval-after-load 'elfeed-show
   (define-key elfeed-show-mode-map (kbd "j")
-    'my/elfeed-show-tag-interesting
-    ))
+    'my/elfeed-show-tag-interesting))
 
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "v")
-    'my/elfeed-search-toggle-unwatched
-    ))
+    'my/elfeed-search-toggle-unwatched))
 
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "V")
     'my/elfeed-search-yt-to-mpv))
 
-(add-hook 'kill-emacs-hook #'(my/write-elfeed-to-opml (concat my/user-home "Sync" my/path-separator "opml-feed.xml")))
+(add-hook 'kill-emacs-hook #'my/elfeed-syn-syncthing)
 
 (provide 'init-drd-newsfeed)
 ;;; init-drd-newsfeed.el ends here

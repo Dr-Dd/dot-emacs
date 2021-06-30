@@ -8,13 +8,6 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
-;; ;; Removes *Completions* from buffer after you've opened a file.
-;; (add-hook 'minibuffer-exit-hook
-;;           #'(lambda ()
-;;               (let ((buffer "*Completions*"))
-;;                 (and (get-buffer buffer)
-;;                      (kill-buffer buffer)))))
-
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
 
@@ -32,7 +25,6 @@
                              (horizontal-scroll-bars . nil))))
 ;; Remove scrollbar on each new FRAME.
 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
-;;(add-hook 'after-make-frame-functions 'force-mode-line-update)
 
 (provide 'init-drdefaults)
 ;;; init-drdefaults.el ends here

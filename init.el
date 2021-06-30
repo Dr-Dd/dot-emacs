@@ -3,7 +3,6 @@
 ;;; Just my init file
 ;;; Code:
 
-
 (setq read-process-output-max (* 1024 1024))
 
 ;; (setq debug-on-error t)
@@ -36,19 +35,21 @@ There are two things you can do about this warning:
 (eval-when-compile
   (require 'use-package))
 
-;; At the beginning as to benchmark the whole loading process
-;; BORKED, SEE https://github.com/dholm/benchmark-init-el/issues/15
-;; (require 'init-benchmark-init)
-
 ;; IN CASE OF A PACKAGE NOT INSTALLING, TRY TO RUN
 ;; <M-x>`package-refresh-contents`<RET> BEFORE DOING ANYTHING
 ;; STUPID
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
+;; At the beginning as to benchmark the whole loading process
+;; BORKED, SEE https://github.com/dholm/benchmark-init-el/issues/15
+;; right-now i've MANUALLY PATCHED IT
+;; (require 'init-benchmark-init)
+
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
 ;; (require 'init-initsplit) ;; doesn't work, good job dabrahams
+(require 'init-eyebrowse)
 (require 'init-hydra)
 (require 'init-ggtags)
 (require 'init-flycheck)
@@ -59,6 +60,7 @@ There are two things you can do about this warning:
 (require 'init-all-the-icons)
 (require 'init-doom-modeline)
 (require 'init-ace-window)
+(require 'init-aggressive-indent)
 (require 'init-highlight-indent)
 (require 'init-drd-mail)
 (require 'init-drd-newsfeed)

@@ -134,6 +134,8 @@
      ("https://www.phoronix.com/rss.php" tech)
      ("https://www.reddit.com/r/linux/rising/.rss" tech reddit)
      ("https://www.reddit.com/r/emacs/rising/.rss" tech reddit)
+     ("https://www.kernel.org/feeds/all.atom.xml" tech linux)
+     ("https://www.kernel.org/feeds/kdist.xml" tech linux)
      ("http://localhost:13500/BBCBreaking/rss" news nitter)
      ("http://localhost:13500/guardian/rss" news nitter)
      ("http://localhost:13500/AJENews/rss" news nitter)
@@ -183,8 +185,10 @@
  '(evil-ex-search-case 'insensitive)
  '(evil-mode t)
  '(evil-undo-system 'undo-tree)
+ '(eyebrowse-mode t)
  '(flycheck-emacs-lisp-load-path 'inherit)
  '(gc-cons-threshold 100000000)
+ '(global-aggressive-indent-mode t)
  '(global-company-mode t)
  '(global-evil-surround-mode t)
  '(global-flycheck-mode t)
@@ -309,6 +313,29 @@
  '(org-enforce-todo-dependencies t)
  '(org-habit-graph-column 68)
  '(org-habit-show-habits-only-for-today nil)
+ '(org-latex-classes
+   '(("beamer" "\\documentclass[presentation]{beamer}"
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+     ("article" "\\documentclass[11pt]{article}"
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+      ("\\paragraph{%s}" . "\\paragraph*{%s}")
+      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+     ("report" "\\documentclass[11pt]{report}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))
+     ("book" "\\documentclass[11pt]{book}"
+      ("\\part{%s}" . "\\part*{%s}")
+      ("\\chapter{%s}" . "\\chapter*{%s}")
+      ("\\section{%s}" . "\\section*{%s}")
+      ("\\subsection{%s}" . "\\subsection*{%s}")
+      ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
  '(org-log-done 'time)
  '(org-mode-hook '((lambda nil (org-superstar-mode 1)) turn-on-auto-fill))
  '(org-tags-column 0)
@@ -319,7 +346,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(initsplit elfeed beacon chess wanderlust bic helm-projectile org-ref zenburn-theme yasnippet-snippets which-key use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-lsp company-c-headers company-box ccls))
+   '(aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref yasnippet-snippets which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode yas-minor-mode highlight-indentation-current-column-mode))
  '(projectile-mode t nil (projectile))
