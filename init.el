@@ -50,7 +50,7 @@ There are two things you can do about this warning:
 (require 'init-drdefaults)
 ;; (require 'init-initsplit) ;; doesn't work, good job dabrahams
 (require 'init-eyebrowse)
-(require 'init-hydra)
+;; (require 'init-hydra)
 (require 'init-ggtags)
 (require 'init-flycheck)
 (require 'init-diminish)
