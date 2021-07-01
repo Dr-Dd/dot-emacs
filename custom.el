@@ -214,6 +214,7 @@
      (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
      (:name "all mail" :query "*" :key "a")))
+ '(notmuch-search-oldest-first nil)
  '(org-agenda-custom-commands
    '(("d" "Weekly agenda about urgencies"
       ((tags "@urgent"
@@ -355,7 +356,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
