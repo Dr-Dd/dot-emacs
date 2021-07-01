@@ -44,74 +44,68 @@
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
    '(((#("🗂" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "emacs-workspace" "Dired to your Emacs Workspace"
        (lambda
          (&rest _)
          (dired my/emacs-workspace-directory)))
       (#("" 0 1
-         (face
-          (:family "file-icons" :height 0.96 :foreground "#6146A1")
-          font-lock-face
-          (:family "file-icons" :height 0.96 :foreground "#6146A1")
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "file-icons" :height 0.96 :foreground "#6146A1")
+                         face
+                         (:family "file-icons" :height 0.96 :foreground "#6146A1")))
        "init.el" "Open init.el config file"
        (lambda
          (&rest _)
          (find-file
           (concat user-emacs-directory "init.el"))))
       (#("📔" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "agenda" "Open your agenda"
        (lambda
          (&rest _)
          (org-agenda 0 "d")))
       (#("📫" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "notmuch" "Read your inbox"
        (lambda
          (&rest _)
          (notmuch)))
       (#("📡" 0 1
-         (face
-          (:family "all-the-icons" :height 0.96)
-          font-lock-face
-          (:family "all-the-icons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "all-the-icons" :height 0.96)
+                         face
+                         (:family "all-the-icons" :height 0.96)))
        "elfeed" "Read the news"
        (lambda
          (&rest _)
          (elfeed)))
       (#("🏠" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+         (rear-nonsticky t display
+                         (raise 0.0)
+                         font-lock-face
+                         (:family "github-octicons" :height 0.96)
+                         face
+                         (:family "github-octicons" :height 0.96)))
        "home" "Dired to your Home"
        (lambda
          (&rest _)
@@ -361,7 +355,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache))
+     doom-modeline-refresh-font-width-cache) t)
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
