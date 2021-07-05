@@ -50,6 +50,7 @@ There are two things you can do about this warning:
 (require 'init-drdefaults)
 ;; (require 'init-initsplit) ;; doesn't work, good job dabrahams
 (require 'init-eyebrowse)
+(require 'init-magit)
 ;; (require 'init-hydra)
 (require 'init-ggtags)
 (require 'init-flycheck)
@@ -68,6 +69,7 @@ There are two things you can do about this warning:
 (require 'init-helm)
 (require 'init-projectile)
 (require 'init-lsp)
+(require 'init-ledger)
 (require 'init-drdashboard)
 (require 'init-doom-themes)
 (require 'init-fonts)

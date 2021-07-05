@@ -79,7 +79,7 @@ Exclude feeds tied to local services."
         (insert (concat "<outline title=\"" (symbol-name k) "\">"))
         (let* ((l (gethash k table)))
           (dolist (e l)
-            (when (not (numberp (string-match-p "^\\(http[[:lower:]]?://localhost:[[:digit:]]*\\)" e)))
+            (when (not (numberp (string-match-p "^\\(http[[:lower:]]?://localhost:?[[:digit:]]*\\)" e)))
               (insert (concat "<outline xmlUrl=\"" e "\"/>")))))
         (insert "</outline>")))
     (insert "</body></opml>")))
@@ -93,10 +93,12 @@ Exclude feeds tied to local services."
   (my/elfeed-opml-sync (concat my/user-home "Sync" my/path-separator "opml-feed.xml"))
   "Quickly sync elfeed to syncthing folder opml-feeds.")
 
-;; Add custom tag|color tuples
-(push '(star diary-anniversary) elfeed-search-face-alist)
-(push '(interesting font-lock-string-face) elfeed-search-face-alist)
+;; Add custom tag|face tuples, last one highest priority
+;; 'M-x list-faces-display' to view one before selection
 (push '(unwatched default) elfeed-search-face-alist)
+(push '(funny diff-nonexistent) elfeed-search-face-alist)
+(push '(interesting font-lock-string-face) elfeed-search-face-alist)
+(push '(star diary-anniversary) elfeed-search-face-alist)
 
 ;; Mark all new youtube videos with alternative unread tag 'unwatched'
 (add-hook 'elfeed-new-entry-hook
@@ -114,6 +116,10 @@ Exclude feeds tied to local services."
   (elfeed-expose #'elfeed-show-tag 'interesting))
 (defalias 'my/elfeed-search-toggle-unwatched
   (elfeed-expose #'elfeed-search-toggle-all 'unwatched))
+(defalias 'my/elfeed-search-toggle-funny
+  (elfeed-expose #'elfeed-search-toggle-all 'funny))
+(defalias 'my/elfeed-show-tag-funny
+  (elfeed-expose #'elfeed-show-tag 'funny))
 
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-show-mode-map (kbd "SPC")
@@ -146,6 +152,14 @@ Exclude feeds tied to local services."
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "V")
     'my/elfeed-search-yt-to-mpv))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-search-mode-map (kbd "f")
+    'my/elfeed-search-toggle-funny))
+
+(with-eval-after-load 'elfeed-show
+  (define-key elfeed-show-mode-map (kbd "f")
+    'my/elfeed-show-tag-funny))
 
 (add-hook 'kill-emacs-hook #'my/elfeed-syn-syncthing)
 

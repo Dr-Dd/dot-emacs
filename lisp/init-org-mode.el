@@ -22,6 +22,7 @@ returns nil."
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((C . t)
+   (ledger . t)
    (shell . t)
    (emacs-lisp . nil)))
 
