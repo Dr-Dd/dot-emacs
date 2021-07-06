@@ -13,7 +13,7 @@ machine HOST login USER password *** port PORT"
 
 (defvar my/znc-networks-list '(("drd" . ("libera" "oftc")))
   "The list of network to which `my/connect-to-znc-networks' connects to.
-It has to be synchronized to the ZNC user network list (same aliases).
+It MUST BE SYNCHRONIZED to the ZNC user network list (same aliases).
 
 An alist of the form:
 
