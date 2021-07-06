@@ -43,14 +43,14 @@
  '(dashboard-init-info t)
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
-   '(((#("🗂" 0 1
+   '(((#("💰" 0 1
          (rear-nonsticky t display
                          (raise 0.0)
                          font-lock-face
                          (:family "github-octicons" :height 0.96)
                          face
                          (:family "github-octicons" :height 0.96)))
-       "ledger" "Open your ledger file"
+       "ledger-cli" "Open your ledger folder"
        (lambda
          (&rest _)
          (dired
