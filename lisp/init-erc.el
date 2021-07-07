@@ -3,7 +3,9 @@
 ;;; Initialization for my erc config via local ZNC bouncer
 ;;; Code:
 
-(use-package erc)
+(use-package erc
+  :init
+  (evil-set-initial-state 'erc-mode 'emacs))
 
 (defun my/get-authinfo-passwd (HOST USER PORT)
   "Safely get an `auth-sources' USER password.
@@ -15,9 +17,12 @@ machine HOST login USER password *** port PORT"
 (defvar my/znc-user "drd-admin"
   "User that can access to the ZNC server")
 
-(defvar my/znc-networks-list '("libera")
+(defvar my/znc-networks-list '("libera" "#linux")
   "The list of network to which `my/connect-to-znc-networks' connects to.
 It MUST BE SYNCHRONIZED TO the ZNC USER NETWORK LIST (same aliases).")
+
+(defvar my/znc-autoconnect-list
+  '(("libera" "#linux" "#emacs" "#gentoo" "#italy" "#lobsters")))
 
 (defun my/connect-to-znc-networks (ZNC-HOST ZNC-PORT)
   "Connect to the ZNC bouncer, which then connects to irc networks specified.
@@ -38,10 +43,12 @@ authenticate the user on the specified network in some way,
 either using perform or nickserv. The best way being through
 SASL (enable the ZNC module to use it, for each user network), so be sure to
 properly setup a SASL secret for each of your networks from the webconfig"
-  (dolist (network my/znc-networks-list)
-    (erc :server ZNC-HOST :port ZNC-PORT :nick my/znc-user
-         :password (concat my/znc-user "/" network ":"
-                           (my/get-authinfo-passwd "localhost" my/znc-user ZNC-PORT)))))
+  (dolist (n-c my/znc-autoconnect-list)
+    (let* ((net-chans (mapcar #'copy-sequence n-c)))
+      (setq erc-autojoin-channels-alist (list (push "0.1" (cdr net-chans)))) ;; Dirty hack, works relatively well
+      (erc :server ZNC-HOST :port ZNC-PORT :nick my/znc-user
+           :password (concat my/znc-user "/" (car net-chans) ":"
+                             (my/get-authinfo-passwd "localhost" my/znc-user ZNC-PORT))))))
 
 (defun my/erc-start-default ()
   "Start default connection with erc."
@@ -49,6 +56,8 @@ properly setup a SASL secret for each of your networks from the webconfig"
   (my/connect-to-znc-networks "127.0.0.1" 1717))
 
 (define-key global-map (kbd "C-c i") 'erc-switch-to-buffer)
+
+;; (erc-server-send (concat "JOIN " channel))
 
 (provide 'init-erc)
 ;;; init-erc.el ends here

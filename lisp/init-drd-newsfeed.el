@@ -106,6 +106,10 @@ Exclude feeds tied to local services."
                               :add 'unwatched
                               :remove 'unread))
 
+(add-hook 'elfeed-new-entry-hook
+          (elfeed-make-tagger :feed-url "4chan\\.org"
+                              :remove 'unread))
+
 (defalias 'my/elfeed-search-toggle-star
   (elfeed-expose #'elfeed-search-toggle-all 'star))
 (defalias 'my/elfeed-show-tag-star

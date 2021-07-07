@@ -190,8 +190,7 @@
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCdJdEguB1F1CiYe7OEi3SBg" youtube)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCWqr2tH3dPshNhPjV5h1xRw" youtube)))
  '(elfeed-search-title-max-width 130)
- '(erc-autojoin-channels-alist '(("0.1" "#emacs" "#linux" "#gentoo" "#lobsters" "#italy")))
- '(erc-autojoin-mode t)
+ '(erc-hide-list '("JOIN" "PART" "QUIT"))
  '(erc-rename-buffers t)
  '(evil-commentary-mode t)
  '(evil-emacs-state-modes
@@ -209,7 +208,7 @@
  '(global-hl-line-mode t)
  '(global-undo-tree-mode t)
  '(helm-boring-buffer-regexp-list
-   '("\\` " "\\`\\*helm" "\\`\\*Echo Area" "\\`\\*Minibuf" "\\`\\#"))
+   '("\\` " "\\`\\*helm" "\\`\\*Echo Area" "\\`\\*Minibuf" "\\`\\#.*" "\\`\\*status" "\\`\\Libera.Chat"))
  '(helm-mode t)
  '(history-delete-duplicates t)
  '(indent-tabs-mode nil)
@@ -364,7 +363,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref yasnippet-snippets which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref yasnippet-snippets which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode yas-minor-mode highlight-indentation-current-column-mode))
  '(projectile-mode t nil (projectile))
