@@ -34,11 +34,11 @@ NOTE: very efficient, not really elegant."
           (push (match-string 0) rl))))
     rl))
 
-(defun my/yt-to--mpv (quality video-link)
+(defun my/emacs-to-mpv (options video-link)
   "Helper fuction for my/elfeed-search-yt-to-mpv.
-QUALITY is a string of the type \"ytdl-format=<ytdl-format>\".
+OPTIONS is a string with mpv options.
 VIDEO-LINK is the link of the video to watch."
-  (start-process "mpv-yt" nil "mpv" quality video-link)
+  (start-process "mpv-emacs" nil "mpv" options video-link)
   (message "[MPV] Loading youtube video to mpv..."))
 
 (defun my/elfeed-search-yt-to-mpv ()
@@ -47,16 +47,29 @@ Prompt the user for preferred video quality in advance.
 NOTE: audio is fixed to best."
   (interactive)
   (let ((entry (elfeed-search-selected :single)))
-    (message "[MPV] Fetching available resolutions...")
-    (my/yt-to--mpv
-     (concat "--ytdl-format="
-             (my/quality-to-ytdl--format
-              (completing-read
-               "Select video quality: "
-               (my/ytdl-get-quality-list (elfeed-entry-link entry))
-               nil t "")))
-     (elfeed-entry-link entry))))
+    (if (string-match-p "youtube" (elfeed-entry-link entry))
+        (progn (message "[MPV] Fetching available resolutions...")
+               (my/emacs-to-mpv
+                (concat "--ytdl-format="
+                        (my/quality-to-ytdl--format
+                         (completing-read
+                          "Select video quality: "
+                          (my/ytdl-get-quality-list (elfeed-entry-link entry))
+                          nil t "")))
+                (elfeed-entry-link entry))))
+    (error "Entry is not a youtube video.")))
 
+(defun my/elfeed-search-podcast-to-mpv ()
+  "Send selected elfeed-search podcast to mpv.
+NOTE: audio is fixed to best."
+  (interactive)
+  (let ((entry (elfeed-search-selected :single)))
+    (if (member 'podcast (elfeed-entry-tags entry))
+        (progn (message "[MPV] Fetching available resolutions...")
+               (my/emacs-to-mpv ""
+                                ;; vroom vroom
+                                (car (car (elfeed-entry-enclosures entry)))))
+      (error "Entry is not a podcast"))))
 
 (defun my/create-elfeed-tags-table ()
   "Create hash-table from elfeed feeds, organized by tag (title in xml form)."
@@ -156,6 +169,10 @@ Exclude feeds tied to local services."
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "V")
     'my/elfeed-search-yt-to-mpv))
+
+(with-eval-after-load 'elfeed-search
+  (define-key elfeed-search-mode-map (kbd "p")
+    'my/elfeed-search-podcast-to-mpv))
 
 (with-eval-after-load 'elfeed-search
   (define-key elfeed-search-mode-map (kbd "f")
