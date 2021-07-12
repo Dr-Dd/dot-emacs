@@ -365,9 +365,9 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref yasnippet-snippets which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
-   '(display-line-numbers-mode yas-minor-mode highlight-indentation-current-column-mode))
+   '(display-line-numbers-mode highlight-indentation-current-column-mode))
  '(projectile-mode t nil (projectile))
  '(projectile-tags-command "gtags")
  '(recentf-exclude
@@ -381,7 +381,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache))
+     doom-modeline-refresh-font-width-cache) t)
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
@@ -393,7 +393,6 @@
  '(which-key-mode t)
  '(x-gtk-use-system-tooltips nil)
  '(xref-prompt-for-identifier
-   '(not xref-find-definitions xref-find-definitions-other-window xref-find-definitions-other-frame xref-find-references))
- '(yas-global-mode t))
+   '(not xref-find-definitions xref-find-definitions-other-window xref-find-definitions-other-frame xref-find-references)))
 
 ;;; custom.el ends here

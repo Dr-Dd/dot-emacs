@@ -48,20 +48,20 @@
 (use-package helm-lsp :ensure t :commands helm-lsp-workspace-symbol
   :after (helm lsp-mode)
   :bind (:map lsp-mode-map
-        ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))
+              ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))
 
 ;; optionally if you want to use debugger
-(use-package dap-mode :ensure t)
+;; (use-package dap-mode :ensure t)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-(use-package dap-java
-  :after (dap-mode))
+;; (use-package dap-java
+;;   :after (dap-mode))
 
 ;; C-lang language server (ensure that ccls is installed in your system)
 ;; (use-package ccls
 ;;   :ensure t
 ;;   :hook ((cuda-mode . (lambda () (require 'ccls) (lsp)))))
 
-(use-package lsp-java :ensure t )
+;; (use-package lsp-java :ensure t )
 ;;(use-package lsp-java-boot)
 
 ;; optional if you want which-key integration

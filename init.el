@@ -65,7 +65,7 @@ There are two things you can do about this warning:
 (require 'init-highlight-indent)
 (require 'init-drd-mail)
 (require 'init-drd-newsfeed)
-(require 'init-yasnippet)
+;; (require 'init-yasnippet)
 (require 'init-helm)
 ;; (require 'init-projectile)
 (require 'init-lsp)
