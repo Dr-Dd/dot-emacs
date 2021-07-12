@@ -4,6 +4,9 @@
 ;;; Code:
 
 (use-package eyebrowse :ensure t
+  :defer t
+  :bind (:map evil-motion-state-map
+              ("g c" . nil))
   :config
   (eyebrowse-setup-opinionated-keys))
 

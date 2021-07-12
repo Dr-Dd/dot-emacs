@@ -4,7 +4,9 @@
 ;;; environment
 ;;; Code:
 
-(use-package ledger-mode :ensure t)
+(use-package ledger-mode
+  :defer t
+  :ensure t)
 
 (provide 'init-ledger)
 ;;; init.el ends here

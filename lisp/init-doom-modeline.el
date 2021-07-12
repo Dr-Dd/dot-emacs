@@ -5,6 +5,7 @@
 
 ;; all-the-icons dependency
 (use-package doom-modeline
+  :defer t
   :ensure t)
 
 (provide 'init-doom-modeline)

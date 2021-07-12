@@ -4,6 +4,7 @@
 ;;; Code:
 
 (use-package all-the-icons
+  :defer t
   :ensure t
   :config
   (unless (file-exists-p (concat my/all-the-icons-folder "all-the-icons.ttf"))

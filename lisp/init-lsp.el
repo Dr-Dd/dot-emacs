@@ -8,6 +8,7 @@
 ;;; Code:
 
 (use-package lsp-mode
+  :defer t
   :ensure t
   :commands (lsp lsp-deferred)
   :config
@@ -18,11 +19,11 @@
     ;; :project/:workspace/:file
     (setq lsp-modeline-diagnostics-scope :project))
   :bind (:map lsp-mode-map
-        ;; ("C-c j" . lsp-find-definition)
-        ;; ("C-c r" . lsp-find-references)
-        ("C-c n" . lsp-rename)
-        ("C-c d" . lsp-describe-thing-at-point)
-        ("M-RET" . lsp-execute-code-action)))
+              ;; ("C-c j" . lsp-find-definition)
+              ;; ("C-c r" . lsp-find-references)
+              ("C-c n" . lsp-rename)
+              ("C-c d" . lsp-describe-thing-at-point)
+              ("M-RET" . lsp-execute-code-action)))
 
 ;; optionally
 ;; (use-package lsp-ui :ensure t

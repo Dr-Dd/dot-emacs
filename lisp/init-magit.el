@@ -1,9 +1,8 @@
 
 ;; Magit git front-end
 (use-package magit
+  :defer t
   :ensure t
-  :config
-  (setq magit-refresh-status-buffer nil)
-  (global-set-key (kbd "C-c g") 'magit-status))
+  :bind(("C-c g" . magit-status)))
 
 (provide 'init-magit)

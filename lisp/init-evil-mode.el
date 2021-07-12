@@ -4,15 +4,18 @@
 ;;; Code:
 
 (use-package evil
+  :defer t
   :ensure t
   :config
   (diminish 'overwrite-mode))
 
 ;; evil-surround
 (use-package evil-surround
+  :defer t
   :ensure t
   :after (evil))
 (use-package evil-commentary
+  :defer t
   :ensure t
   :after (evil)
   :config

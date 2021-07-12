@@ -4,6 +4,7 @@
 ;;; Code:
 
 (use-package diminish
+  :defer t
   :ensure t
   :config
   ;; Only for default minor modes, melpa minor modes are to be

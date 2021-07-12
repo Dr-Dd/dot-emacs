@@ -5,6 +5,7 @@
 
 ;; highlight indentation
 (use-package highlight-indentation
+  :defer t
   :ensure t
   :config
   (diminish 'highlight-indentation-current-column-mode))

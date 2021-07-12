@@ -26,6 +26,7 @@
 ;;; Code:
 
 (use-package ggtags :ensure t
+  :defer t
   :hook ((emacs-lisp-mode . (lambda () (ggtags-mode 1))))
   :bind (:map ggtags-navigation-map
               ;; M-o is for ace-window

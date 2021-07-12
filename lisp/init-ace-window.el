@@ -4,6 +4,7 @@
 ;;; Code:
 
 (use-package ace-window
+  :defer t
   :ensure t
   :bind
   (("M-o" . ace-window)))

@@ -4,22 +4,16 @@
 ;;; Code:
 
 (use-package erc
+  :defer t
   :init
-  (evil-set-initial-state 'erc-mode 'emacs))
-
-(use-package erc-hl-nicks :ensure t)
-
-(defun my/get-authinfo-passwd (HOST USER PORT)
-  "Safely get an `auth-sources' USER password.
-The search matches a line in the following format:
-
-machine HOST login USER password *** port PORT"
-  (funcall (plist-get (nth 0 (auth-source-search :host HOST :user USER :port PORT)) :secret)))
+  (evil-set-initial-state 'erc-mode 'emacs)
+  :config
+  (global-set-key (kbd "C-c i") 'erc-switch-to-buffer))
 
 (defvar my/znc-user "drd-admin"
   "User that can access to the ZNC server")
 
-(defvar my/znc-networks-list '("libera" "oftc")
+(defvar my/znc-networks-list '("libera")
   "The list of network to which `my/connect-to-znc-networks' connects to.
 It MUST BE SYNCHRONIZED TO the ZNC USER NETWORK LIST (same aliases).")
 
@@ -52,8 +46,16 @@ properly setup a SASL secret for each of your networks from the webconfig"
   "Start default connection with erc."
   (interactive)
   (my/connect-to-znc-networks "127.0.0.1" 1717))
+(use-package erc-hl-nicks :ensure t
+  :defer t
+  :after (erc))
 
-(define-key global-map (kbd "C-c i") 'erc-switch-to-buffer)
+(defun my/get-authinfo-passwd (HOST USER PORT)
+  "Safely get an `auth-sources' USER password.
+The search matches a line in the following format:
+
+machine HOST login USER password *** port PORT"
+  (funcall (plist-get (nth 0 (auth-source-search :host HOST :user USER :port PORT)) :secret)))
 
 (provide 'init-erc)
 ;;; init-erc.el ends here

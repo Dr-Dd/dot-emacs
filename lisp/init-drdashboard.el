@@ -5,15 +5,13 @@
 
 ;; custom splash screen with emacs-dashboard
 (use-package page-break-lines
+  :after (dashboard)
   :ensure t)
+
 (use-package dashboard
   :ensure t
   :config
   (dashboard-setup-startup-hook))
-
-;;(require 'fortune)
-;; (with-eval-after-load 'dashboard
-;;   (setq dashboard-banner-logo-title (shell-command-to-string "fortune -as -n 110 | tr -s '\n' ' ' | tr -s '\t' ' '")))
 
 (provide 'init-drdashboard)
 ;;; init-drdashboard.el ends here
