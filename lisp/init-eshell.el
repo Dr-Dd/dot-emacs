@@ -5,6 +5,14 @@
 
 (evil-set-initial-state 'eshell-mode 'emacs)
 
+(defun my/beginning-of-line-point ()
+  "Return the beginning of line point of the current line."
+  (save-excursion
+    (let* ((bol-point
+            (progn (beginning-of-line)
+                   (point))))
+      bol-point)))
+
 (defun my/end-of-line-point ()
   "Return the end of line point of the current line."
   (save-excursion
@@ -20,8 +28,7 @@ and open eshell in new window."
   (let ((def-dir default-directory))
     (if (not (eq (get-buffer "*eshell*") nil))
         (progn (switch-to-buffer-other-window "*eshell*")
-               (eshell-return-to-prompt)
-               (delete-region (point) (my/end-of-line-point))
+               (eshell-interrupt-process)
                (insert (concat "cd " def-dir))
                (eshell-send-input)
                (eshell/clear))
