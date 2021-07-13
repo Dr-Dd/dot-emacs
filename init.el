@@ -48,11 +48,9 @@ There are two things you can do about this warning:
 
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
-;; (require 'init-initsplit) ;; doesn't work, good job dabrahams
 (require 'init-eshell)
 (require 'init-eyebrowse)
 (require 'init-magit)
-;; (require 'init-hydra)
 (require 'init-ggtags)
 (require 'init-flycheck)
 (require 'init-diminish)
@@ -74,7 +72,6 @@ There are two things you can do about this warning:
 (require 'init-ledger)
 (require 'init-drdashboard)
 (require 'init-doom-themes)
-(require 'init-fonts)
 (require 'init-beacon)
 (require 'init-gui)
 
