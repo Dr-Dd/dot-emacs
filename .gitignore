@@ -23,3 +23,4 @@ flycheck_init.el
 /.emacs.d/places
 /.emacs.d/recentf
 /.emacs.d/transient/
+/.emacs.d/eshell/

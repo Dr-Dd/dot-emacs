@@ -55,6 +55,7 @@ There are two things you can do about this warning:
 (require 'init-flycheck)
 (require 'init-diminish)
 (require 'init-org-mode)
+(require 'init-undo-tree)
 (require 'init-evil-mode)
 (require 'init-company-mode)
 (require 'init-all-the-icons)
