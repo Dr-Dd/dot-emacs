@@ -369,7 +369,7 @@
    '(erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
- '(projectile-mode t nil (projectile))
+ '(projectile-mode t)
  '(projectile-tags-command "gtags")
  '(recentf-exclude
    '("/home/drd/.emacs.d/.cache/treemacs-persist-at-last-error" "/home/drd/.emacs.d/.cache/treemacs-persist" "/usr/share/emacs" "/home/drd/.elfeed"))
@@ -382,7 +382,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)

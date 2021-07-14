@@ -3,7 +3,9 @@
 ;;; eshell functions
 ;;; Code:
 
-(evil-set-initial-state 'eshell-mode 'emacs)
+
+(with-eval-after-load 'evil
+  (evil-set-initial-state 'eshell-mode 'emacs))
 
 (defun my/beginning-of-line-point ()
   "Return the beginning of line point of the current line."

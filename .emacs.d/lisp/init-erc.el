@@ -6,7 +6,8 @@
 (use-package erc
   :defer t
   :init
-  (evil-set-initial-state 'erc-mode 'emacs)
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'erc-mode 'emacs))
   :config
   (global-set-key (kbd "C-c i") 'erc-switch-to-buffer))
 
