@@ -73,10 +73,6 @@
 ;; Debugging
 ;; (setq lsp-print-performance t)
 
-(add-hook 'c-mode-hook 'lsp)
-(add-hook 'c++-mode-hook 'lsp)
-(with-eval-after-load 'lsp-mode
-  (require 'dap-cpptools))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

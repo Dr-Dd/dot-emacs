@@ -68,6 +68,8 @@ There are two things you can do about this warning:
 (require 'init-helm)
 ;; (require 'init-projectile)
 (require 'init-lsp)
+(require 'init-haskell)
+(require 'init-c-cpp)
 (require 'init-erc)
 (require 'init-ledger)
 (require 'init-drdashboard)
