@@ -44,6 +44,7 @@ There are two things you can do about this warning:
 ;; At the beginning as to benchmark the whole loading process
 ;; BORKED, SEE https://github.com/dholm/benchmark-init-el/issues/15
 ;; right-now i've MANUALLY PATCHED IT
+
 ;; (require 'init-benchmark-init)
 
 (require 'init-my-vars-and-funcs)
