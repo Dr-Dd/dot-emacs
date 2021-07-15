@@ -1,20 +1,21 @@
 # dot-emacs
 
-My emacs configuration for all things related to text.
+My Emacs configuration for all things related to text.
 
-With it i'm able to:
-- Work with source files (via **lsp-mode** or language specific configurations **>_**)
-- Handle my agenda (via **org-mode** :unicorn:)
-- Review my assets balance (via **ledger-mode** :moneybag:)
-- Read messages from IRC (via **erc-mode** :computer:)
-- Read and compose email (via **notmuch** :mailbox:)
-- Read and archive news (via **elfeed** :newspaper:)
+With it I'm able to:
+- <span style="color:blue">**>_**</span> Work with source files (via **lsp-mode** or language specific configurations)
+- :unicorn: Handle my agenda (via **org-mode**)
+- :moneybag: Review my assets balance (via **ledger-mode**)
+- :computer: Read messages from IRC (via **erc-mode**)
+- :mailbox: Read and compose email (via **notmuch**)
+- :newspaper: Read and archive news (via **elfeed**)
 
-All wrapped in evil mode bindings
+All wrapped in **evil mode** bindings.
 
-All of this in about 1.5 seconds of startup
+All of this in about **1.5 seconds** of startup.
 
 ## Higlight of important packages
+*Warning, this list may or may not be updated in the future:*
 - benchmark-init
 - eshell
 - eyebrowse
@@ -36,10 +37,10 @@ All of this in about 1.5 seconds of startup
 - yasnippet
 - helm
 - projectile
-- lsp
-- haskell
+- lsp-mode
+- haskell-mode
 - erc
-- ledger
+- ledger-mode
 - dashboard
 - doom-themes
 - beacon
