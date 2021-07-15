@@ -21,6 +21,13 @@ All of this in about **1.5 seconds** of startup.
 
 All **emacs daemon** and **terminal emacs** (*emacs-nox*) **compatible**.
 
+## Installation
+Just clone the package with the proper filename (also remember to delete the git files)
+
+```sh
+user@host:~$ git clone https://github.com/Dr-Dd/dot-emacs.git ~ && rm -rf .gitignore LICENSE README.md .git
+```
+
 ## Higlight of important packages
 *Warning, this list may or may not be updated in the future:*
 - benchmark-init
