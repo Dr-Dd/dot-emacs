@@ -14,7 +14,7 @@
 (defvar my/znc-user "drd-admin"
   "User that can access to the ZNC server")
 
-(defvar my/znc-networks-list '("libera")
+(defvar my/znc-networks-list '("libera" "oftc")
   "The list of network to which `my/connect-to-znc-networks' connects to.
 It MUST BE SYNCHRONIZED TO the ZNC USER NETWORK LIST (same aliases).")
 

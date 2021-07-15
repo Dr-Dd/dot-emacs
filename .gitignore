@@ -25,3 +25,4 @@ flycheck_init.el
 /.emacs.d/transient/
 /.emacs.d/eshell/
 /.emacs.d/projects
+/.emacs.d/bookmarks
