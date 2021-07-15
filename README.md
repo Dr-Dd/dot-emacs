@@ -25,7 +25,7 @@ All **emacs daemon** and **terminal emacs** (*emacs-nox*) **compatible**.
 Just clone the package with the proper filename (also remember to delete the git files)
 
 ```sh
-$ git clone https://github.com/Dr-Dd/dot-emacs.git ~ && rm -rf .gitignore LICENSE README.md .git
+$ git clone https://github.com/Dr-Dd/dot-emacs.git ~ && rm -rf ~/.gitignore ~/LICENSE ~/README.md ~/.git
 ```
 
 ## Higlight of important packages
