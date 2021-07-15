@@ -1,5 +1,10 @@
 # dot-emacs
 
+*Light mode*                                                                                                | *Dark Mode*
+:----------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------:
+![](https://user-images.githubusercontent.com/37450282/125799534-1d0e9d6d-8b98-4fab-8fda-ed690fb0bd4c.png)  |  ![](https://user-images.githubusercontent.com/37450282/125799630-24752e22-4f55-40f4-9af7-2838977d9c00.png)
+
+
 My Emacs configuration for all things related to text.
 
 With it I'm able to:
