@@ -24,7 +24,7 @@ All **emacs daemon** and **terminal emacs** (*emacs-nox*) **compatible**.
 ## Installation
 Just clone the package wherever you want, and move the ``.emacs.d`` directory to your ``$HOME``
 
-```sh
+```
 $ git clone https://github.com/Dr-Dd/dot-emacs /tmp/dot-emacs
 $ cd /tmp/dot-emacs
 $ mv .emacs.d $HOME
