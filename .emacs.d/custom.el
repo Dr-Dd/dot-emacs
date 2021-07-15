@@ -124,7 +124,8 @@
  '(electric-indent-mode t)
  '(electric-pair-mode t)
  '(elfeed-feeds
-   '(("https://www.rfc-editor.org/rfcrss.xml" rfc cs)
+   '(("https://www.linuxjournal.com/news/feed" linux cs)
+     ("https://www.rfc-editor.org/rfcrss.xml" rfc cs)
      ("https://www.kernel.org/feeds/all.atom.xml" linux cs)
      ("https://www.kernel.org/feeds/kdist.xml" linux cs)
      ("https://www.reddit.com/r/linux/rising/.rss" cs reddit)

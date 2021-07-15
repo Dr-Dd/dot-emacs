@@ -26,3 +26,4 @@ flycheck_init.el
 /.emacs.d/eshell/
 /.emacs.d/projects
 /.emacs.d/bookmarks
+/.emacs.d/url/
