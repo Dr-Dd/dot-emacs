@@ -3,16 +3,18 @@
 My Emacs configuration for all things related to text.
 
 With it I'm able to:
-- <span style="color:blue">**>_**</span> Work with source files (via **lsp-mode** or language specific configurations)
+- **>_** Work with source files (via **lsp-mode** or language specific configurations)
 - :unicorn: Handle my agenda (via **org-mode**)
 - :moneybag: Review my assets balance (via **ledger-mode**)
 - :computer: Read messages from IRC (via **erc-mode**)
 - :mailbox: Read and compose email (via **notmuch**)
-- :newspaper: Read and archive news (via **elfeed**)
+- :newspaper: Read and archive news, watch videos, listen to podcasts (via **elfeed**)
 
 All wrapped in **evil mode** bindings.
 
 All of this in about **1.5 seconds** of startup.
+
+All **emacs daemon** and **terminal emacs** (*emacs-nox*) **compatible**.
 
 ## Higlight of important packages
 *Warning, this list may or may not be updated in the future:*
@@ -52,4 +54,4 @@ Examples:
 - Using **erc** as a client, but leaving all communication responsibilities to **znc**.
 - Using **ledger-mode** to edit ledger files, but using **ledger-cli** to compile those files.
 - Handling emails via Emacs as a **notmuch** client, but processing them via a combination of **isync**, **msmtp**, **notmuch**, **gnupg**.
-- Reading news via **elfeed**, but fetching those news through local and remote rss services (e.g. **rss-bridge**).
+- Reading news via **elfeed**, but fetching those news through local and remote rss services (e.g. **rss-bridge**). Watch videos and listen podcasts via **mpv** and **youtube-dl**, but launching as an Emacs' child process.
