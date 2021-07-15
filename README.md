@@ -51,5 +51,5 @@ I heavily rely non-Emacsen packages to better integrate Emacs in my system. Only
 Examples:
 - Using **erc** as a client, but leaving all communication responsibilities to **znc**.
 - Using **ledger-mode** to edit ledger files, but using **ledger-cli** to compile those files.
-- Handling emails via Emacs as a **notmuch** client, but processing them via a combination of **isync**, **msmtp**, **notmuch**, **gnupg**
-- Reading news via **elfeed**, but fetching those news through local and remote rss services (e.g. **rss-bridge**)
+- Handling emails via Emacs as a **notmuch** client, but processing them via a combination of **isync**, **msmtp**, **notmuch**, **gnupg**.
+- Reading news via **elfeed**, but fetching those news through local and remote rss services (e.g. **rss-bridge**).
