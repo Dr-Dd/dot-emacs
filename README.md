@@ -22,10 +22,12 @@ All of this in about **1.5 seconds** of startup.
 All **emacs daemon** and **terminal emacs** (*emacs-nox*) **compatible**.
 
 ## Installation
-Just clone the package with the proper filename (also remember to delete the git files)
+Just clone the package wherever you want, and move the ``.emacs.d`` directory to your ``$HOME``
 
 ```sh
-$ git clone https://github.com/Dr-Dd/dot-emacs.git ~ && rm -rf ~/.gitignore ~/LICENSE ~/README.md ~/.git
+$ git clone https://github.com/Dr-Dd/dot-emacs /tmp/dot-emacs
+$ cd /tmp/dot-emacs
+$ mv .emacs.d $HOME
 ```
 
 ## Higlight of important packages
