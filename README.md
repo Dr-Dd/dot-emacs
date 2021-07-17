@@ -17,7 +17,7 @@ With it I'm able to:
 
 All wrapped in **evil mode** bindings.
 
-All of this in about **1.5 seconds** of startup.
+All of this in about **0.8 seconds** of startup in daemon mode and **1.2 seconds** in normal mode.
 
 All **emacs daemon** and **terminal emacs** (*emacs-nox*) **compatible**.
 
