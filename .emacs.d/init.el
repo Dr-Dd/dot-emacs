@@ -3,7 +3,26 @@
 ;;; Just my init file
 ;;; Code:
 
-;; (profiler-start 'cpu)
+;; Calc startup time
+(defconst emacs-start-time (current-time))
+
+;; Faster startup
+(defvar my/file-name-handler-alist-old file-name-handler-alist)
+
+(setq gc-cons-threshold most-positive-fixnum)
+(setq package-enable-at-startup nil)
+(setq file-name-handler-alist nil)
+(setq message-log-max 16384)
+(setq gc-cons-percentage 0.6)
+(setq auto-window-vscroll nil)
+
+;; Reset GC to normal value
+(add-hook 'after-init-hook
+          `(lambda ()
+             (setq file-name-handler-alist my/file-name-handler-alist-old
+                   gc-cons-threshold 800000
+                   gc-cons-percentage 0.1)
+             (garbage-collect)) t)
 
 ;; (setq debug-on-error t)
 
@@ -41,12 +60,6 @@ There are two things you can do about this warning:
 
 (add-to-list 'load-path (concat user-emacs-directory "lisp"))
 
-;; At the beginning as to benchmark the whole loading process
-;; BORKED, SEE https://github.com/dholm/benchmark-init-el/issues/15
-;; right-now i've MANUALLY PATCHED IT
-
-;; (require 'init-benchmark-init)
-
 (require 'init-my-vars-and-funcs)
 (require 'init-drdefaults)
 (require 'init-eshell)
@@ -79,6 +92,16 @@ There are two things you can do about this warning:
 (require 'init-beacon)
 (require 'init-gui)
 
-;; (profiler-stop)
+(let ((elapsed (float-time (time-subtract (current-time)
+                                          emacs-start-time))))
+  (message "Loading %s...done (%.3fs)" load-file-name elapsed))
+
+(add-hook 'after-init-hook
+          `(lambda ()
+             (let ((elapsed
+                    (float-time
+                     (time-subtract (current-time) emacs-start-time))))
+               (message "Loading %s...done (%.3fs) [after-init]"
+                        ,load-file-name elapsed))) t)
 
 ;;; init.el ends here
