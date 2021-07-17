@@ -27,6 +27,10 @@
    :value 0 :date 1626092838.0764043 :hits 60))
  ("authors")
  ("feed"
+  (:text "Linux Journal News"
+         :value 1000
+         :type s
+         :attr t)
   (:text "LWN.net"
          :value 1000
          :type s

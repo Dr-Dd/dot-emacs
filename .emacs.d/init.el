@@ -3,7 +3,7 @@
 ;;; Just my init file
 ;;; Code:
 
-(setq read-process-output-max (* 1024 1024))
+;; (profiler-start 'cpu)
 
 ;; (setq debug-on-error t)
 
@@ -78,5 +78,7 @@ There are two things you can do about this warning:
 (require 'init-doom-themes)
 (require 'init-beacon)
 (require 'init-gui)
+
+;; (profiler-stop)
 
 ;;; init.el ends here
