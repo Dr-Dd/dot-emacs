@@ -145,6 +145,10 @@ Exclude feeds tied to local services."
     (elfeed-expose #'elfeed-show-tag 'funny))
   )
 
+;; (use-package elfeed-mpv
+;;   :after (elfeed)
+;;   )
+
 ;; score list is in .emacs.d/score
 (use-package elfeed-score
   :after (elfeed)

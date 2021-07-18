@@ -3,6 +3,7 @@
 ;;; Just my init file
 ;;; Code:
 
+;; Thanks to jwiegley for this code snippets
 ;; Calc startup time
 (defconst emacs-start-time (current-time))
 
@@ -92,6 +93,7 @@ There are two things you can do about this warning:
 (require 'init-beacon)
 (require 'init-gui)
 
+;; Thanks to jwiegley for this code snippets
 (let ((elapsed (float-time (time-subtract (current-time)
                                           emacs-start-time))))
   (message "Loading %s...done (%.3fs)" load-file-name elapsed))
