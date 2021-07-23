@@ -90,6 +90,7 @@ There are two things you can do about this warning:
 (require 'init-ledger)
 (require 'init-drdashboard)
 (require 'init-doom-themes)
+(require 'init-circadian)
 (require 'init-beacon)
 (require 'init-gui)
 

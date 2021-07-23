@@ -27,6 +27,9 @@
  '(beacon-mode t)
  '(before-save-hook '(delete-trailing-whitespace))
  '(blink-cursor-mode t)
+ '(calendar-latitude 41.890209)
+ '(calendar-longitude 12.492231)
+ '(circadian-themes '((:sunrise . doom-one-light) (:sunset . doom-one)))
  '(column-number-mode t)
  '(company-backends
    '(company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
@@ -366,7 +369,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
  '(projectile-mode t)
@@ -382,7 +385,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
