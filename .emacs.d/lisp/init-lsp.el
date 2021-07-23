@@ -1,10 +1,10 @@
 ;;; package --- Summary
 ;;; Commentary:
-;;; LSP client for emacs, just like eglot but with more people
-;;; behind it. Has all belts and whistles included (auto-completion
+;;; LSP client for Emacs, just like eglot but with more people
+;;; behind it.  Has all bells and whistles included (auto-completion
 ;;; backends, indexing, project detection, etc etc). Everything that
 ;;; is installed code management wise should be interfaced with it in
-;;; some way or another.
+;;; some way or another (except for special cases).
 ;;; Code:
 
 (use-package lsp-mode
@@ -54,7 +54,7 @@
               ([remap xref-find-apropos] . helm-lsp-workspace-symbol)))
 
 ;; optionally if you want to use debugger
-;; (use-package dap-mode :ensure t)
+(use-package dap-mode :ensure t)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 ;; (use-package dap-java
 ;;   :after (dap-mode))
