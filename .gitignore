@@ -27,3 +27,5 @@ flycheck_init.el
 /.emacs.d/projects
 /.emacs.d/bookmarks
 /.emacs.d/url/
+/.emacs.d/.dap-breakpoints
+/.emacs.d/.lsp-session-v1
