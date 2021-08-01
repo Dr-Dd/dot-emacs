@@ -26,5 +26,13 @@
 ;; Remove scrollbar on each new FRAME.
 (add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 
+;; System ssh-agent integration
+(use-package exec-path-from-shell
+  :ensure t
+  :defer t)
+(exec-path-from-shell-copy-env "SSH_AGENT_PID")
+(exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
+
+
 (provide 'init-drdefaults)
 ;;; init-drdefaults.el ends here

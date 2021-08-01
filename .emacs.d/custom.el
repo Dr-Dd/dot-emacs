@@ -47,69 +47,75 @@
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
    '(((#("💰" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "ledger-cli" "Open your ledger folder"
        (lambda
          (&rest _)
          (dired
           (concat my/user-home "Sync" my/path-separator "ledger.git"))))
       (#("" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "file-icons" :height 0.96 :foreground "#6146A1")
-                         face
-                         (:family "file-icons" :height 0.96 :foreground "#6146A1")))
+         (face
+          (:family "file-icons" :height 0.96 :foreground "#6146A1")
+          font-lock-face
+          (:family "file-icons" :height 0.96 :foreground "#6146A1")
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "init.el" "Open init.el config file"
        (lambda
          (&rest _)
          (find-file
           (concat user-emacs-directory "init.el"))))
       (#("📔" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "agenda" "Open your agenda"
        (lambda
          (&rest _)
          (org-agenda 0 "d")))
       (#("📫" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "notmuch" "Read your inbox"
        (lambda
          (&rest _)
          (notmuch)))
       (#("📡" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "all-the-icons" :height 0.96)
-                         face
-                         (:family "all-the-icons" :height 0.96)))
+         (face
+          (:family "all-the-icons" :height 0.96)
+          font-lock-face
+          (:family "all-the-icons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "elfeed" "Read the news"
        (lambda
          (&rest _)
          (elfeed)))
       (#("🖥" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "ERC" "Connect to your irc network"
        (lambda
          (&rest _)
@@ -370,7 +376,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
  '(projectile-mode t)
@@ -386,7 +392,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
