@@ -127,7 +127,8 @@
  '(electric-indent-mode t)
  '(electric-pair-mode t)
  '(elfeed-feeds
-   '(("https://www.linuxjournal.com/news/feed" linux cs)
+   '(("https://gambe.ro/rss" cs aggregator)
+     ("https://www.linuxjournal.com/news/feed" linux cs)
      ("https://www.rfc-editor.org/rfcrss.xml" rfc cs)
      ("https://www.kernel.org/feeds/all.atom.xml" linux cs)
      ("https://www.kernel.org/feeds/kdist.xml" linux cs)
@@ -369,7 +370,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
  '(projectile-mode t)
@@ -385,7 +386,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache))
+     doom-modeline-refresh-font-width-cache) t)
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)

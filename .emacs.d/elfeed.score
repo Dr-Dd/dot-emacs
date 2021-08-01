@@ -67,6 +67,10 @@
          :value 800
          :type s
          :attr t)
+  (:text "gambe.ro"
+         :value 850
+         :type s
+         :attr t)
   (:text "Gamasutra News"
          :value 700
          :type s
