@@ -141,6 +141,8 @@
      ("https://feeds.feedburner.com/TheHackersNews" cs blog)
      ("https://lobste.rs/rss" cs aggregator)
      ("https://hnrss.org/frontpage" cs aggregator)
+     ("https://feeds.feedburner.com/arstechnica/index" tech)
+     ("https://www.anandtech.com/rss/" tech)
      ("https://gizmodo.com/rss" tech)
      ("http://rss.slashdot.org/Slashdot/slashdotMain" tech)
      ("https://www.engadget.com/rss.xml" tech)

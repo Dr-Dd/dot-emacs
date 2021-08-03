@@ -75,6 +75,14 @@
          :value 700
          :type s
          :attr t)
+  (:text "Ars Technica"
+         :value 350
+         :type s
+         :attr t)
+  (:text "AnandTech"
+         :value 350
+         :type s
+         :attr t)
   )
  ("link")
  (mark nil)

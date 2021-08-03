@@ -7,7 +7,9 @@
   :defer t
   :bind (:map elfeed-show-mode-map
               ("SPC" . elfeed-show-next)
+              ([mouse-9] . elfeed-show-next)
               ("S-SPC" . elfeed-show-prev)
+              ([mouse-8] . elfeed-show-prev)
               ("m" . my/elfeed-show-tag-star)
               ("j" . my/elfeed-show-tag-interesting)
               ("f" . my/elfeed-show-tag-funny)
