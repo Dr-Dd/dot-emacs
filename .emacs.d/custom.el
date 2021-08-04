@@ -217,6 +217,7 @@
  '(global-flycheck-mode t)
  '(global-hl-line-mode t)
  '(global-undo-tree-mode t)
+ '(gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
  '(helm-mode t)
  '(history-delete-duplicates t)
  '(indent-tabs-mode nil)
@@ -373,7 +374,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(notmuch exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
  '(projectile-mode t)
@@ -389,7 +390,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache))
+     doom-modeline-refresh-font-width-cache) t)
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
