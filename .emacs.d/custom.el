@@ -228,6 +228,12 @@
  '(initial-scratch-message nil)
  '(kept-new-versions 6)
  '(ledger-report-use-strict t)
+ '(ledger-reports
+   '(("last month balance" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"last month\" balance ")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)")))
  '(load-prefer-newer t)
  '(lsp-completion-provider :capf)
  '(lsp-managed-mode-hook '(lsp-diagnostics-modeline-mode))
@@ -390,7 +396,7 @@
    '((lambda nil
        (select-frame-set-input-focus
         (selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
