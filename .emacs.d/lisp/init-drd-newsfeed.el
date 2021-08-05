@@ -14,6 +14,7 @@
               ("j" . my/elfeed-show-tag-interesting)
               ("f" . my/elfeed-show-tag-funny)
               :map elfeed-search-mode-map
+              ([mouse-1] . elfeed-search-show-entry)
               ("m" . my/elfeed-search-toggle-star)
               ("j" . my/elfeed-search-toggle-interesting)
               ("f" . my/elfeed-search-toggle-funny)
