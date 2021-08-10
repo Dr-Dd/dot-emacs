@@ -47,69 +47,75 @@
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
    '(((#("💰" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "ledger-cli" "Open your ledger folder"
        (lambda
          (&rest _)
          (dired
           (concat my/user-home "Sync" my/path-separator "ledger.git"))))
       (#("" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "file-icons" :height 0.96 :foreground "#6146A1")
-                         face
-                         (:family "file-icons" :height 0.96 :foreground "#6146A1")))
+         (face
+          (:family "file-icons" :height 0.96 :foreground "#6146A1")
+          font-lock-face
+          (:family "file-icons" :height 0.96 :foreground "#6146A1")
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "init.el" "Open init.el config file"
        (lambda
          (&rest _)
          (find-file
           (concat user-emacs-directory "init.el"))))
       (#("📔" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "agenda" "Open your agenda"
        (lambda
          (&rest _)
          (org-agenda 0 "d")))
       (#("📫" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "notmuch" "Read your inbox"
        (lambda
          (&rest _)
          (notmuch)))
       (#("📡" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "all-the-icons" :height 0.96)
-                         face
-                         (:family "all-the-icons" :height 0.96)))
+         (face
+          (:family "all-the-icons" :height 0.96)
+          font-lock-face
+          (:family "all-the-icons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "elfeed" "Read the news"
        (lambda
          (&rest _)
          (elfeed)))
       (#("🖥" 0 1
-         (rear-nonsticky t display
-                         (raise 0.0)
-                         font-lock-face
-                         (:family "github-octicons" :height 0.96)
-                         face
-                         (:family "github-octicons" :height 0.96)))
+         (face
+          (:family "github-octicons" :height 0.96)
+          font-lock-face
+          (:family "github-octicons" :height 0.96)
+          display
+          (raise 0.0)
+          rear-nonsticky t))
        "ERC" "Connect to your irc network"
        (lambda
          (&rest _)
@@ -229,7 +235,10 @@
  '(kept-new-versions 6)
  '(ledger-report-use-strict t)
  '(ledger-reports
-   '(("last month balance" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"last month\" balance ")
+   '(("current month register" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"this month\" register ")
+     ("current month balance" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"this month\" balance ")
+     ("last month register" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"last month\" register ")
+     ("last month balance" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"last month\" balance ")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
