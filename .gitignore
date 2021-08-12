@@ -31,3 +31,4 @@ flycheck_*
 /.emacs.d/url/
 /.emacs.d/.dap-breakpoints
 /.emacs.d/.lsp-session-v1
+/.emacs.d/elfeed.stats
