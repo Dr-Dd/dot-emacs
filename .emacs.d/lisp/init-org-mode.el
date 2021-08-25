@@ -17,8 +17,7 @@ returns nil."
         (org-time-string-to-time time)))))
 
 (use-package org-habit
-  :after (org)
-  :defer t)
+  :after (org))
 
 (use-package org-superstar
   :after (org)
@@ -44,7 +43,6 @@ returns nil."
 
 (use-package org-capture
   :config (global-set-key (kbd "C-c c") 'org-capture))
-
 
 (use-package org-edna :ensure t
   :defer t

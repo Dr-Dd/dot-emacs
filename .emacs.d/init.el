@@ -19,18 +19,18 @@
 
 ;; Reset GC to normal value
 (add-hook 'after-init-hook
-          `(lambda ()
-             (setq file-name-handler-alist my/file-name-handler-alist-old
-                   gc-cons-threshold 800000
-                   gc-cons-percentage 0.1)
-             (garbage-collect)) t)
+	  `(lambda ()
+	     (setq file-name-handler-alist my/file-name-handler-alist-old
+		   gc-cons-threshold 800000
+		   gc-cons-percentage 0.1)
+	     (garbage-collect)) t)
 
 ;; (setq debug-on-error t)
 
 ;; MELPA
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
+		    (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
   (when no-ssl
     (warn "\
@@ -96,15 +96,15 @@ There are two things you can do about this warning:
 
 ;; Thanks to jwiegley for this code snippets
 (let ((elapsed (float-time (time-subtract (current-time)
-                                          emacs-start-time))))
+					  emacs-start-time))))
   (message "Loading %s...done (%.3fs)" load-file-name elapsed))
 
 (add-hook 'after-init-hook
-          `(lambda ()
-             (let ((elapsed
-                    (float-time
-                     (time-subtract (current-time) emacs-start-time))))
-               (message "Loading %s...done (%.3fs) [after-init]"
-                        ,load-file-name elapsed))) t)
+	  `(lambda ()
+	     (let ((elapsed
+		    (float-time
+		     (time-subtract (current-time) emacs-start-time))))
+	       (message "Loading %s...done (%.3fs) [after-init]"
+			,load-file-name elapsed))) t)
 
 ;;; init.el ends here
