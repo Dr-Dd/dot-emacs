@@ -33,8 +33,8 @@
  '(column-number-mode t)
  '(company-backends
    '(company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
-                       (company-dabbrev-code company-gtags company-etags company-keywords)
-                       company-oddmuse company-dabbrev))
+		       (company-dabbrev-code company-gtags company-etags company-keywords)
+		       company-oddmuse company-dabbrev))
  '(company-frontends
    '(company-pseudo-tooltip-unless-just-one-frontend company-echo-metadata-frontend company-preview-if-just-one-frontend))
  '(company-idle-delay nil)
@@ -47,79 +47,73 @@
  '(dashboard-items '((recents . 9)))
  '(dashboard-navigator-buttons
    '(((#("💰" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "github-octicons" :height 0.96)
+			 face
+			 (:family "github-octicons" :height 0.96)))
        "ledger-cli" "Open your ledger folder"
        (lambda
-         (&rest _)
-         (dired
-          (concat my/user-home "Sync" my/path-separator "ledger.git"))))
+	 (&rest _)
+	 (dired
+	  (concat my/user-home "Sync" my/path-separator "ledger.git"))))
       (#("" 0 1
-         (face
-          (:family "file-icons" :height 0.96 :foreground "#6146A1")
-          font-lock-face
-          (:family "file-icons" :height 0.96 :foreground "#6146A1")
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "file-icons" :height 0.96 :foreground "#6146A1")
+			 face
+			 (:family "file-icons" :height 0.96 :foreground "#6146A1")))
        "init.el" "Open init.el config file"
        (lambda
-         (&rest _)
-         (find-file
-          (concat user-emacs-directory "init.el"))))
+	 (&rest _)
+	 (find-file
+	  (concat user-emacs-directory "init.el"))))
       (#("📔" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "github-octicons" :height 0.96)
+			 face
+			 (:family "github-octicons" :height 0.96)))
        "agenda" "Open your agenda"
        (lambda
-         (&rest _)
-         (org-agenda 0 "d")))
+	 (&rest _)
+	 (org-agenda 0 "d")))
       (#("📫" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "github-octicons" :height 0.96)
+			 face
+			 (:family "github-octicons" :height 0.96)))
        "notmuch" "Read your inbox"
        (lambda
-         (&rest _)
-         (notmuch)))
+	 (&rest _)
+	 (notmuch)))
       (#("📡" 0 1
-         (face
-          (:family "all-the-icons" :height 0.96)
-          font-lock-face
-          (:family "all-the-icons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "all-the-icons" :height 0.96)
+			 face
+			 (:family "all-the-icons" :height 0.96)))
        "elfeed" "Read the news"
        (lambda
-         (&rest _)
-         (elfeed)))
+	 (&rest _)
+	 (elfeed)))
       (#("🖥" 0 1
-         (face
-          (:family "github-octicons" :height 0.96)
-          font-lock-face
-          (:family "github-octicons" :height 0.96)
-          display
-          (raise 0.0)
-          rear-nonsticky t))
+	 (rear-nonsticky t display
+			 (raise 0.0)
+			 font-lock-face
+			 (:family "github-octicons" :height 0.96)
+			 face
+			 (:family "github-octicons" :height 0.96)))
        "ERC" "Connect to your irc network"
        (lambda
-         (&rest _)
-         (my/erc-start-default))))))
+	 (&rest _)
+	 (my/erc-start-default))))))
  '(dashboard-set-file-icons t)
  '(dashboard-set-footer nil)
  '(dashboard-set-init-info nil)
@@ -265,29 +259,29 @@
  '(org-agenda-custom-commands
    '(("d" "Weekly agenda about urgencies"
       ((tags "@urgent"
-             ((org-agenda-sorting-strategy
-               '(timestamp-up))
-              (org-agenda-overriding-header "Urgenze da portare a termine")))
+	     ((org-agenda-sorting-strategy
+	       '(timestamp-up))
+	      (org-agenda-overriding-header "Urgenze da portare a termine")))
        (tags "+@event+TIMESTAMP<=\"<+6m>\""
-             ((org-agenda-sorting-strategy
-               '(timestamp-up))
-              (org-agenda-overriding-header "Eventi futuri")))
+	     ((org-agenda-sorting-strategy
+	       '(timestamp-up))
+	      (org-agenda-overriding-header "Eventi futuri")))
        (agenda ""
-               ((org-agenda-start-on-weekday nil)
-                (org-agenda-show-all-dates nil)))
+	       ((org-agenda-start-on-weekday nil)
+		(org-agenda-show-all-dates nil)))
        (tags "@birthday+TIMESTAMP>=\"<today>\""
-             ((org-agenda-sorting-strategy
-               '(timestamp-up))
-              (org-agenda-overriding-header "Compleanni futuri")
-              (org-agenda-max-entries 6))))
+	     ((org-agenda-sorting-strategy
+	       '(timestamp-up))
+	      (org-agenda-overriding-header "Compleanni futuri")
+	      (org-agenda-max-entries 6))))
       ((org-agenda-compact-blocks t)))))
  '(org-agenda-dim-blocked-tasks 'invisible)
  '(org-agenda-files '("~/Sync/org-files/"))
  '(org-agenda-finalize-hook
    '((lambda nil
        (progn
-         (highlight-regexp "<[A-z]* [0-9]*>" 'org-date)
-         (highlight-regexp "Urgenze\\|Eventi\\|Compleanni" 'org-warning)))))
+	 (highlight-regexp "<[A-z]* [0-9]*>" 'org-date)
+	 (highlight-regexp "Urgenze\\|Eventi\\|Compleanni" 'org-warning)))))
  '(org-agenda-prefix-format
    '((tags . " %-9(let ((timestamp (my/org-get-entry-time (point)))) (if timestamp (format-time-string \"<%b %d>\" timestamp) \"\"))")))
  '(org-agenda-show-future-repeats 'next)
@@ -403,8 +397,8 @@
  '(server-after-make-frame-hook
    '((lambda nil
        (select-frame-set-input-focus
-        (selected-frame)))
-     doom-modeline-refresh-font-width-cache))
+	(selected-frame)))
+     doom-modeline-refresh-font-width-cache) t)
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
