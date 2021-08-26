@@ -61,6 +61,7 @@ the tags \"+spam -inbox -unread\""
     (interactive)
     (let* ((addr (my/notmuch-clean-from-addr (my/notmuch-search-get-from-addr))))
       (my/notmuch-append-line-from-addr-to-tag-file addr "+spam -inbox -unread" my/notmuch-tag-file)
+      (message "Updating notmuch database...")
       (shell-command "notmuch new")
       (notmuch-refresh-this-buffer)))
 
