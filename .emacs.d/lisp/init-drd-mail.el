@@ -60,7 +60,9 @@ using supplied TAGS, ADDRESS."
 the tags \"+spam -inbox -unread\""
     (interactive)
     (let* ((addr (my/notmuch-clean-from-addr (my/notmuch-search-get-from-addr))))
-      (my/notmuch-append-line-from-addr-to-tag-file addr "+spam -inbox -unread" my/notmuch-tag-file)))
+      (my/notmuch-append-line-from-addr-to-tag-file addr "+spam -inbox -unread" my/notmuch-tag-file)
+      (shell-command "notmuch new")
+      (notmuch-refresh-this-buffer)))
 
   ;; Keybindings
   (define-key notmuch-search-mode-map (kbd "C-+") 'my/notmuch-search-add-from-addr-to-spam-filter))
