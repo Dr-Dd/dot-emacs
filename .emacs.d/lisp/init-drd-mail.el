@@ -9,8 +9,9 @@
 ;; Currently it's only linux compatible, shucks!
 (defvar my/notmuch-tag-file "~/.config/notmuch/tag-file")
 
-(use-package notmuch :ensure t
-  :defer t
+;; :defer t makes it not load
+(use-package notmuch
+  :ensure t
   :config
   ;; Image display
   (when (fboundp 'imagemagick-register-types)
