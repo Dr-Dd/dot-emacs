@@ -9,9 +9,8 @@
 ;; Currently it's only linux compatible, shucks!
 (defvar my/notmuch-tag-file "~/.config/notmuch/tag-file")
 
-;; :defer t makes it not load
+;; Don't simply ensure, install from distro package manager
 (use-package notmuch
-  :ensure t
   :config
   ;; Image display
   (when (fboundp 'imagemagick-register-types)
