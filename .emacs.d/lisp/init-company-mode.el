@@ -9,7 +9,7 @@
   :ensure t
   :init
   (diminish 'company-mode)
-  :bind (("C-<SPC>" . company-complete)
+  :bind (("M-<SPC>" . company-complete)
          :map company-active-map
          ("C-h" . company-show-doc-buffer)
          ([tab] . company-select-next)

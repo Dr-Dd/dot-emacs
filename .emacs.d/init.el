@@ -92,6 +92,7 @@ There are two things you can do about this warning:
 (require 'init-doom-themes)
 (require 'init-circadian)
 (require 'init-beacon)
+(require 'init-fcitx)
 (require 'init-gui)
 
 ;; Thanks to jwiegley for this code snippets
