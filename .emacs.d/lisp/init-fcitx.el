@@ -7,6 +7,8 @@
 ;; かな
 ;; if not, add the required typeface(s) to your distribution
 
+;; support is iffy at best, fcitx randomly disables
+;; keep it in the oven for now
 (use-package fcitx
   :ensure t
   :config
