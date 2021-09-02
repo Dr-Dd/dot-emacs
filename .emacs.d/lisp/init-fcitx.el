@@ -7,13 +7,11 @@
 ;; かな
 ;; if not, add the required typeface(s) to your distribution
 
-;; DBus is stuck with fcitx4, while fcitx5 service name is different
-;; so FIXME in fcitx.el
 (use-package fcitx
   :ensure t
   :config
-  (setq fcitx-remote-command "fcitx5-remote")
-  (fcitx-default-setup))
+  (fcitx-default-setup)
+  (setq fcitx-use-dbus t))
 
 (provide 'init-fcitx)
 ;;; init-fcitx.el ends here
