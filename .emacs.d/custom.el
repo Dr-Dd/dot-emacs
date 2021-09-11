@@ -170,6 +170,8 @@
      ("http://localhost/?action=display&bridge=Twitter&context=By+username&u=Corriere&norep=on&noretweet=on&nopinned=on&nopic=on&noimg=on&format=Atom" news italy twitter)
      ("https://boards.4channel.org/g/index.rss" 4chan)
      ("http://superbestfriendcast.libsyn.com/rss" podcast)
+     ("https://feeds.pacific-content.com/commandlineheroes" podcast)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCyOJzQzyDGihKpTO3-zyhYg" youtube)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCKJtYrlWaF3G0LIneEKoPew" youtube)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCKTehwyGCKF-b2wo0RKwrcg" youtube)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UC0M0rxSz3IF0CsSour1iWmw" youtube)
@@ -231,6 +233,7 @@
  '(inhibit-startup-screen t)
  '(initial-buffer-choice '(lambda nil (get-buffer-create "*dashboard*")))
  '(initial-scratch-message nil)
+ '(ispell-program-name "/usr/bin/hunspell")
  '(kept-new-versions 6)
  '(ledger-report-use-strict t)
  '(ledger-reports
@@ -396,6 +399,7 @@
  '(recentf-exclude
    '("/home/drd/.emacs.d/.cache/treemacs-persist-at-last-error" "/home/drd/.emacs.d/.cache/treemacs-persist" "/usr/share/emacs" "/home/drd/.elfeed"))
  '(require-final-newline t)
+ '(safe-local-variable-values '((ispell-local-dictionary . it_IT)))
  '(save-place-mode t)
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -404,7 +408,7 @@
    '((lambda nil
        (select-frame-set-input-focus
 	(selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
