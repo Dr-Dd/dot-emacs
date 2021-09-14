@@ -9,6 +9,8 @@
 ;; Currently it's only linux compatible, shucks!
 (defvar my/notmuch-tag-file "~/.config/notmuch/tag-file")
 
+(defvar my/refresh-inbox-command "mbsync -a; notmuch new")
+
 ;; Don't simply ensure, install from distro package manager
 (use-package notmuch
   :config
@@ -65,8 +67,18 @@ the tags \"+spam -inbox -unread\""
       (shell-command "notmuch new")
       (notmuch-refresh-this-buffer)))
 
+  (defun my/notmuch-download-new-mail ()
+    "Interactively try to download new mail by manually polling the mail server.
+Emacs will execute the `my/refresh-inbox-command' synchronously and refresh the.
+notmuch buffer."
+    (interactive)
+    (message "Synchronously downloading mail, hang on tight...")
+    (shell-command my/refresh-inbox-command)
+    (notmuch-refresh-this-buffer))
+
   ;; Keybindings
-  (define-key notmuch-search-mode-map (kbd "C-+") 'my/notmuch-search-add-from-addr-to-spam-filter))
+  (define-key notmuch-search-mode-map (kbd "C-+") 'my/notmuch-search-add-from-addr-to-spam-filter)
+  (define-key notmuch-search-mode-map (kbd "C-g") 'my/notmuch-download-new-mail))
 
 (provide 'init-drd-mail)
 ;;; init-drd-mail.el ends here
