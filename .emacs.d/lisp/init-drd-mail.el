@@ -78,7 +78,7 @@ notmuch buffer."
 
   ;; Keybindings
   (define-key notmuch-search-mode-map (kbd "C-+") 'my/notmuch-search-add-from-addr-to-spam-filter)
-  (define-key notmuch-search-mode-map (kbd "C-g") 'my/notmuch-download-new-mail))
+  (define-key notmuch-search-mode-map (kbd "C-c g") 'my/notmuch-download-new-mail))
 
 (provide 'init-drd-mail)
 ;;; init-drd-mail.el ends here

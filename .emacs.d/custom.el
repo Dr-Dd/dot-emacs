@@ -171,6 +171,7 @@
      ("https://boards.4channel.org/g/index.rss" 4chan)
      ("http://superbestfriendcast.libsyn.com/rss" podcast)
      ("https://feeds.pacific-content.com/commandlineheroes" podcast)
+     ("https://www.youtube.com/feeds/videos.xml?channel_id=UCjNErCQgCndSOl6t33m1-nQ" podcast)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCyOJzQzyDGihKpTO3-zyhYg" youtube)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCKJtYrlWaF3G0LIneEKoPew" youtube)
      ("https://www.youtube.com/feeds/videos.xml?channel_id=UCKTehwyGCKF-b2wo0RKwrcg" youtube)
