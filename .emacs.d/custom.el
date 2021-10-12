@@ -354,10 +354,6 @@
       (file+headline "~/Sync/org-files/scheduled.org" "Birthdays")
       "* Compleanno %? :@birthday:
  %^t
-")
-     ("q" "Un nuovo progetto per la tua Bucket List" entry
-      (file "~/Sync/org-files/bucket.org")
-      "* TODO %?
 ")))
  '(org-deadline-warning-days 7)
  '(org-edit-src-content-indentation 0)
@@ -415,7 +411,7 @@
    '((lambda nil
        (select-frame-set-input-focus
 	(selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)
