@@ -65,7 +65,8 @@ the tags \"+spam -inbox -unread\""
       (my/notmuch-append-line-from-addr-to-tag-file addr "+spam -inbox -unread" my/notmuch-tag-file)
       (message "Updating notmuch database...")
       (shell-command "notmuch new")
-      (notmuch-refresh-this-buffer)))
+      (notmuch-refresh-this-buffer)
+      (message "Added From Address to Spam Filter")))
 
   (defun my/notmuch-download-new-mail ()
     "Interactively try to download new mail by manually polling the mail server.
