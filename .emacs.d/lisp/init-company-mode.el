@@ -20,5 +20,11 @@
   :ensure t
   :after (company))
 
+(use-package company-auctex
+  :defer t
+  :ensure t
+  :after (company auctex))
+
+
 (provide 'init-company-mode)
 ;;; init-company-mode.el ends here

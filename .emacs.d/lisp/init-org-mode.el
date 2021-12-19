@@ -56,5 +56,8 @@ returns nil."
   :after (org)
   :defer t)
 
+(use-package org-mouse
+  :after (org))
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

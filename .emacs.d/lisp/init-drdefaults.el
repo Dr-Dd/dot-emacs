@@ -33,6 +33,19 @@
 (exec-path-from-shell-copy-env "SSH_AGENT_PID")
 (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
 
+(defun my/update-recentf-if-last-frame-and-kill ()
+  "Wrapper function to execute some custom actions before killing the last frame/buffer."
+  (interactive)
+  (let* ((tot-num-of-frames (length (frame-list)))
+	 (num-of-frames
+	  (if (and (daemonp) (> tot-num-of-frames 1))
+	      (- tot-num-of-frames 1)
+	    tot-num-of-frames)))
+    (if (= num-of-frames 1)
+	(recentf-save-list))
+    (save-buffers-kill-terminal)))
+
+(global-set-key (kbd "C-x C-c") 'my/update-recentf-if-last-frame-and-kill)
 
 (provide 'init-drdefaults)
 ;;; init-drdefaults.el ends here

@@ -1,5 +1,5 @@
 ;;; Elfeed score file                                     -*- lisp -*-
-((version 9)
+((version 10)
  ("title")
  ("content")
  ("title-or-content")
@@ -42,5 +42,6 @@
   (:text "Ars Technica" :value 350 :type s :attr t)
   (:text "AnandTech" :value 350 :type s :attr t))
  ("link")
+ ("udf")
  (mark nil)
  ("adjust-tags"))

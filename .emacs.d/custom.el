@@ -19,6 +19,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(TeX-auto-save t)
+ '(TeX-master nil)
+ '(TeX-parse-self t)
  '(auto-save-file-name-transforms '((".*" "~/.saves/" t)))
  '(aw-display-mode-overlay nil)
  '(backup-by-copying t)
@@ -32,9 +35,10 @@
  '(circadian-themes '((:sunrise . doom-one-light) (:sunset . doom-one)))
  '(column-number-mode t)
  '(company-backends
-   '(company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
-		       (company-dabbrev-code company-gtags company-etags company-keywords)
-		       company-oddmuse company-dabbrev))
+   '((company-auctex-macros company-auctex-symbols company-auctex-environments)
+     company-auctex-bibs company-auctex-labels company-auctex company-c-headers company-bbdb company-semantic company-cmake company-capf company-clang company-files
+     (company-dabbrev-code company-gtags company-etags company-keywords)
+     company-oddmuse company-dabbrev))
  '(company-frontends
    '(company-pseudo-tooltip-unless-just-one-frontend company-echo-metadata-frontend company-preview-if-just-one-frontend))
  '(company-idle-delay nil)
@@ -389,7 +393,7 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(fcitx exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(company-auctex fcitx exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
  '(projectile-mode t)
