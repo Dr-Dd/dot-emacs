@@ -43,8 +43,7 @@
    '(company-pseudo-tooltip-unless-just-one-frontend company-echo-metadata-frontend company-preview-if-just-one-frontend))
  '(company-idle-delay nil)
  '(dashboard-banner-logo-title
-   (shell-command-to-string "fortune -as -n 110 | tr -s '
-' ' ' | tr -s '	' ' '"))
+   (shell-command-to-string "fortune -as -n 110 | tr -s '\12' ' ' | tr -s '\11' ' '"))
  '(dashboard-buffer-last-width 80)
  '(dashboard-footer "Who the hell uses VIM anyway? Go Evil!")
  '(dashboard-init-info t)
@@ -251,7 +250,7 @@
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
- '(load-prefer-newer t)
+ '(load-prefer-newer t t)
  '(lsp-completion-provider :capf)
  '(lsp-managed-mode-hook '(lsp-diagnostics-modeline-mode))
  '(lsp-mode-hook '(lsp-enable-which-key-integration))
@@ -289,14 +288,29 @@
 	       '(timestamp-up))
 	      (org-agenda-overriding-header "Compleanni futuri")
 	      (org-agenda-max-entries 6))))
-      ((org-agenda-compact-blocks t)))))
+      ((org-agenda-compact-blocks t)
+       (org-agenda-tag-filter-preset '("-@work"))))
+     ("w" "Task lavorative"
+      ((tags "@task"
+	     ((org-agenda-sorting-strategy
+	       '(timestamp-up))
+	      (org-agenda-overriding-header "Task lavoro")))
+       (tags "@work"
+	     ((org-agenda-sorting-strategy
+	       '(timestamp-up))
+	      (org-agenda-overriding-header "Progetti lavoro")))
+       (tags "@presenze"
+	     ((org-agenda-sorting-strategy
+	       '(timestamp-up))
+	      (org-agenda-overriding-header "Tabella presenze")))
+       ))))
  '(org-agenda-dim-blocked-tasks 'invisible)
  '(org-agenda-files '("~/Sync/org-files/"))
  '(org-agenda-finalize-hook
    '((lambda nil
        (progn
 	 (highlight-regexp "<[A-z]* [0-9]*>" 'org-date)
-	 (highlight-regexp "Urgenze\\|Eventi\\|Compleanni" 'org-warning)))))
+	 (highlight-regexp "Urgenze\\|Eventi\\|Compleanni\\|Task\\|Progetti" 'org-warning)))))
  '(org-agenda-prefix-format
    '((tags . " %-9(let ((timestamp (my/org-get-entry-time (point)))) (if timestamp (format-time-string \"<%b %d>\" timestamp) \"\"))")))
  '(org-agenda-show-future-repeats 'next)
@@ -305,55 +319,46 @@
  '(org-capture-templates
    '(("r" "Routine di varia natura (TODO + repeating SCHEDULE/DEADLINE/Timestamp)" entry
       (file+headline "~/Sync/org-files/scheduled.org" "Routine")
-      "* TODO %? :@routine:
- %^{Timestamp, SCHEDULED or DEADLINE?||SCHEDULED:|DEADLINE:} %^t
-")
+      "* TODO %? :@routine:\12 %^{Timestamp, SCHEDULED or DEADLINE?| |SCHEDULED:|DEADLINE:} %^t\12")
      ("e" "Eventi di varia importanza (Unset/[#A/B/C] + Timestamp)" entry
       (file+headline "~/Sync/org-files/scheduled.org" "Calendar")
-      "* FUTURE %^{_ or [#A/B/C]?||[#A]|[#B]|[#C]} %? :@event:
- %^t
-")
+      "* FUTURE %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %? :@event:\12 %^t\12")
+     ("w" "Obiettivi lavoro" entry
+      (file "~/Sync/org-files/work.org")
+      "* TODO %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %?\12 %u\12")
+     ("t" "Task lavoro (Event/Deadline/scheduled)" entry
+      (file "~/Sync/org-files/work.org")
+      "* TODO %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %? :@task:\12 %^{Timestamp, SCHEDULED or DEADLINE?| |SCHEDULED:|DEADLINE:} %^t\12")
      ("p" "Progetti da iniziare a ragionare" entry
       (file "~/Sync/org-files/projects.org")
-      "* TODO %? %^{@urgent or @utility?|:@urgent:|:@utility:}
-")
+      "* TODO %? %^{@urgent or @utility?|:@urgent:|:@utility:}\12")
      ("s" "Lista della spesa per cibo mancante" entry
       (file "~/Sync/org-files/lista-spesa.org")
-      "* TOBUY %?
-")
+      "* TOBUY %?\12")
      ("f" "Film da vedere" entry
       (file "~/Sync/org-files/movies.org")
-      "* TOWATCH %?
-")
+      "* TOWATCH %?\12")
      ("l" "Libri da leggere" entry
       (file "~/Sync/org-files/books.org")
-      "* TOBUY %?
-")
+      "* TOBUY %?\12")
      ("i" "Progetti informatici personali (TODO)" entry
       (file "~/Sync/org-files/compsci.org")
-      "* TODO %?
-")
+      "* TODO %?\12")
      ("m" "Album Musicali da ascoltare" entry
       (file+headline "~/Sync/org-files/music.org" "Albums")
-      "* TOBUY %? :@album:
-")
+      "* TOBUY %? :@album:\12")
      ("M" "Bei pezzi da ricordare" entry
       (file+headline "~/Sync/org-files/music.org" "Mix")
-      "* %? :@mix:
-")
+      "* %? :@mix:\12")
      ("h" "Passatempo di varia natura" entry
       (file "~/Sync/org-files/hobbies.org")
-      "* TODO %? :_editme:
-")
+      "* TODO %? :_editme:\12")
      ("c" "File da riordinare/riorganizzare" entry
       (file "~/Sync/org-files/to-capture.org")
-      "* TOCAPTURE %?
-")
+      "* TOCAPTURE %?\12")
      ("b" "Aggiungi la data di compleanno di qualcuno che ti è caro" entry
       (file+headline "~/Sync/org-files/scheduled.org" "Birthdays")
-      "* Compleanno %? :@birthday:
- %^t
-")))
+      "* Compleanno %? :@birthday:\12 %^t\12")))
  '(org-deadline-warning-days 7)
  '(org-edit-src-content-indentation 0)
  '(org-edna-mode t)
@@ -416,11 +421,11 @@
  '(split-width-threshold 62)
  '(text-mode-hook '(flyspell-mode text-mode-hook-identify))
  '(tool-bar-mode nil)
+ '(use-system-tooltips nil)
  '(vc-follow-symlinks t)
  '(version-control t)
  '(warning-suppress-types '((lsp-mode) (comp) (:warning)))
  '(which-key-mode t)
- '(x-gtk-use-system-tooltips nil)
  '(xref-prompt-for-identifier
    '(not xref-find-definitions xref-find-definitions-other-window xref-find-definitions-other-frame xref-find-references)))
 
