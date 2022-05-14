@@ -32,3 +32,4 @@ flycheck_*
 /.emacs.d/.dap-breakpoints
 /.emacs.d/.lsp-session-v1
 /.emacs.d/elfeed.stats
+.emacs.d/tramp

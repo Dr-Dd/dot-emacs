@@ -1,0 +1,1 @@
+("~/.git-repos/mysql-mqtt-2-influxdb/" "~/Sync/ledger.git/" "~/dotfiles/")

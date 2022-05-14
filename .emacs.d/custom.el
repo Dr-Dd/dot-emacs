@@ -8,8 +8,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(mode-line ((t (:family "xos4 Terminus" :height 0.7 :box nil :weight bold))))
- '(mode-line-inactive ((t (:family "xos4 Terminus" :height 0.7 :box nil :weight bold))))
  '(org-level-1 ((t (:inherit default :foreground "#cb4b16" :height unspecified))))
  '(org-level-2 ((t (:inherit default :foreground "#859900" :height unspecified))))
  '(org-level-3 ((t (:inherit default :foreground "#268bd2" :height unspecified))))
@@ -24,6 +22,7 @@
  '(TeX-parse-self t)
  '(auto-save-file-name-transforms '((".*" "~/.saves/" t)))
  '(aw-display-mode-overlay nil)
+ '(aw-scope 'frame)
  '(backup-by-copying t)
  '(backup-directory-alist '((".*" . "~/.saves/")))
  '(beacon-color "chartreuse")
@@ -124,9 +123,6 @@
  '(default-frame-alist '((fullscreen . maximized) (font . "Hack-18")))
  '(delete-old-versions t)
  '(display-line-numbers-type 'relative)
- '(doom-modeline-height 21)
- '(doom-modeline-icon t)
- '(doom-modeline-mode t)
  '(electric-indent-mode t)
  '(electric-pair-mode t)
  '(elfeed-feeds
@@ -229,7 +225,23 @@
  '(global-evil-surround-mode t)
  '(global-flycheck-mode t)
  '(global-hl-line-mode t)
+ '(global-tree-sitter-mode t)
  '(global-undo-tree-mode t)
+ '(gnus-alias-default-identity "personal")
+ '(gnus-alias-identity-alist
+   '(("personal" nil "\"Leonardo Idone\" <idone.leonardo@gmail.com>" nil nil nil nil)
+     ("work" nil "\"Leonardo Idone\" <leonardo.idone@cool-tech.it>" "Cool-Tech" nil nil "~/Sync/cool-tech-signature.html")
+     ("dummy" nil "\"abubu55\" <abubu55@gmail.com>" nil nil nil nil)))
+ '(gnus-alias-identity-rules
+   '(("work"
+      ("any" "leonardo.idone@\\(cool-tech\\.it\\)" both)
+      "work")
+     ("dummy"
+      ("any" "abubu55@\\(gmail\\.com\\)" current)
+      "dummy")
+     ("personal"
+      ("any" "idone.leonardo@\\(gmail\\.com\\)" current)
+      "personal")))
  '(gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
  '(helm-mode t)
  '(history-delete-duplicates t)
@@ -242,24 +254,30 @@
  '(kept-new-versions 6)
  '(ledger-report-use-strict t)
  '(ledger-reports
-   '(("current month register" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"this month\" register ")
-     ("current month balance" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"this month\" balance ")
-     ("last month register" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"last month\" register ")
-     ("last month balance" "ledger [[ledger-mode-flags]] -f /home/drd/Sync/ledger.git/ledger.dat --period \"last month\" balance ")
+   '(("current week register" "%(binary) -f %(ledger-file) --period \"this week\" register")
+     ("current week balance" "%(binary) -f %(ledger-file) --period \"this week\" balance")
+     ("last week register" " %(binary) -f %(ledger-file) --period \"last week\" register")
+     ("last week balance" "%(binary) -f %(ledger-file) --period \"last week\" balance")
+     ("current month register" "%(binary) -f %(ledger-file) --period \"this month\" register ")
+     ("current month balance" "%(binary) -f %(ledger-file) --period \"this month\" balance ")
+     ("last month register" "%(binary) -f %(ledger-file) --period \"last month\" register ")
+     ("last month balance" "%(binary) -f %(ledger-file) --period \"last month\" balance ")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
- '(load-prefer-newer t t)
+ '(load-prefer-newer t)
  '(lsp-completion-provider :capf)
  '(lsp-managed-mode-hook '(lsp-diagnostics-modeline-mode))
  '(lsp-mode-hook '(lsp-enable-which-key-integration))
  '(magit-refresh-status-buffer nil)
  '(mail-envelope-from 'header)
  '(mail-specify-envelope-from t)
+ '(mail-user-agent 'notmuch-user-agent)
  '(menu-bar-mode nil)
  '(message-kill-buffer-on-exit t)
  '(message-sendmail-envelope-from 'header)
+ '(message-signature t)
  '(midnight-mode t)
  '(notmuch-saved-searches
    '((:name "new mail" :query "tag:inbox and tag:unread" :key "n" :sort-order newest-first)
@@ -268,7 +286,10 @@
      (:name "flagged" :query "tag:flagged" :key "f")
      (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
-     (:name "all mail" :query "*" :key "a")))
+     (:name "all mail" :query "*" :key "a")
+     (:name "Cool-Tech" :query "from:cool*.it or to:cool*.it")
+     (:name "idone.leonardo" :query "from:idone.leonardo or to:idone.leonardo")
+     (:name "abubu55" :query "from:abubu55 or to:abubu55")))
  '(notmuch-search-oldest-first nil)
  '(org-agenda-custom-commands
    '(("d" "Weekly agenda about urgencies"
@@ -289,21 +310,21 @@
 	      (org-agenda-overriding-header "Compleanni futuri")
 	      (org-agenda-max-entries 6))))
       ((org-agenda-compact-blocks t)
-       (org-agenda-tag-filter-preset '("-@work"))))
+       (org-agenda-tag-filter-preset
+	'("-@work"))))
      ("w" "Task lavorative"
       ((tags "@task"
 	     ((org-agenda-sorting-strategy
 	       '(timestamp-up))
 	      (org-agenda-overriding-header "Task lavoro")))
-       (tags "@work"
+       (tags "@work-@task-@presenze-@report"
 	     ((org-agenda-sorting-strategy
 	       '(timestamp-up))
 	      (org-agenda-overriding-header "Progetti lavoro")))
        (tags "@presenze"
 	     ((org-agenda-sorting-strategy
 	       '(timestamp-up))
-	      (org-agenda-overriding-header "Tabella presenze")))
-       ))))
+	      (org-agenda-overriding-header "Tabella presenze")))))))
  '(org-agenda-dim-blocked-tasks 'invisible)
  '(org-agenda-files '("~/Sync/org-files/"))
  '(org-agenda-finalize-hook
@@ -325,10 +346,13 @@
       "* FUTURE %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %? :@event:\12 %^t\12")
      ("w" "Obiettivi lavoro" entry
       (file "~/Sync/org-files/work.org")
-      "* TODO %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %?\12 %u\12")
+      "* TODO %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %?\12 %U\12")
      ("t" "Task lavoro (Event/Deadline/scheduled)" entry
       (file "~/Sync/org-files/work.org")
-      "* TODO %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %? :@task:\12 %^{Timestamp, SCHEDULED or DEADLINE?| |SCHEDULED:|DEADLINE:} %^t\12")
+      "* TODO %^{_ or [#A/B/C]?| |[#A]|[#B]|[#C]} %? :@task:\12 %^{Timestamp, SCHEDULED or DEADLINE?| |SCHEDULED:|DEADLINE:} %^t\12 %u\12")
+     ("j" "Aggiungi un nuovo job al report settimanale" entry
+      (file+headline "~/Sync/org-files/work.org" "Report Settimanale")
+      "* %?\12 %U\12")
      ("p" "Progetti da iniziare a ragionare" entry
       (file "~/Sync/org-files/projects.org")
       "* TODO %? %^{@urgent or @utility?|:@urgent:|:@utility:}\12")
@@ -398,10 +422,10 @@
      ("TOMIX" . "gold2")))
  '(org-todo-keywords '((sequence "TODO" "|" "DONE") (sequence "|" "CANCELED")))
  '(package-selected-packages
-   '(company-auctex fcitx exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
+   '(org-msg org-mime go-mode tree-sitter-langs vlf company-auctex fcitx exec-path-from-shell zenburn-theme dap-mode circadian yaml-mode erc-hl-nicks znc magit ledger-mode aggressive-indent aggressive-indent-mode benchmark-init eyebrowse initsplit elfeed beacon bic helm-projectile org-ref which-key use-package undo-tree origami org-superstar org-edna lsp-java htmlize highligh t-indentation helm-lsp flycheck evil-surround evil-commentary doom-themes doom-modeline diminish dashboard company-quickhelp company-c-headers))
  '(prog-mode-hook
    '(display-line-numbers-mode highlight-indentation-current-column-mode))
- '(projectile-mode t)
+ '(projectile-mode t nil (projectile))
  '(projectile-tags-command "gtags")
  '(recentf-exclude
    '("/home/drd/.emacs.d/.cache/treemacs-persist-at-last-error" "/home/drd/.emacs.d/.cache/treemacs-persist" "/usr/share/emacs" "/home/drd/.elfeed"))
@@ -415,7 +439,7 @@
    '((lambda nil
        (select-frame-set-input-focus
 	(selected-frame)))
-     doom-modeline-refresh-font-width-cache) t)
+     doom-modeline-refresh-font-width-cache))
  '(show-paren-mode t)
  '(split-height-threshold 33)
  '(split-width-threshold 62)

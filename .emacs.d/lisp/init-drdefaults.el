@@ -32,6 +32,8 @@
   :defer t)
 (exec-path-from-shell-copy-env "SSH_AGENT_PID")
 (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
 (defun my/update-recentf-if-last-frame-and-kill ()
   "Wrapper function to execute some custom actions before killing the last frame/buffer."

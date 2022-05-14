@@ -63,7 +63,7 @@ NOTE: very efficient, not really elegant."
     "Helper fuction for `my/elfeed-search-yt-to-mpv'.
 OPTIONS is a string with mpv options.
 VIDEO-LINK is the link of the video to watch."
-    (start-process "mpv-emacs" nil "mpv" options video-link)
+    (start-process "mpv-emacs" nil "mpv" "--save-position-on-quit" options video-link)
     (message "[MPV] Background loading media to mpv..."))
 
   (defun my/elfeed-search-yt-to-mpv ()

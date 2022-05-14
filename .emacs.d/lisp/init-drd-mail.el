@@ -81,5 +81,51 @@ notmuch buffer."
   (define-key notmuch-search-mode-map (kbd "C-+") 'my/notmuch-search-add-from-addr-to-spam-filter)
   (define-key notmuch-search-mode-map (kbd "C-c g") 'my/notmuch-download-new-mail))
 
+;; Trash
+;; (use-package org-mime
+;;   :ensure t)
+
+(defun my/add-mime ()
+  (interactive)
+  (let* ((attachment (progn (goto-char (point-min))
+			    (re-search-forward "<#part.*disposition=attachment>
+<#/part>" nil t nil)
+			    (kill-region (match-beginning 0) (match-end 0))
+			    (pop kill-ring)))
+	 (body-beg (progn (message-goto-body)
+			  (point)))
+	 (body-end (progn (message-goto-signature)
+			  (forward-line -2)
+			  (point)))
+	 (body (progn (kill-region body-beg body-end)
+		      (pop kill-ring)))
+	 )
+    (message-goto-body)
+    (insert "<#multipart type=alternative>\n<#part type=text/plain>\n")
+    (insert body)
+    (insert "<#part type=text/html>\n<p>\n")
+    (insert body)
+    (insert "</p>")
+    ;; The rest is signature
+    (goto-char (point-max))
+    (insert "<#/multipart>\n")
+    (insert attachment)
+    (message-goto-body)))
+
+;; (add-hook 'message-send-hook
+;; 	  (lambda ()
+;; 	    (my/add-mime)))
+
+
+(autoload 'gnus-alias-determine-identity "gnus-alias" "" t)
+;; Define rules to match work identity
+(add-hook 'message-setup-hook 'gnus-alias-determine-identity)
+
+;; Interesting but too complex
+;; (use-package org-msg
+;;   :ensure t
+;;   :config
+;;   (org-msg-mode))
+
 (provide 'init-drd-mail)
 ;;; init-drd-mail.el ends here

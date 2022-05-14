@@ -46,6 +46,7 @@ returns nil."
 
 (use-package org-edna :ensure t
   :defer t
+  :diminish org-edna-mode
   :after (org))
 
 (use-package ox-latex
